@@ -15,7 +15,7 @@
   }
   #cockpit{
       position:absolute;
-      heigth:600px;
+      height:600px;
       width:<?=wCpit?>px;
       top:0px;
       left:50%;
