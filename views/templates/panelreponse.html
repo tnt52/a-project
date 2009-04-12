@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+<title>Sans Titre</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="HAPedit 3.1">
+<SCRIPT language="JavaScript" type="text/JavaScript">
+// <![CDATA[
+var cfe = new customFormElements(true);
+cfe.registerModules([cfeCheckbox,cfeRadiobutton,cfeSelect,cfePassword,cfeSubmit,cfeReset,cfeImage,cfeText,cfeTextarea,cfeFile]);
+cfe.setModuleOptions(cfePassword,{slidingDoors:false});
+cfe.setModuleOptions(cfeSelect,{scrolling:true, scrollSteps: 5});
+cfe.setModuleOptions(cfeFile,{fileIcons:true,trimFilePath:true});
+window.addEvent('domready', function(){
+    cfe.init({spacer: "http://127.0.0.1/system/application/images/spacer.gif", toolTips: true, toolTipsStyle: "normal"});
+});
+
+function clicRep(form){
+           void(form.send());
+  }
+// ]]>
+</SCRIPT>
+</head>
+<body width="200"><FONT color="#FFFFFF">
+<FORM id="repMA" CLASS="rep" action="<?=base_url()?>index.php/answer" method="POST">
+<INPUT TYPE=HIDDEN NAME="keyquestion" id="keyQsel" value="">
+<DIV id="NewQ">
+     Partager mon avis sur cette affirmation:
+     <br />
+     <input name="Qavis" type="text" value="ex: L'homme est un animal" size="100" maxlength="100" />
+     <label>
+     <a href="javascript:newA" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('ShareA','','<?=base_url()?>system/application/images/boutons/OKrol.gif',1)"><img src="<?=base_url()?>system/application/images/boutons/OK.gif" alt="OK" name="ShareA" width="21" height="21" border="0" id="ShareA" /></a></label>
+     Partager mon gout sur
+         <br />
+       <input name="Qgout" type="text" value="ex: les fraises" size="100" maxlength="100" />
+     <label>
+     <a href="javascript:newG" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('ShareG','','<?=base_url()?>system/application/images/boutons/OKrol.gif',1)"><img src="<?=base_url()?>system/application/images/boutons/OK.gif" alt="OK" name="ShareG" width="21" height="21" border="0" id="ShareG" /></a></label>
+</DIV>
+<DIV id="PanelRep">
+     <DIV id="LibQgout">
+     Est-ce que tu aimes
+     </DIV>
+     <DIV id="LibelleQ"></DIV>
+     <DIV id="LibQavis">
+     Est-tu d'accord?
+     </DIV>
+     <DIV id="panelgout">
+     <TABLE WIDTH=100% BORDER=1 CELLPADDING=4 CELLSPACING=3 STYLE="page-break-inside: avoid">
+       <TR VALIGN=TOP>
+         <TD >
+           <span ><input type="radio"  name="rep" id="_BigS" value="<?=Val_BigS?>"/><label  for="#"></label></span>
+         </TD>
+         <TD >
+           <span ><input type="radio"  name="rep" id="_LittleS" value="<?=Val_LittleS?>"/><label  for="#"></label></span>
+         </TD>
+         <TD >
+           <span ><input type="radio" name="rep" id="NoF" value="<?=ValNoF?>" checked /><label  for="#"></label></span>
+         </TD>
+         <TD >
+           <span ><input type="radio"  name="rep" id="LittleS" value="<?=ValLittleS?>" /><label  for="#"></label></span>
+         </TD>
+         <TD >
+           <span ><input type="radio"  name="rep" id="BigS" value="<?=ValBigS?>" /><label  for="#"></label></span>
+         </TD>
+
+       </TR>
+     </TABLE>
+     </DIV>
+     <DIV id="panelavis">
+     PanelRep AVIS
+     </DIV>
+     <DIV id="LibRep"></DIV>
+</DIV>
+</FORM>
+</FONT></body>
+
+</html>

@@ -1,0 +1,64 @@
+
+/********** simplifica STYLE ********/
+ul.simplifica {
+	width: 200px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 1px outset #444;
+	position: absolute;
+	z-index: 9999;
+	cursor: default;
+	display: none;
+}
+
+ul.simplifica li {
+	-moz-user-select: none;
+	padding: 3px 0 3px 5px;
+	_padding: 0 0 0 5px; /* IE ... */
+	color: #444;
+	font: 11px Arial;
+	background: #fff;
+	text-decoration: none;
+	cursor: default;
+}
+
+ul.simplifica li.selected {
+	background: steelblue;
+	color: #fff;
+}
+
+a.simplifica {
+	display: block;
+	width: 200px;
+	height: 20px;
+	font: 12px Arial;
+	text-decoration: none;
+	cursor: default;
+	color: #000;
+	border: 1px inset #444;
+}
+
+a.simplifica div {
+	background: url(simplifica.gif) no-repeat right 0;
+	padding: 3px 0 0 0;
+	height: 17px;
+	_height: 20px;  /* IE ... */
+	overflow: hidden;
+	margin-left: 7px;
+	-moz-user-select: none;
+}
+
+a.simplifica div * { font: 12px Arial; color: #000; }
+
+a.simplifica:hover,
+a.simplifica:focus,
+a.simplifica:active {
+	border: 1px inset steelblue;
+}
+
+a.simplifica:hover div,
+a.simplifica:focus div,
+a.simplifica:active div {
+	background: url(simplifica.gif) no-repeat right -20px;
+}

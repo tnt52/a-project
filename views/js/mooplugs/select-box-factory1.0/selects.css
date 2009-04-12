@@ -1,0 +1,162 @@
+body {
+	color: #000;
+	font-family: verdana, arial, sans-serif;
+	font-size: 11px;
+}
+button {
+	color: white;
+	background-color: darkblue;
+	width:100px;
+	font-size:11px;
+	padding:1px;
+	cursor:pointer;
+	border:1px solid black;
+	margin-bottom:5px;
+	font-weight:bold;
+	display:block;
+}
+.toggleText{
+	display:inline;
+}
+.uiSelectBox{
+	background-color:#FEFEFE;
+	border:1px solid #364F80;
+	cursor:pointer;
+	padding:2px;
+	display:none;
+}
+.uiSelectBoxToggle{	
+	border:1px solid #364F80;
+	cursor:pointer;	
+	background: url(dropdownarrow.gif) no-repeat right center;	
+}
+.uiSelectBoxToggleDisabled{
+	border:1px solid #364F80;
+	cursor:not-allowed;	
+	color:#999999;
+	background-color:#F0F0F0;
+	font-style:italic;
+}
+.uiSelectBoxDisabled{
+	background-color:#FEFEFE;
+	border:1px solid #999999;
+	padding:0px;
+	cursor:not-allowed;	
+}
+.uiSelectBoxStack{
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+.uiSelectBoxStackDisabled{
+	overflow-y:hidden;
+	overflow-x:hidden;
+	background-color:#FEFEFE;
+	border:1px solid #999999;
+	cursor:not-allowed;	
+}
+.uiSelectBoxChoice{
+	background-color:#EFF3FA;
+	border:1px solid #DDD;
+	border-bottom:2px solid #D0D9E7;
+	padding:2px;
+	padding-left:4px;
+	text-align:left;
+}
+/* classes are set this way for ie6 and mooTools v1.11 */
+.uiSelectBoxChoiceDisabled{
+	background-color:#EFF3FA;
+	border:1px solid #DDD;
+	padding:2px;
+	padding-left:4px;
+	text-align:left;	
+}
+.uiSelectBoxChoice.uiSelectBoxChoice{
+	background-color:#EFF3FA;
+	border:1px solid #DDD;
+	border-bottom:2px solid #D0D9E7;
+	padding:2px;
+	padding-left:4px;
+	text-align:left;
+}
+.uiSelectBoxChoice.uiSelectBoxChoiceActive{	
+	background-color:#869BC5;
+	border:1px solid #000000;
+	border-bottom: 2px solid #000000;
+	color: #CCCCCC;
+	padding:2px;
+	padding-left:4px;	
+	text-align:left;
+}
+.uiSelectBoxChoice.uiSelectBoxChoiceGraze{	
+	background-color:#869AF9;
+	border:1px solid #000000;
+	border-bottom: 2px solid #000000;
+	color: #CCCCCC;
+	padding:2px;
+	padding-left:4px;	
+	text-align:left;
+}
+.uiSelectBoxChoice.uiSelectBoxChoiceSelected{
+	background-color:#364F80;
+	border:1px solid #364F80;
+	border-bottom: 2px solid #000000;	
+	color: #CCCCCC;
+	padding:2px;
+	padding-left:4px;	
+	text-align:left;
+}
+.uiSelectBoxChoice.uiSelectBoxChoiceDisabled{
+	background-color:#F0F0F0;
+	border:1px solid #CCCCCC;
+	color: #CCCCCC;
+	padding:2px;
+	padding-left:4px !important;	
+	text-align:left;
+}
+#dropdown1Container{
+	width: 200px;
+	float:left;
+}
+#dropdown2Container{
+	width: 200px;
+	float:left;
+}
+#dropdown3Container{
+	width: 200px;
+	float:left;
+	height: 240px;
+}
+#dropdown4Container{
+	width: 200px;
+	float:left;
+}
+#focusBox{
+	top:8px;
+	right:100px;
+	width:2px;
+	border:0px;
+	background-color:#ffffff;
+	position:absolute;
+	left:-1000;	
+}
+.siftBox{
+	padding-left:2px;
+	font-size:10px;
+	font-family:arial;
+}
+.statesHeader{
+	display:inline;
+}
+.statesHeaderItem{ /* about 20 px would be the max on any normal sized dropdown */
+	width:18px;
+	margin-left:2px;
+	margin-right:1px;
+	height:18px;
+	display:inline;
+}
+.statesHeaderItem.pushedHeaderItem{ /* looks better in ff */
+	border: 2px inset darkblue;
+}
+.statesHeaderItem.unPushedHeaderItem{ /* looks better in ff  */
+	border: 2px outset darkblue;
+}

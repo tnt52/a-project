@@ -1,0 +1,75 @@
+<!--
+Select Box Logic 1.0 by Ari N. Karp, August 2008
+using mooTools v.1.11
+
+Blog: theuiguy.blogspot.com
+
+You are free to use at will, just at least visit my blog and tell me
+1. if you are using it and how (for curiosity sake)
+2. some feedback on how you changed, enhanced, or minimized it. 
+
+I believe in sharing code to the community, so if you feel the same, then
+please share your changes with me to help make the UI a better place.
+
+For help on this, please visit theuiguy.blogspot.com and I will get back asap.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>Custom Select Boxes Sample: Ultimate Multi-Select</title>
+	<link rel="stylesheet" type="text/css" href="selects.css"/>
+</head>
+<body>
+<div id="dropdown3Container">
+	<div id="dropdown3" class="uiSelectBox" classSetSelect="uiSelectBox,uiSelectBoxToggle,uiSelectBoxChoice,uiSelectBoxStack" isDisabled="false" maxSize=6 toggleStyle="none" info="true" toggleLabel=""><div></div></div>
+</div>
+<div style="float:left">&nbsp;</div>
+<div id="dropdown4Container">
+	<button onclick="dropdown3._addChoice(['kitty','kitty','kitty',false,2])">add kitty</button>
+	<button onclick="dropdown3._removeChoice('kitty')">remove kitty</button>
+</div>
+<script type="text/javascript" src="log.js"></script>
+<script type="text/javascript" src="mootools111_core.js"></script>
+<script type="text/javascript" src="selectboxfactory.js"></script>
+<script>
+//
+var app = {
+	initialize : function(){
+		this.images();
+		log.start();
+	},
+	images : function(){ // always load and clone. 
+		var i = "";  // put your path here /path/pathsubfolder/
+		this.imgs = [i+'clear.gif',i+'eraser.gif']; 
+		this.images = new Asset.images(this.imgs);
+	}
+}
+var dropdown3;// needed to make it a global variable for this one test, but I don't recommend this.
+window.addEvent('domready', function(){
+	window.removeEvents('keyup');
+	app.initialize();	
+	dropdown3 = new selectBoxFactory({
+		id : "dropdown3",
+		type : 'selectmultiple',
+		definition : {
+			useSift : false,
+			useEraser: true,
+			useSelf: true, //if false, then use id from parent container.
+			'classSets' : {
+				'selectClassSet' : $("dropdown3").getAttribute("classSetSelect")
+			},	
+			defaultSort : 'ascending',
+			choices : {
+				0 : ['cat','cat','cat',false,0],
+				1 : ['cougar','cougar','cougar',false,1],						
+				2 : ['leopard','leopard','leopard',false,2],
+				3 : ['lion','lion','lion',false,3],					
+				4 : ['puma','puma','puma',false,4]				
+			}
+		}
+	});
+});
+</script>
+<input type="text" id="focusBox" onfocus="this.blur()">
+</body>
+</html>

@@ -1,0 +1,5 @@
+INSTALLATION NOTES for Custom Form Elements
+****************************************************
+
+View Demopage for sample integration and HowTo (customformelements.net/howto.php).
+For a complete API documentation and developer docs, check customformelements.net/api-docs.php.

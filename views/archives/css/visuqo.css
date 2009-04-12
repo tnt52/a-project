@@ -1,0 +1,9 @@
+<?header("Content-Type: text/css");require("../../helpers/dimensions_helper.php");?>
+.Titre{
+ font-size:<?=hL?>px;
+}
+.Descr{
+  /*width:400px;
+  height:200px;
+  overflow:auto;*/
+}

@@ -1,0 +1,1 @@
+<INPUT TYPE="HIDDEN" class="inp_titre" value="<?=htmlentities($row['titre'])?>">

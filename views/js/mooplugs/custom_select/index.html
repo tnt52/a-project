@@ -1,0 +1,214 @@
+<? header("Content-type: text/html; charset=utf-8");?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Custom select with MooTools, samples (selectbox, dropbox)</title>
+
+    <link href="themes/simplifica/custom-select-simplifica.css" rel="stylesheet" media="all" />
+    <link href="themes/aqua/custom-select-aqua.css" rel="stylesheet" media="all" />
+    <style type="text/css">
+    body { padding: 20px; }
+
+    table.sample {
+        border: 3px solid gray;
+        border-collapse: collapse;
+    }
+    
+    table.sample td,
+    table.sample th {
+        border: 3px solid gray;
+        padding: 3px;
+    }
+    
+    table.sample td.sm {
+        height: 70px;
+        width: 130px;
+        font: 10px Arial;
+    }
+    table.sample th { background: #f4f4f4; }
+    
+    /****************************************************************************/
+    
+    .selectbox-input {
+        border: 0;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+    }
+    </style>
+</head>
+
+<body>
+
+<h1>Custom select with MooTools, samples</h1>
+
+<table class="sample">
+<tr>
+    <th>Select</th>
+    <th>Custom select</th>
+    <th>onSelect</th>
+    <th>onChange</th>
+    <th>onShow</th>
+    <th>onHide</th>
+</tr>
+<tr>
+    <td>
+    
+        <select>
+        <option value="1">Coteaux d'Ancenis</option>
+        <option value="2">Roussette du Bugey</option>
+        <option value="3">Saint-Sardos</option>
+        <option value="4">Tursan</option>
+        <option value="5">Moselle</option>
+        <option value="6">Châteaumeillant</option>
+        <option value="7">Côtes de Millau</option>
+        <option value="8">Gros plant or Gros Plant du pays nantais</option>
+        </select>
+    
+    </td>
+    <td>
+    
+        <select name="select_1" id="select_1">
+        <option value="1">Coteaux d'Ancenis</option>
+        <option value="2">Roussette du Bugey</option>
+        <option value="3">Saint-Sardos</option>
+        <option value="4">Tursan</option>
+        <option value="5">Moselle</option>
+        <option value="6">Châteaumeillant</option>
+        <option value="7">Côtes de Millau</option>
+        <option value="8">Gros plant or Gros Plant du pays nantais</option>
+        </select>
+    
+    </td>
+    <td class="sm" id="onselect_1">
+        &mdash;
+    </td>
+    <td class="sm" id="onchange_1">
+        &mdash;
+    </td>
+    <td class="sm" id="onshow_1">
+        &mdash;
+    </td>
+    <td class="sm" id="onhide_1">
+        &mdash;
+    </td>
+</tr>
+<tr>
+    <td>
+    
+        <select>
+        <option value="1">Le Pinot Noir</option>
+        <option value="2">Camille Leonie</option>
+        <option value="3">ISA Blanc</option>
+        <option value="4">La Gineste, Blanc</option>
+        <option value="5">Vin de Pays d'Oc red wine</option>
+        <option value="6">Vin de Pays d'Oc red Oak Matured</option>
+        <option value="7">AOC Minervois red</option>
+        <option value="8">AOC Minervois white</option>
+        <option value="9">VDP du Val de Cesse red</option>
+        <option value="10">VDP du Val de Cesse white</option>
+        </select>
+    
+    </td>
+    <td>
+    
+        <select name="select_2" id="select_2">
+        <option value="1">Le Pinot Noir</option>
+        <option value="2">Camille Leonie</option>
+        <option value="3">ISA Blanc</option>
+        <option value="4">La Gineste, Blanc</option>
+        <option value="5">Vin de Pays d'Oc red wine</option>
+        <option value="6">Vin de Pays d'Oc red Oak Matured</option>
+        <option value="7">AOC Minervois red</option>
+        <option value="8">AOC Minervois white</option>
+        <option value="9">VDP du Val de Cesse red</option>
+        <option value="10">VDP du Val de Cesse white</option>
+        </select>
+    
+    </td>
+    <td class="sm" id="onselect_2">
+        &mdash;
+    </td>
+    <td class="sm" id="onchange_2">
+        &mdash;
+    </td>
+    <td class="sm" id="onshow_2">
+        &mdash;
+    </td>
+    <td class="sm" id="onhide_2">
+        &mdash;
+    </td>
+</tr>
+</table>
+
+<div style="padding: 30px">
+    <select name="browsers" id="browsers">
+    <option value="1">Firefox</option>
+    <option value="2">Safari</option>
+    <option value="3">Google Chrome</option>
+    <option value="4">Mozilla</option>
+    <option value="5">Conquerror</option>
+    <option value="6">Opera</option>
+    </select>
+</div>
+
+<h3><a href="/custom-select/custom_select.zip">Download CustomSelect 0.1</a></h3>
+
+
+
+<script type="text/javascript" src="js/mootools-1.2.1-core.js"></script>
+<script type="text/javascript" src="js/custom_select.js"></script>
+<script type="text/javascript" src="js/custom_select_text.js"></script>
+<script type="text/javascript">
+window.addEvent('domready', function(){
+    var s1 = new CustomSelect($('select_1'), {
+        theme : 'aqua',
+        
+        onSelect: function(el) {
+            $('onselect_1').set('text', el.get('text'))
+        },
+        onChange: function(el) {
+            $('onchange_1').set('text', el.get('text'))
+        },
+        onShow: function(el) {
+            $('onshow_1').set('text', el.get('text'))
+        },
+        onHide: function(el) {
+            $('onhide_1').set('text', el.get('text'))
+        }
+    });
+    
+    var s2 = new CustomSelect($('select_2'), {
+        theme : 'simplifica',
+        
+        onSelect: function(el) {
+            $('onselect_2').set('text', el.get('text'))
+        },
+        onChange: function(el) {
+            $('onchange_2').set('text', el.get('text'))
+        },
+        onShow: function(el) {
+            $('onshow_2').set('text', el.get('text'))
+        },
+        onHide: function(el) {
+            $('onhide_2').set('text', el.get('text'))
+        }
+    });
+
+    // Add new element to native select and
+    // rebuild custom select to apply changes
+    var select = $('select_2');
+    select[ select.options.length++ ] = new Option('AOC Minervois rose', 'new value');
+    s2.rebuild();
+    
+    
+    var browsers = $('browsers');
+    var s3 = new CustomSelectText(browsers, {
+        theme : 'aqua'
+    });
+});
+</script>
+
+</body>
+</html>

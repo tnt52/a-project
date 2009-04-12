@@ -1,0 +1,72 @@
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (2,'Olé1',1,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé2',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé3',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé4',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé5',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé6',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé7',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé8',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé9',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé10',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé11',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé12',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé13',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé14',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé15',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé16',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé17',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé18',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé19',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé20',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé21',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé22',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé23',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé24',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé25',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé26',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé27',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé28',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé29',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé30',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé31',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé32',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé33',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé34',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé35',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');
+INSERT INTO oeuvres (type,titre,keymembre,nomM,dimensions,dateoeuvre,par,description)
+VALUES (21,'Olé36',2,'John Coltrane','18:5','1961-01-01','¨John Coltrane:saxophone soprano¨Georges Lane:flûte¨Freddie Hubbard:trompette¨Macc Toy Tuner:piano','Une perle');

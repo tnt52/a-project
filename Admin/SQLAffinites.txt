@@ -1,0 +1,6 @@
+INSERT INTO affinites (keysujet,keyobjet,affglobal,liens) VALUES (1,1,896,100);
+INSERT INTO affinites (keysujet,keyobjet,affglobal,liens) VALUES (1,2,100,15);
+INSERT INTO affinites (keysujet,keyobjet,affglobal,liens) VALUES (1,3,0,15);
+INSERT INTO affinites (keysujet,keyobjet,affglobal,liens) VALUES (1,4,-450,45);
+INSERT INTO affinites (keysujet,keyobjet,affglobal,liens) VALUES (1,5,450,75);
+INSERT INTO affinites (keysujet,keyobjet,affglobal,liens) VALUES (1,6,-100,15);

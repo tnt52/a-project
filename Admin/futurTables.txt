@@ -1,0 +1,121 @@
+$queryString="CREATE TABLE `".TablePartenaires."` (
+`cle` INT NOT NULL,
+`type` TINYINT NOT NULL DEFAULT 0,
+`nom` VARCHAR (25),
+`datefirstcontrat` TIMESTAMP DEFAULT 00000000000000,
+`datestartcontrat` TIMESTAMP DEFAULT 00000000000000,
+`dateendcontrat` TIMESTAMP DEFAULT 00000000000000,
+`IPcontrat` VARCHAR (25),
+`mail` VARCHAR (25),
+`tel` TINYINT,
+`adresse` VARCHAR (25),
+`zipcode` TINYINT,
+`ville` VARCHAR (25),
+`pays` VARCHAR (25),
+`equilibrepartenariat` INT,
+`commentaires` TEXT,
+`datecrea` TIMESTAMP DEFAULT 00000000000000,
+`datemodif`  TIMESTAMP DEFAULT 00000000000000,
+`actif` TINYINT DEFAULT 1,
+PRIMARY KEY ( `cle` ) ,
+INDEX ( `type`, `dateendcontrat`,`zipcode`) ) 
+;";
+//echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+
+$queryString="CREATE TABLE `".TableGrQuestions."` (
+`cle` INT NOT NULL AUTO_INCREMENT ,
+`keygroup` INT,
+`type` TINYINT NOT NULL DEFAULT -1,
+`libelle` VARCHAR (25),
+`groupcount` INT,
+`description` TEXT,
+`datecrea` TIMESTAMP DEFAULT 00000000000000,
+`datemodif`  TIMESTAMP DEFAULT 00000000000000,
+`actif` TINYINT DEFAULT 1,
+PRIMARY KEY ( `cle` ) ,
+INDEX ( `type` ) ) 
+;";
+//echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TableGrOeuvres."` (
+`cle` INT NOT NULL AUTO_INCREMENT ,
+`keyquestion` INT NOT NULL,
+`type` TINYINT NOT NULL DEFAULT 0,
+`titre` VARCHAR (35),
+`groupcount` INT,
+`keyediteur` INT NOT NULL DEFAULT 0,
+`editeur` VARCHAR (25),
+`dimensions` VARCHAR (25),
+`dateedition` DATE,
+`description` TEXT,
+`datecrea` TIMESTAMP DEFAULT 00000000000000,
+`datemodif`  TIMESTAMP DEFAULT 00000000000000,
+`actif` TINYINT DEFAULT 1,
+PRIMARY KEY ( `cle` ) ,
+INDEX ( `type`,`keyquestion` ) ) 
+;";
+//echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TableGrArtistes."` (
+`cle` INT NOT NULL AUTO_INCREMENT ,
+`keyquestion` INT NOT NULL,
+`type` TINYINT NOT NULL DEFAULT 0,
+`nom` VARCHAR (25),
+`groupcount` INT,
+`description` TEXT,
+`datecrea` TIMESTAMP DEFAULT 00000000000000,
+`datemodif`  TIMESTAMP DEFAULT 00000000000000,
+`actif` TINYINT DEFAULT 1,
+PRIMARY KEY ( `cle` ) ,
+INDEX ( `type` ) ) 
+;";
+//echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TableTribus."` (
+`cle` INT NOT NULL AUTO_INCREMENT ,
+`poidsaff` TINYINT NOT NULL DEFAULT 1,
+`keymembre` INT NOT NULL,
+`nom` VARCHAR (26) NOT NULL ,
+`description` TEXT,
+`datecrea` TIMESTAMP DEFAULT 00000000000000,
+`datemodif` TIMESTAMP DEFAULT 00000000000000,
+`actif` TINYINT DEFAULT 1,
+PRIMARY KEY ( `cle` ) ,
+INDEX ( `keymembre`, `nom`)) 
+;
+";
+//echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TableThemes."` (
+`cle` INT NOT NULL AUTO_INCREMENT ,
+`poidsaff` TINYINT NOT NULL DEFAULT 1,
+`nom` VARCHAR (26) NOT NULL ,
+`description` TEXT,
+`datecrea` TIMESTAMP DEFAULT 00000000000000,
+`datemodif` TIMESTAMP DEFAULT 00000000000000,
+`actif` TINYINT DEFAULT 1,
+PRIMARY KEY ( `cle` ) ,
+INDEX (`poidsaff`, `nom`)) 
+;";
+//echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TablePar."` (
+`cle` INT NOT NULL AUTO_INCREMENT ,
+`keyoeuvre` INT NOT NULL,
+`keyartiste` INT NOT NULL,
+`role` VARCHAR (25),
+`datecrea` TIMESTAMP DEFAULT 00000000000000,
+`datemodif` TIMESTAMP DEFAULT 00000000000000,
+`actif` TINYINT DEFAULT 1,
+PRIMARY KEY ( `cle` ) ,
+INDEX ( `keyoeuvre`,`keyartiste`,`role` ) ) 
+;";
+//echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
