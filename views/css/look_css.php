@@ -9,7 +9,13 @@ body
       font-size:<?=hL?>px;
   }
 #cockpit{
-      background: url(<?=baseurl?>system/application/images/FondCpit.gif) no-repeat left top;
+      background: url(<?=baseurl?>system/application/images/Fonds/FondCpit.gif) no-repeat left top;
+ }
+ #haut{
+	background: url(<?=baseurl?>system/application/images/Fonds/FondHaut.gif) no-repeat left top;	 
+ }
+ #bas{
+	background: url(<?=baseurl?>system/application/images/Fonds/FondBas.gif) no-repeat left top;	 
  }
   #slogo {
     color:white;
@@ -23,9 +29,7 @@ body
       #limitLignes,#labellimitQO,#avismanquants{
             font-size:<?=hLmini?>px;
       }
-     #bandeau{
-          background-color:#CCCCCC;
-      }
+
   #HeadLM {
     color:white;
     background-color:<?=Rec3_coul?>;
@@ -54,14 +58,17 @@ body
         /*font-weight:bold;*/
         background-color:<?=Rec4_coul?>;
   }
-  :link,:visited,:active
+  a:link,a:visited,a:active
   {
       text-decoration:none;
-      color:black;
+      color:white;
+
+  }
+  a:hover{
+	  color:red;	  
   }
   #Inavigation a:link,#Inavigation a:visited,#Inavigation a:active
   {
-      text-decoration:none;
       color:white;
   }
   #Imembres

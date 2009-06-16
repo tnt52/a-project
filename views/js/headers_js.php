@@ -18,7 +18,7 @@ var s2 = new CustomSelect($('limitQO'), {
 
       },
       onChange: function(el) {
-
+	      NewLimQO();
       },
       onShow: function(el) {
 

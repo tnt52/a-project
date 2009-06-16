@@ -117,6 +117,62 @@ label.F{color:#cc3300;}
     height: 20px;
     background: no-repeat 0 0;
 }
+
+<?$w=16;$h=20;?>
+.masc .jsRadiobutton img{
+    vertical-align: text-top;
+    width: <?=$w?>px;
+    height: <?=$h?>px;
+    background: no-repeat 0 0;
+}
+
+
+
+.masc .jsRadiobutton img{background-image: url(<?=$baseurl?>system/application/images/boutons/masculin.png);}
+.masc .jsRadiobutton.A img{background-position: 0 -<?=2*$h?>px;}
+.masc .jsRadiobutton.H img{background-position: 0 -<?=$h?>px;}
+.masc .jsRadiobutton.H.A img{background-position: 0 -<?=2*$h?>px;}
+.masc .jsRadiobutton.F img{background-position: 0 -<?=2*$h?>px;}
+.masc .jsRadiobutton.F.A img{background-position: 0 -<?=3*$h?>px;}
+.masc .jsRadiobutton.F.H img{background-position: 0 -<?=$h?>px;}
+.masc .jsRadiobutton.F.A.H img{background-position: 0 -<?=3*$h?>px;}
+
+.fem .jsRadiobutton img{
+    vertical-align: text-top;
+    width: <?=$w?>px;
+    height: <?=$h?>px;
+    background: no-repeat 0 0;
+}
+
+
+
+.fem .jsRadiobutton img{background-image: url(<?=$baseurl?>system/application/images/boutons/feminin.png);}
+.fem .jsRadiobutton.A img{background-position: 0 -<?=2*$h?>px;}
+.fem .jsRadiobutton.H img{background-position: 0 -<?=$h?>px;}
+.fem .jsRadiobutton.H.A img{background-position: 0 -<?=2*$h?>px;}
+.fem .jsRadiobutton.F img{background-position: 0 -<?=2*$h?>px;}
+.fem .jsRadiobutton.F.A img{background-position: 0 -<?=3*$h?>px;}
+.fem .jsRadiobutton.F.H img{background-position: 0 -<?=$h?>px;}
+.fem .jsRadiobutton.F.A.H img{background-position: 0 -<?=3*$h?>px;}
+
+.nosx .jsRadiobutton img{
+    vertical-align: text-top;
+    width: <?=$w?>px;
+    height: <?=$h?>px;
+    background: no-repeat 0 0;
+}
+
+
+
+.nosx .jsRadiobutton img{background-image: url(<?=$baseurl?>system/application/images/boutons/nosx.png);}
+.nosx .jsRadiobutton.A img{background-position: 0 -<?=2*$h?>px;}
+.nosx .jsRadiobutton.H img{background-position: 0 -<?=$h?>px;}
+.nosx .jsRadiobutton.H.A img{background-position: 0 -<?=2*$h?>px;}
+.nosx .jsRadiobutton.F img{background-position: 0 -<?=2*$h?>px;}
+.nosx .jsRadiobutton.F.A img{background-position: 0 -<?=3*$h?>px;}
+.nosx .jsRadiobutton.F.H img{background-position: 0 -<?=$h?>px;}
+.nosx .jsRadiobutton.F.A.H img{background-position: 0 -<?=3*$h?>px;}
+
 <?$wR=24;$hR=24;?>
 #panelgout .jsRadiobutton img, #panelavis .jsRadiobutton img{
     vertical-align: text-top;

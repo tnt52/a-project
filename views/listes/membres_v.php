@@ -23,8 +23,8 @@ window.addEvent('domready', function() {
     <COL WIDTH=<?=col_lm_voix?>>
     <COL WIDTH=<?=col_lm_aff?>>
     <?php
-    if ($result->num_rows() > 0):
-           foreach ($result->result_array() as $row): ?>
+    if (count($result) > 0):
+           foreach ($result as $row): ?>
     <TR VALIGN=TOP CLASS="listitem" liste="ML" visu="2" cle="<?=$row['cle']?>" cat="<?=TMmem?>" type="<?=$row['type']?>" sel="false" maj="true">
         <TD>
             <DIV nowrap style="width:<?=col_lm_pseudo?>px;overflow: hidden"><?=$row['pseudo']?></DIV>

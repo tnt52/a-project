@@ -88,7 +88,7 @@
                 $this->db->where('actif',1);
                 $v['Ntot']+=$this->db->count_all_results();
                 $v['Ptot']=ceil($v['Ntot']/$limit);
-                $v['result']=$r;
+                $v['result']=$r->result_array();
                 return $v;
        }
        function getartistes($page,$limit,$champtri,$senstri,$search,$fields){

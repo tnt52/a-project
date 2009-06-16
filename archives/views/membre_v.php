@@ -52,7 +52,7 @@ window.addEvent('domready',function(){
 <a id="liens"><?echo anchor(base_url().'index.php/password/', 'modifier mon mot de passe', array('target'=>'_self'));?></a>
 <div class=pseudo><?=$pseudo?></div><img
  style="border: 0px solid ; width: 32px; height: 128px; float: left;"
- alt="Mon image" src="<?=images_url.'checkbox2.png'?>"
+ alt="Mon image" src="<?=base_url().images_url.'checkbox2.png'?>"
  name="Image1"><br clear="left">
 <br>
 voix:<?=$voix?></p>
@@ -86,7 +86,7 @@ mail public:
 </table>
 <a href="javascript:send()"><img
  style="border: 0px solid ; width: 32px; height: 128px; float: left;"
- alt="enregister" src="<?=images_url.'checkbox2.png'?>"
+ alt="enregister" src="<?=base_url().images_url.'checkbox2.png'?>"
  name="submit"></a>
 <p></p>
 <div align="right">J'ai exprimé mon gout sur oeuvres<br>

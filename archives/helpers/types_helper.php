@@ -41,7 +41,6 @@ define ("TableGrArtistes","groupartistes");
 define ("TablePartenaires","partenaires");
 define ("TableAdministration","administration");
 
-define ("images_url",base_url()."images/");
 //MARQUEURS//
 define ("MarqJavaDebut",'|');
 define ("MarqJavaFin","\r");

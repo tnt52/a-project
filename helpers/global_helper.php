@@ -21,7 +21,7 @@ define ("TablePartenaires","partenaires");
 define ("TableAdministration","administration");
 define ("TableAuthentif","authentification");
 
-define ("images_url",base_url()."images/");
+define ("images_url","images/");
 
 //REPONSES//
 

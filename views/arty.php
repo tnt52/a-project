@@ -11,7 +11,7 @@
 <SCRIPT language="JavaScript" type="text/JavaScript">
     var cat=<?=$cat?>;
     var TM=<?=TMmem?>;
-    var urlbase='<?=base_url()?>';
+    //var urlbase='<?=base_url()?>'; dans global.js
     var Qsel=null; // A remplacer par MainSel
     var MainSel=null;
     var SubSel=null;
@@ -29,24 +29,6 @@
     /*var triM_rg=new Array('voix','pseudo');//rangs tris
     var triM_ss=new Array('DESC','ASC');//sens tris*/
 
-function StopEvent(pE)
-{
-   if (!pE)
-     if (window.event)
-  pE = window.event;
-     else
-  return;
-   if (pE.cancelBubble != null)
-      pE.cancelBubble = true;
-   if (pE.stopPropagation)
-      pE.stopPropagation();
-   if (pE.preventDefault)
-      pE.preventDefault();
-   if (window.event)
-      pE.returnValue = false;
-   if (pE.cancel != null)
-      pE.cancel = true;
-}
 </SCRIPT>
 <STYLE>
 

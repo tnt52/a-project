@@ -6,13 +6,6 @@
   TABLE, TR, TD {
    white-space: nowrap;
   }
-  .devant {
-   z-index:10;
-  }
-  .derriere {
-   z-index:0;
-   display:none;
-  }
   #cockpit{
       position:absolute;
       height:600px;
@@ -124,13 +117,13 @@
                  width:<?=wHead?>px;
                  height:<?=hBand?>px
                 }
-                #bandeau{
+                /*#bandeau{
                  position:absolute;
                  left:<?=wNav?>px;
                  bottom:0px;
                  width:<?=wHead+7?>px;
                  height:<?=hBand?>px
-                }
+                }*/
             #HeadLM {
               margin: 0 0 0 0;
               padding: 0 0 0 0;
@@ -138,6 +131,14 @@
               height:<?=hHaut?>px;
               width:<?=wLM?>px;
             }
+   #idMA {
+       position:absolute;
+       z-index:5;
+       top:<?=hHaut+hNav?>px;
+       left:0px;
+       width:<?=wID?>px;
+       height:<?=hID?>px;
+      }
   #bas {
         position:absolute;
         z-index:4;
@@ -146,13 +147,7 @@
         width:<?=wCpit?>px;
         height:<?=hID?>;
   }
-      #idMA {
-       position:absolute;
-       top:<?=hHaut+hNav?>px;
-       left:0px;
-       width:<?=wID?>px;
-       height:<?=hID?>px;
-      }
+     
           #avatar{
               position:absolute;
               left:<?=wID-5-wIDimg?>px;

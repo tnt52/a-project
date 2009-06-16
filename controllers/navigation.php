@@ -15,6 +15,9 @@ class Navigation extends Controller {
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/customlselect/CustomlSelect.js"></script>';
              $this->load->view('customselect',$data);
     }
+    function compte(){
+	    $this->load->view('formulaires/InfoArtiste');
+    }
     function affiche($cat){
              $data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/basics.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/constantes_js.php"></script>';
@@ -39,10 +42,13 @@ class Navigation extends Controller {
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.text.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.textarea.js"></script>';
              $data['Header'].='<!--[if IE]> <link rel="stylesheet" type="text/css" href="'.base_url().'system/application/views/js/mooplugs/cfe/fixPrematureIE.css" /> <![endif]-->';
-             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/cockpit.js"></script>';
+             //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/global_js.php"></script>';
+	     $data['Header'].='<script>'.$this->load->view('js/global_js',null,true).'</script>';
+	     $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/cockpit.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/positionnement_js.php"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/liste.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/swfobject/swfobject.js"></script>';//swfobject_1_5/
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/global.css">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/navigation_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/cfe_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/look_css.php">';

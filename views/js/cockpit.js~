@@ -280,6 +280,21 @@ function unhover(el){
          el.removeClass('H');
          el.removeClass('C');
 }
+function DIVdevant(div){
+         div.removeClass("derriere");
+         div.addClass("devant");
+}
+function DIVderriere(div){
+         div.removeClass("devant");
+         div.addClass("derriere");
+}
+function switchDiv(show,hide){
+         DIVderriere(hide);
+         DIVdevant(show);
+//         hide.setStyle('display','none');
+//         show.setStyle('display','block');
+}
+
 
 /* Positionning */
 function repositionner(el) {

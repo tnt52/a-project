@@ -1,12 +1,9 @@
-<? require("../helpers/global_helper.php");require("../helpers/types_helper.php");
-define("hostDB","127.0.0.1:3306");
-define("userDB","root");
-define ("pswDB","");
-define ("DBase","psparty2");
+<? require("../config/base.php");require("../helpers/global_helper.php");
+require("../helpers/types_helper.php");
 function conDB(){
-    $connection=mysql_connect(hostDB,userDB, pswDB) or die("Unable to connect!");
+    $connection=mysql_connect(dbhost,dbuser, dbpswd) or die("Unable to connect!");
     /*echo "connection:".$connection."\n";echo "DB:".*/
-    mysql_select_db(DBase);
+    mysql_select_db(database);
     return $connection;
 }
 

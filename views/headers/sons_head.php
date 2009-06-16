@@ -28,6 +28,8 @@
 <span id="SearchCat" >
       <form method="post" action="#" onsubmit="searchCat(this,event)">
       <DIV id="searchQO"><input type="text" name="searchtextcat" id="searchtextcat" size="15" value="<?=lang("lib_chercher")?>" /><label for="searchtextcat"></label></DIV>
+      <input type="checkbox" name="inTC1" id="inTC1" value="oeuvres.titre" checked /><label for="inTC1"><?=lang("lib_oeuvres")?></label>
+      <input type="checkbox" name="inTC2" id="inTC2" value="artistes.nom" checked /><label for="inTC2"><?=lang("lib_artistes")?></label>
       <DIV id="avismanquants">
       <input type="checkbox" name="avismanq" id="avismanq" /><label id="labelavismq" for="#"><?=lang("lib_avismanquants")?></label>
       </DIV>
@@ -86,7 +88,6 @@
     </TD>
     </TR>
 </TABLE>-->
-<DIV id="bandeau"></DIV>
 <DIV id="CatHeads"><!---->
      <TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='center'>
      <? foreach($cols as $value):?>

@@ -24,7 +24,7 @@ else $avasrc="catalogue/".$row['cle']."/".$row['avatar'];
 </DIV>
 <DIV id="avatar"><img src="<?=base_url()?>system/application/<?=$avasrc?>" alt="" title="smiling" width="<?=wIDimg?>px" height="<?=hIDimg?>px" border="0" /></DIV>
 <DIV id="deconnect"><?=lang("lib_medeconnecter")?></DIV>
-<DIV id="moncompte"><?=lang("lib_moncompte")?></DIV>
+<DIV id="moncompte"><a href="<?=base_url()?>index.php/compte">Le lien</a> <a href="#" onclick="StopEvent(event);"><?=lang("lib_moncompte")?></a></DIV>
 <!--<TABLE border="0" cellpadding="0" cellspacing="0">
 <TR>
 <TD>

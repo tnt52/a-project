@@ -25,7 +25,7 @@ define ('wNav',193);
 define ('hNav',295);
 define ('wLM',193);
 define ('hHaut',135);
-define ('wHead',587);
+define ('wHead',595);
 $w=wHead+wLM+wNav;
 define ('wCpit',$w);
 define ('hBand',34);
