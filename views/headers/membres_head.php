@@ -8,42 +8,8 @@
 window.addEvent('domready', function(){
     cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/images/spacer.gif", toolTips: true, toolTipsStyle: "normal"});
 });
-var lastTri=null;
-var img;
-function tri(el){
-         el=$(el);
-         img=el.getChildren()[0];
-         img.addClass('C');
-         if (img.hasClass('A')) {
-            if (img.hasClass('asc')){
-               img.removeClass('asc');
-               img.addClass('desc');
-            }
-            else if (img.hasClass('desc')){
-               img.removeClass('desc');
-               img.addClass('asc');
-            }
-         }
-         else {
-              if (lastTri!=null && lastTri.hasClass('A')) {
-                 lastTri.removeClass('A');
-              }
-              img.addClass('A');
-              lastTri=img;
-         }
-         triM=el.getProperty('champ');
-         if (img.hasClass('asc')) sensM='ASC'; else sensM='DESC';
-         if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
-         new Request.HTML({url: urlbase+'index.php/navigation/liste/'+TM+'/'+limitM+'/'+pageM+'/'+triM+'/'+sensM+'/'+keyMsel,update: $('membres'),method: 'get', evalScripts: true}).send();
-}
 
-function searchM(e){
-         new Request.HTML({
-         url: urlbase+'index.php/navigation/search/'+TM+'/'+limitM+'/'+pageM+'/'+triM+'/'+sensM,
-         update: $('membres'),
-         onComplete: function () {endSearchM();}}).post($('LookM'));
-         StopEvent(e);
-}
+
 
 function init(){
          if (Msel==null) $$('.repMselCol').setStyle('opacity',0);
@@ -57,10 +23,9 @@ window.addEvent('domready',function (){
 <body bgcolor="#FFFFFF">
 <DIV class="CatTitle membres" ALIGN=CENTER><?=lang("lib_membres")?></DIV>
 <DIV id="SearchM">
-     <form id="LookM" method="post" action="#" onsubmit="searchM(event)">
-           <input type="text" name="tobesearched"/>
-           <input name="searchtables" type="hidden" value=",membres.pseudo"/>
-           <label for="tobesearched"></label>
+     <form method="post" action="#" onsubmit="searchM(this,event)">
+           <input type="text" id="searchtextm" name="searchtextm"/><label for="searchtextm"></label>
+           <input id="searchtablesm" name="searchtablesm" type="hidden" value=",pseudo"/>
            <input type="submit" class="GO" value="GO" />
      </form>
 </DIV>
@@ -107,22 +72,22 @@ window.addEvent('domready',function (){
      </TR>
      <TR >
      <TD >
-         <DIV champ="pseudo"  style="cursor:pointer" onclick="tri(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV champ="pseudo"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_pseudo")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>
      <TD >
-         <DIV champ="sexe"  style="cursor:pointer" onclick="tri(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV champ="sexe"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_sexe")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>
      <TD >
-         <DIV champ="voix"  style="cursor:pointer" onclick="tri(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV champ="voix"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_voix")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>
      <TD >
-         <DIV champ="affinite"  style="cursor:pointer" onclick="tri(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV champ="affinite"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_affinite")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>

@@ -94,29 +94,181 @@ function GetHeadM(){
              evalScripts: true
          }).send();
 }
-function GetMembres(){
-         /*rangs=triM_rg[0];
-         sens=triM_ss[0];
-         for (i=1; i<triM_rg.length; i++) {
-             rangs+="-"+triM_rg[i];
-             sens+="-"+triM_ss[i];
-         }*/
+function searchCat(form,e){
+         //document.write("test"+form);
+         closeVisuMS();
+         $('tobesrchcat').value=$('searchtextcat').value;
+         chkbxs=$(form).getElements("input[type=checkbox]");
+         $('srchtblcat').value="";
+         for(i=chkbxs.length-1;i>-1;i--){
+             if (chkbxs[i].checked==true) $('srchtblcat').value+=","+chkbxs[i].value;
+         }
          new Request.HTML({
+         url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO,
+         update: $('liste'),
+         onComplete: function () {}
+         }).post($('LookCat'));
+         GetCatPages(1);
+         StopEvent(e);
+}
+function searchM(form,e){
+	$('tobesrchm').value=$('searchtextm').value;
+	$('srchtblm').value=$('searchtablesm').value;
+	pageM=1;
+	GetAllMembres();
+	StopEvent(e);
+}
+
+function GetMembres(){
+	GetAllMembres();
+        /* new Request.HTML({
              url: urlbase+'index.php/navigation/search/'+TM+'/'+limitM+'/'+pageM+'/'+triM+'/'+sensM,
              update: $('membres'),
              method: 'get',
+             evalScripts: true,
+         }).send();*/
+}
+function GetAllMembres(){
+	/*if (pageM==1) {
+		/*var v=$('membres').getChildren();
+		for (i=v.length-1;i>-1;i--) $(v[i]).destroy();
+		$('membres').set('html',"<DIV id='membres1'></DIV>");
+	}
+	else */
+	if ($('membres'+pageM)==null) new Element('div',{id:'membres'+pageM}).inject($('membres'+(pageM-1)),"after");
+	new Request.HTML({
+             url: urlbase+'index.php/navigation/search/'+TM+'/'+limitM+'/'+pageM+'/'+triM+'/'+sensM,
+             update: $('membres'+pageM),
+             method: 'get',
+	     onComplete:function(){
+		     //document.write(pageM);
+		     //document.write($('membres'+pageM));
+		     if ($('Mnumrows'+pageM).value<limitM){
+			     i=pageM+1;
+			     while($('membres'+i)!=null){
+				     $('membres'+i).set('html',"");
+				     i++
+			     }
+			     return;
+		     }
+		     pageM++;
+		     GetAllMembres();
+	     },
              evalScripts: true
-         }).send();
+         }).post($('LookM'));	 
+}
+var lastTriCat=null;
+var img;
+function tri(el,divupdate,categ,limit,page,lastTri){
+	el=$(el);
+	img=el.getChildren()[0];
+	img.addClass('C');
+	if (img.hasClass('A')) {
+		if (img.hasClass('asc')){
+			img.removeClass('asc');
+			img.addClass('desc');
+		}
+		else if (img.hasClass('desc')){
+			img.removeClass('desc');
+			img.addClass('asc');
+		}
+	}
+	else {
+		if (lastTri!=null && lastTri.hasClass('A')) {
+		 lastTri.removeClass('A');
+	}
+	img.addClass('A');
+	lastTri=img;
+	}
+	champtri=el.getProperty('champ');
+	if (img.hasClass('asc')) sens='ASC'; else sens='DESC';
+	if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+	//GetAllMembres();
+	new Request.HTML({
+		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
+		update: divupdate,
+		method: 'get',
+		evalScripts: true
+	}).send();
+}
+var lastTriM=null;
+function triCatM(el){
+	pageM=1;
+	categ=TM;
+	limit=limitM;page=pageM;
+	el=$(el);
+	img=el.getChildren()[0];
+	img.addClass('C');
+	if (img.hasClass('A')) {
+		if (img.hasClass('asc')){
+			img.removeClass('asc');
+			img.addClass('desc');
+		}
+		else if (img.hasClass('desc')){
+			img.removeClass('desc');
+			img.addClass('asc');
+		}
+	}
+	else {
+		if (lastTriM!=null && lastTriM.hasClass('A')) {
+		 lastTriM.removeClass('A');
+	}
+	img.addClass('A');
+	lastTriM=img;
+	}
+	triM=el.getProperty('champ');
+	if (img.hasClass('asc')) sensM='ASC'; else sensM='DESC';
+	if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+	GetAllMembres();
+	/*new Request.HTML({
+		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
+		update: divupdate,
+		method: 'get',
+		evalScripts: true
+	}).send();
+	/*tri(el,$('membres'),TM,limitM,pageM,this.lastTriM);*/
+}
+function triCat(el){
+	tri(el,$('liste'),cat,limitQO,pageQO,lastTriCat);
+        /* el=$(el);
+         img=el.getChildren()[0];
+         img.addClass('C');
+         if (img.hasClass('A')) {
+            if (img.hasClass('asc')){
+               img.removeClass('asc');
+               img.addClass('desc');
+            }
+            else if (img.hasClass('desc')){
+               img.removeClass('desc');
+               img.addClass('asc');
+            }
+         }
+         else {
+              if (lastTriCat!=null && lastTriCat.hasClass('A')) {
+                 lastTriCat.removeClass('A');
+              }
+              img.addClass('A');
+              lastTriCat=img;
+         }
+         triQO=el.getProperty('champ');
+         if (img.hasClass('asc')) sensQO='ASC'; else sensQO='DESC';
+         if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+         new Request.HTML({
+             url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO+'/'+keyMsel,
+             update: $('liste'),
+             method: 'get',
+             evalScripts: true
+         }).send();*/
 }
 function showAffinites(){
-         DIVdevant($('visuaff'));
-         /*new Request.HTML({
+         new Request.HTML({
              url: urlbase+'index.php/navigation/affinites',
-             update: $('visu'),
+             update: $('visuaff'),
              method: 'get',
              evalScripts: true
          }).send();
-         this.repMsel=false;*/
+         this.repMsel=false;
+	 DIVdevant($('visuaff'));
 }
 /* MAJ PR */
 function majPR(Qsel){
@@ -194,56 +346,8 @@ function NewLimQO(){
          limitQO=$('limitQO').options[$('limitQO').options.selectedIndex].text;
          liste_page(1);
 }
-var lastTriCat=null;
-var img;
-function triCat(el){
-         el=$(el);
-         img=el.getChildren()[0];
-         img.addClass('C');
-         if (img.hasClass('A')) {
-            if (img.hasClass('asc')){
-               img.removeClass('asc');
-               img.addClass('desc');
-            }
-            else if (img.hasClass('desc')){
-               img.removeClass('desc');
-               img.addClass('asc');
-            }
-         }
-         else {
-              if (lastTriCat!=null && lastTriCat.hasClass('A')) {
-                 lastTriCat.removeClass('A');
-              }
-              img.addClass('A');
-              lastTriCat=img;
-         }
-         triQO=el.getProperty('champ');
-         if (img.hasClass('asc')) sensQO='ASC'; else sensQO='DESC';
-         if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
-         new Request.HTML({
-             url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO+'/'+keyMsel,
-             update: $('liste'),
-             method: 'get',
-             evalScripts: true
-         }).send();
-}
-function searchCat(form,e){
-         //document.write("test"+form);
-         closeVisuMS();
-         $('tobesrchcat').value=$('searchtextcat').value;
-         chkbxs=$(form).getElements("input[type=checkbox]");
-         $('srchtblcat').value="";
-         for(i=chkbxs.length-1;i>-1;i--){
-             if (chkbxs[i].checked==true) $('srchtblcat').value+=","+chkbxs[i].value;
-         }
-         new Request.HTML({
-         url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO,
-         update: $('liste'),
-         onComplete: function () {}
-         }).post($('LookCat'));
-         GetCatPages(1);
-         StopEvent(e);
-}
+
+
 /* Visu navigation */
 function closeVisuMS(){
          if (MainSel!=null && MainSel.getProperty("sel")=="true") showMore(MainSel);

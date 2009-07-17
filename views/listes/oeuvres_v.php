@@ -25,7 +25,7 @@ window.addEvent('domready', function() {
     <TD nowrap>
         <DIV id="<?=$row['cle'].$value.'LO'?>" CLASS="<?=$value?>" style="cursor:pointer;width:<?=$cols[$key]?>px;overflow: hidden"><?=htmlentities($row[$value])?></DIV>
     </TD>
-    <? endforeach?>
+    <? endforeach;?>
     <TD><DIV id="<?=$row['cle']."portee"?>" CLASS="portee" style="cursor:pointer;width:<?=col_avis?>px;overflow: hidden"><?=$row["portee"]?></DIV></TD>
     <TD><DIV id="<?=$row['cle']."adhesion"?>" CLASS="adhesion" style="cursor:pointer;width:<?=col_avis?>px;overflow: hidden"><?=$row["adhesion"]?></DIV></TD>
     <TD >
@@ -36,5 +36,5 @@ window.addEvent('domready', function() {
         <INPUT ID="<?=$row['cle']."fichier"?>" TYPE="HIDDEN" VALUE="<?=isset($row['fichier'])? $row['fichier']:""?>">
     </TD>
   </TR>
-  <? endforeach; endif?>
+  <? endforeach; endif;?>
   </TABLE>

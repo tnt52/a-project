@@ -31,7 +31,7 @@
       margin: 0 0 0 0;
       padding: 0 0 0 0;
       vertical-align:bottom;
-  }
+  }	
   #haut{
       position:absolute;
       top:0px;
@@ -139,6 +139,29 @@
        width:<?=wID?>px;
        height:<?=hID?>px;
       }
+      	#avatar{
+              position:absolute;
+              left:<?=wID-5-wIDimg?>px;
+              top:5px;
+          }
+	#deconnect{
+	position:absolute;
+	left:5px;
+	bottom:5px;
+	}
+	#moncompte{
+	position:absolute;
+	right:5px;
+	bottom:5px;
+	}
+  #RelationMAMS{
+	position:absolute;
+	z-index:5;
+	top:<?=hHaut+hNav?>px;
+	left:<?=wID?>px;
+	width:<?=wPanel?>px;
+	height:<?=hID?>px;  
+  }
   #bas {
         position:absolute;
         z-index:4;
@@ -148,21 +171,7 @@
         height:<?=hID?>;
   }
      
-          #avatar{
-              position:absolute;
-              left:<?=wID-5-wIDimg?>px;
-              top:5px;
-          }
-          #deconnect{
-              position:absolute;
-              left:5px;
-              bottom:5px;
-          }
-          #moncompte{
-              position:absolute;
-              right:5px;
-              bottom:5px;
-          }
+          
       #panel {
       /*       width:200px;*/
        height:<?=hID?>px;
@@ -180,7 +189,7 @@
         width:<?=wNav?>px;
         height:<?=hNav?>px;
   }
-  }
+  
   <?$mrgNav=15;?>
     #artystNav {
        position:absolute
@@ -203,8 +212,10 @@
         z-index:4;
         top:<?=hHaut?>px;
         left:<?=wCpit-wLM?>px;
-        height:<?=hNav?>px; /*100%;*/
+        height:<?=hNav-100?>px; /*100%;*/
         width:<?=wLM?>px;
+	overflow-x:hidden;
+	overflow-y:auto;
   }
   #liste{
         position:absolute;
@@ -217,9 +228,8 @@
   #PagesCat{
         position:absolute;
         top: <?=(hHaut+hNav-hL-5)?>px;
-        right: <?=wLM-5?>px;
         right:50%;
-        margin-right:-<?=wHead/2?>px;
+        margin-right:-<?=wHead/2-10?>px;
         z-index:5;
   }
   #VQcontainer{

@@ -49,6 +49,7 @@ class Navigation extends Controller {
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/liste.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/swfobject/swfobject.js"></script>';//swfobject_1_5/
 	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/global.css">';
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/affimap.css">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/navigation_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/cfe_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/look_css.php">';
@@ -199,14 +200,17 @@ class Navigation extends Controller {
     function affinites(){
              $data['w']=300;
              $vue="affimap";
-             //$affs=$this->Getlistes->getaffinites($keyMA,$typeA,$zoom);
-             $affs=array(
+	     $keyMA=$this->session->userdata('keyMA');
+	     $typeA=TAglo;
+	     $zoom=null;
+             $affs=$this->Getlistes->getaffinites($keyMA,$typeA,$zoom);
+             /*$affs=array(
              array("keyobjet"=>2,'affglobal'=>10,'liens'=>5),
              array("keyobjet"=>3,'affglobal'=>20,'liens'=>15),
              array("keyobjet"=>4,'affglobal'=>-40,'liens'=>25),
              array("keyobjet"=>5,'affglobal'=>99*ValBigS*ValBigS,'liens'=>100),
              array("keyobjet"=>6,'affglobal'=>-99*ValBigS*ValBigS,'liens'=>100),
-             );
+             );*/
              sort($affs,SORT_NUMERIC);
              $data['affinites']=$affs;
              return $this->load->view($vue,$data,false);

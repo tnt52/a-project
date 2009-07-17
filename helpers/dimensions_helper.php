@@ -31,6 +31,8 @@ define ('wCpit',$w);
 define ('hBand',34);
 define ('wID',276);
 define ('hID',140);
+$w=wCpit-2*wID;
+define ('wPanel',$w);
 $h=hHaut+hNav+hID;
 define ('hCpit',$h);
 define ('wIDimg',80);

@@ -11,6 +11,9 @@ body
 #cockpit{
       background: url(<?=baseurl?>system/application/images/Fonds/FondCpit.gif) no-repeat left top;
  }
+ #PagesCat{
+	 color:black;
+ }
  #haut{
 	background: url(<?=baseurl?>system/application/images/Fonds/FondHaut.gif) no-repeat left top;	 
  }
@@ -42,6 +45,9 @@ body
       #mypseudo{
        font-size:<?=hLpseudo?>px;
       }
+  #RelationMAMS{
+	background-color:red;
+  }
   #panel {
    color:white;
    background-color:<?=Rec8_coul?>;
@@ -64,6 +70,10 @@ body
       color:white;
 
   }
+  #PagesCat a:link,a:visited,a:active
+  {
+	  color:black;
+  }
   a:hover{
 	  color:red;	  
   }
@@ -80,7 +90,7 @@ body
         background-color:<?=Rec5_coul?>;
   }
   #visuaff{
-        background: url(<?=baseurl?>system/application/images/FondVisuM.gif) no-repeat left top;
+        background-color:white;
   }
   #VQcontainer{
         border: 2px solid red;
@@ -93,7 +103,7 @@ body
     }
     #VisuQ
     {     border: #FFCCFF simple 5px;
-          background-color:black;
+          background: url(<?=baseurl?>system/application/images/FondVisuM.gif) no-repeat left top;
           color:white;
     }
     #VQsizehand

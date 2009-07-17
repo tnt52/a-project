@@ -10,16 +10,22 @@
 <SCRIPT>
 var lastspot=null;
 function selSpot(keyM){
-var clear=focusSpot(keyM);
-var m=$(keyM+"more<?=TMmem?>");
-  if (m!=null) selMember(m.getPrevious(),"affimap");
-  else {
-       m=$('MspotInfo');
-       m.sel=clear;
-       m.maj="true";
-       var txtdiv=$('MspotInfo');
-       new Request.HTML({url: urlbase+'index.php/navigation/more/'+m.getProperty('cat')+'/'+keyM,update: txtdiv,method: 'get', onComplete: function(){showM(m,txtdiv);}, evalScripts: true}).request();
-  }
+	var clear=focusSpot(keyM);
+	var m=$(keyM+"moreML<?=TMmem?>");
+	if (m!=null) showID(m.getParent().getParent());
+	else {
+	m=$('MspotInfo');
+	m.sel=clear;
+	m.maj="true";
+	var txtdiv=$('MspotInfo');
+	new Request.HTML({
+	url: urlbase+'index.php/navigation/more/'+m.getProperty('cat')+'/'+keyM,
+	update: txtdiv,
+	method: 'get',
+	//onComplete: function(){showM(m,txtdiv);},
+	evalScripts: true
+	}).send();
+	}
 }
 function focusSpot(keyM){
          if (lastspot!=null && lastspot.hasClass("spot")) lastspot.removeClass('S')
@@ -80,7 +86,7 @@ window.addEvent('domready', function() {
 </SCRIPT>
 </head>
 <body bgcolor="#FFFFFF">
-<DIV STYLE="Display:none" ID="MspotInfo" cat="<?=TMmem?>"></DIV>
+<DIV ID="MspotInfo" cat="<?=TMmem?>">MspotInfo</DIV>
 hflhdsl<BR>
 ksdlmgjk<BR>
 jdfklmgjklmd<BR>
@@ -90,38 +96,14 @@ jdfklmsj                <BR>
 
 <DIV id="cible" style="left:0px;top:0px">
      <? foreach ($affinites as $aff):?>
-     <DIV id="spot<?=$aff['keyobjet']?>" class="spot" onclick="selSpot(<?=$aff['keyobjet']?>)" onmouseover="this.addClass('H')" onmouseout="this.removeClass('H')"><?=$aff['keyobjet']?></DIV>
+     <DIV id="spot<?=$aff['keyobjet']?>" class="spot" onclick="selSpot(<?=$aff['keyobjet']?>)" onmouseover="this.addClass('H')" onmouseout="this.removeClass('H')">
+     <?=$aff['keyobjet']?></DIV>
      <? endforeach;?>
 </DIV>
 AFFIMAP
 <!--<img src="<?echo base_url().'index.php/navigation/affimap/1/1/'.$w;?>" width="<?=$w?>" height="<?=$w?>">-->
 </body>
 <STYLE TYPE="text/css">
-#cible{
-  position:relative;
-  left:0;
-  top:0;
-  width: 343px;
-  height:343px;
-  background-image: url(http://127.0.0.1/system/application/images/7zones.gif);
-}
-.spot{
- position:absolute;
- z-index:10;
- background: no-repeat 0 0;
-}
 
-.spot.dim1{
- width: 16px;
- height:20px;
- background-image: url(http://127.0.0.1/system/application/images/radio.gif);
-}
-
-.spot.dim1.H{
- background-position: 0 -20px;
-}
-.spot.dim1.H.S,.spot.dim1.S{
- background-position: 0 -40px;
-}
 </STYLE>
 </html>

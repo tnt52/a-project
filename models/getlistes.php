@@ -45,8 +45,17 @@
                 }
                 return $Ntot;
        }
-       function getmembres($page,$limit,$champtri,$senstri,$search){
-                $select="cle,type,pseudo,sexe,voix,affglobal,avatar,nbrepquetot,nbrepoeutot";
+       function getmembres($page,$limit,$champtri,$senstri,$search,$TA=null){
+		switch ($TA){
+		case TAglo:
+			$champaff="affglobal";
+			break;
+		default:
+			$champaff="affglobal";
+			break;
+		}
+		if ($champtri=="affinite") $champtri=$champaff;
+	        $select="cle,type,pseudo,sexe,voix,$champaff,avatar,nbrepquetot,nbrepoeutot";
                 $keyMA=$this->session->userdata('keyMA');
                 $v=array('page'=>$page, 'limit'=>$limit);
                 $where="TRUE";
@@ -81,13 +90,15 @@
                 ORDER BY $champtri $senstri
                 LIMIT ".($page-1)*$limit.",$limit";
                 $r=$this->db->query($qstring);
-                $this->db->from('membres');
+                /*$this->db->from('membres');
                 $this->db->where('actif',1);
                 $v['Ntot']=$this->db->count_all_results();
                 $this->db->from('artistes');
                 $this->db->where('actif',1);
                 $v['Ntot']+=$this->db->count_all_results();
-                $v['Ptot']=ceil($v['Ntot']/$limit);
+                $v['Ptot']=ceil($v['Ntot']/$limit);*/
+		$v['page']=$page;
+		$v['numrows']=$r->num_rows();
                 $v['result']=$r->result_array();
                 return $v;
        }
@@ -222,7 +233,7 @@
                 $v['videos']=$r->result_array();
                 return $v;
        }
-       function getaffinites($keyMA,$typeA,$zoom){
+       function getaffinites($keyMA,$typeA,$zoom=null){
                $this->db->from('affinites');
                $this->db->where(array('keysujet'=>$keyMA,'actif'=>1));
                switch ($typeA){

@@ -42,6 +42,10 @@
      <input id="tobesrchcat" name="tobesearched" type="hidden" value=""/>
      <input id="srchtblcat" name="searchtables" type="hidden" value=""/>
      </form>
+     <form id="LookM" method="post" action="#">
+     <input id="tobesrchm" name="tobesearched" type="hidden" value=""/>
+     <input id="srchtblm" name="searchtables" type="hidden" value=""/>
+     </form>
      <DIV id="Inavigation">
       <DIV id="artystNav">
 <!--      <DIV id="Sons"><a href="#" onclick="GetListe(<?=TOson?>)">Sons</a></DIV> -->
@@ -78,9 +82,12 @@
          </TR></TABLE>
     </DIV>
     <DIV ALIGN=RIGHT id="Imembres">
-           <DIV id="membres"></DIV>
+           <DIV id="membres" >
+	   	<DIV id="membres1" ></DIV>
+	   </DIV>
     </DIV>
     <DIV id="idMA">AVATAR MA</DIV>
+    <DIV id="RelationMAMS"></DIV>
     <DIV id="bas">
        <TABLE WIDTH="<?=wCpit?>px" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid">
          <COL WIDTH=300>
@@ -125,9 +132,8 @@
   </TABLE>
   </div>  -->
   <DIV id="status">STATUS</DIV>
-  <!--<DIV id="visuaff">VISUAFFFFFF</DIV>-->
+  <DIV id="visuaff"></DIV>
   <DIV id="visus">
-
        <DIV id="VQcontainer" class="derriere">
             <DIV STYLE="height:<?=hVhead?>px;position:absolute;left:0px;top:0px;z-index:100" id="VQhandle">
                  handle <span id="VQprv" onclick="prev(MainSel)">previous</span> <span id="VQnxt" onclick="next(MainSel)">next</span> <span onclick="showMore(MainSel)">fermer</span>

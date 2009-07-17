@@ -7,7 +7,7 @@
 <script type="text/javascript">
 <?=$script?>
 window.addEvent('domready', function() {
-  var mores=$$('div#membres tr');
+  var mores=$$('div#membres #membres<?=$page?> tr');
   mores.each(function(m){
       m.addEvent('mouseout',function (){unhoverQO(m)});
       m.addEvent('mouseover',function (){hoverQO(m)});
@@ -17,6 +17,7 @@ window.addEvent('domready', function() {
 </script>
 </HEAD>
 <BODY>
+<input type="hidden" id="Mnumrows<?=$page?>" value="<?=$numrows?>"/>
 <TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid;">
     <COL WIDTH=<?=col_lm_pseudo?>>
     <COL WIDTH=<?=col_lm_sexe?>>
@@ -38,14 +39,14 @@ window.addEvent('domready', function() {
             <DIV STYLE="Display:none" ID="<?=$row['cle']."moreML".TMmem?>"></DIV>
         </TD>
         <TD>
-            <?=$row['sexe']?>
+            <DIV nowrap style="width:<?=col_lm_sexe?>px;overflow: hidden"><?=$row['sexe']?></DIV>
         </TD>
         <TD>
-            <?=$row['voix']?>
+            <DIV nowrap style="width:<?=col_lm_voix?>px;overflow: hidden"><?=$row['voix']?></DIV>
 
         </TD>
         <TD>
-           <?=$row['affglobal']?>
+           <DIV nowrap style="width:<?=col_lm_aff?>px;overflow: hidden"><?=$row['affglobal']?></DIV>
         </TD>
     </TR>
     <? endforeach; endif?>
