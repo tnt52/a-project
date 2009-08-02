@@ -7,18 +7,18 @@ function initHeadCat(){
          img.addClass('A');
          img.addClass('<?=strtolower($sens)?>');
          lastTriCat=img;
-         triQO=el.getProperty('champ');
+         champtriCAT=el.getProperty('champ');
          sensQO='<?=$sens?>';
 }
 window.addEvent('domready', function(){
-var s2 = new CustomSelect($('limitQO'), {
-      theme : 'aqua',
+var s3 = new CustomSelect($('typeaff'), {
+      theme : 'lines',
       
       onSelect: function(el) {
 
       },
       onChange: function(el) {
-	      NewLimQO();
+	      SelTA();
       },
       onShow: function(el) {
 

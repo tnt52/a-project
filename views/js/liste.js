@@ -34,12 +34,12 @@ function showID(m){
          majfromM(m);
 }
 function majfromM(m){
-         if (m!=null && triQO!=""){
+         if (m!=null && champtriCAT!=""){
             if (m.getProperty('liste')=="ML"){
                if ($('spot'+m.getProperty('cle'))!=null) focusSpot(m.getProperty('cle'));
                else if (this.repMsel){
                     new Request.HTML({
-                        url: urlbase+'index.php/navigation/repmsel/'+this.cat+'/'+m.getProperty('cle')+"/"+m.getProperty("sel")+"/"+limitQO+"/"+pageQO+"/"+triQO+"/"+sensQO,
+                        url: urlbase+'index.php/navigation/repmsel/'+this.cat+'/'+m.getProperty('cle')+"/"+m.getProperty("sel")+"/"+limitQO+"/"+pageQO+"/"+champtriCAT+"/"+sensQO,
                         update: $('jscontainer'),
                         method: 'get',
                         onComplete: function(){},

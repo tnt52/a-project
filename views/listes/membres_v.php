@@ -18,7 +18,7 @@ window.addEvent('domready', function() {
 </HEAD>
 <BODY>
 <input type="hidden" id="Mnumrows<?=$page?>" value="<?=$numrows?>"/>
-<TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid;">
+<TABLE ALIGN="LEFT" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid;">
     <COL WIDTH=<?=col_lm_pseudo?>>
     <COL WIDTH=<?=col_lm_sexe?>>
     <COL WIDTH=<?=col_lm_voix?>>
@@ -46,7 +46,7 @@ window.addEvent('domready', function() {
 
         </TD>
         <TD>
-           <DIV nowrap style="width:<?=col_lm_aff?>px;overflow: hidden"><?=$row['affglobal']?></DIV>
+           <DIV nowrap style="width:<?=col_lm_aff?>px;overflow: hidden"><?=$row['affinite']?></DIV>
         </TD>
     </TR>
     <? endforeach; endif?>

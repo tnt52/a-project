@@ -9,7 +9,7 @@ function getIdMA(){
 function switchCat(cat){
          this.cat=cat;
          this.pageQO=1;
-         this.triQO="";
+         this.champtriCAT="";
          this.sensQO="";
          $('tobesrchcat').value="";
          $('srchtblcat').value="";
@@ -50,15 +50,15 @@ function liste_page(page){
 function GetListe(cat){
          closeVisuMS();
          new Request.HTML({
-                url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO,
+                url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
                 update: $('liste'),
                 onComplete: function () {majfromM(Msel);}
          }).post($('LookCat'));
 }
 function GetHeader(cat){
          new Request.HTML({
-             url: urlbase+'index.php/navigation/header/'+cat+'/'+limitQO+'/'+pageQO+"/"+triQO+"/"+sensQO,
-             update: $('header'),
+             url: urlbase+'index.php/navigation/header/'+cat+'/'+limitQO+'/'+pageQO+"/"+champtriCAT+"/"+sensQO,
+             update: $('HeadCat'),
              method: 'get',
              onComplete: function () {majfromM(Msel);},
              evalScripts: true
@@ -81,73 +81,78 @@ function GetPlayer(cat){
              evalScripts: true
          }).send();
 }
-function membres_page(page){
-         pageM=page;
-         GetHeadM();
-         GetMembres();
-}
 function GetHeadM(){
          new Request.HTML({
-             url: urlbase+'index.php/navigation/header/'+TM+'/'+limitM+'/'+pageM+"/"+triM+"/"+sensM,
+             url: urlbase+'index.php/navigation/header/'+TM+'/'+limitM+'/'+pageM+"/"+champtriM+"/"+sensM,
              update: $('HeadLM'),
              method: 'get',
              evalScripts: true
          }).send();
 }
+function keyupSearch(){
+	this.getParent('form').onsubmit();
+}
 function searchCat(form,e){
          //document.write("test"+form);
          closeVisuMS();
          $('tobesrchcat').value=$('searchtextcat').value;
-         chkbxs=$(form).getElements("input[type=checkbox]");
-         $('srchtblcat').value="";
+	 $('srchtblcat').value=$('searchtablescat').value;
+         /*chkbxs=$(form).getElements("input[type=checkbox]");         
          for(i=chkbxs.length-1;i>-1;i--){
              if (chkbxs[i].checked==true) $('srchtblcat').value+=","+chkbxs[i].value;
-         }
+         }*/
          new Request.HTML({
-         url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO,
+         url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
          update: $('liste'),
          onComplete: function () {}
          }).post($('LookCat'));
          GetCatPages(1);
          StopEvent(e);
 }
+
 function searchM(form,e){
-	$('tobesrchm').value=$('searchtextm').value;
-	$('srchtblm').value=$('searchtablesm').value;
-	pageM=1;
-	GetAllMembres();
+	if ($('searchtextm').value==libdefSM) $('tobesrchm').value="";
+	else $('tobesrchm').value=$('searchtextm').value;
+	$('srchtblm').value=$('searchtablesm').value;	
+	GetMembres();
 	StopEvent(e);
 }
-
+function SelTA(){
+	$('varsm').value=$('typeaff').options[$('typeaff').options.selectedIndex].value;
+	GetMembres();
+}
 function GetMembres(){
+	pageM=1;
+	$('ResultsM').getFirst().set('html',"");
+	$('ResultsM').getLast().set('html',"");
+	i=1;
+	while($('membres'+i)!=null){
+	     $('membres'+i).set('html',"");
+	     i++;
+	     
+	}
 	GetAllMembres();
-        /* new Request.HTML({
-             url: urlbase+'index.php/navigation/search/'+TM+'/'+limitM+'/'+pageM+'/'+triM+'/'+sensM,
-             update: $('membres'),
-             method: 'get',
-             evalScripts: true,
-         }).send();*/
 }
 function GetAllMembres(){
-	/*if (pageM==1) {
-		/*var v=$('membres').getChildren();
-		for (i=v.length-1;i>-1;i--) $(v[i]).destroy();
-		$('membres').set('html',"<DIV id='membres1'></DIV>");
-	}
-	else */
 	if ($('membres'+pageM)==null) new Element('div',{id:'membres'+pageM}).inject($('membres'+(pageM-1)),"after");
 	new Request.HTML({
-             url: urlbase+'index.php/navigation/search/'+TM+'/'+limitM+'/'+pageM+'/'+triM+'/'+sensM,
+             url: urlbase+'index.php/navigation/search/'+TM+'/'+limitM+'/'+pageM+'/'+champtriM+'/'+sensM,
              update: $('membres'+pageM),
              method: 'get',
 	     onComplete:function(){
 		     //document.write(pageM);
-		     //document.write($('membres'+pageM));
-		     if ($('Mnumrows'+pageM).value<limitM){
+		     n=parseInt($('Mnumrows'+pageM).value);		     
+		     DivN=$('ResultsM').getFirst();
+		     if (DivN.get('html')=="") m=0;
+		     else m=parseInt(DivN.get('html'));
+		     DivN.set('html', m+n);
+		     if (m+n>1) $('ResultsM').getLast().set('html',lib_lignes);
+		     else $('ResultsM').getLast().set('html',lib_ligne);
+		     if (n<limitM){
 			     i=pageM+1;
 			     while($('membres'+i)!=null){
 				     $('membres'+i).set('html',"");
-				     i++
+				     i++;
 			     }
 			     return;
 		     }
@@ -183,17 +188,17 @@ function tri(el,divupdate,categ,limit,page,lastTri){
 	champtri=el.getProperty('champ');
 	if (img.hasClass('asc')) sens='ASC'; else sens='DESC';
 	if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+	$('varscat').value=keyMsel;
 	//GetAllMembres();
 	new Request.HTML({
-		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
+		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens,
 		update: divupdate,
 		method: 'get',
 		evalScripts: true
 	}).send();
 }
 var lastTriM=null;
-function triCatM(el){
-	pageM=1;
+function triM(el){
 	categ=TM;
 	limit=limitM;page=pageM;
 	el=$(el);
@@ -216,10 +221,10 @@ function triCatM(el){
 	img.addClass('A');
 	lastTriM=img;
 	}
-	triM=el.getProperty('champ');
+	champtriM=el.getProperty('champ');
 	if (img.hasClass('asc')) sensM='ASC'; else sensM='DESC';
-	if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
-	GetAllMembres();
+	//if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+	GetMembres();
 	/*new Request.HTML({
 		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
 		update: divupdate,
@@ -333,8 +338,9 @@ function unhoverTri(el){
 }
 var cfeHeadM = new cfe.base();
 var cfeHead = new cfe.base();
-cfeHeadM.setModuleOptions('select',{defaultSelect: 1, scrolling:true, scrollSteps: 7});
-cfeHead.setModuleOptions('select',{defaultSelect: defsel, scrolling:true, scrollSteps: 3});
+//cfeHeadM.setModuleOptions('text',{onBlur: document.write("test")});
+/*cfeHeadM.setModuleOptions('select',{defaultSelect: 1, scrolling:true, scrollSteps: 7});
+cfeHead.setModuleOptions('select',{defaultSelect: defsel, scrolling:true, scrollSteps: 3});*/
 
 var defsel=1;
 switch (limitQO){
@@ -408,8 +414,9 @@ window.addEvent('domready', function() {
                             //centrer($('VisuQ'),400,400);
                             majPR(null);
                             majNewQ();
-                            liste_page(1);;
-                            membres_page(1);
+                            liste_page(1);;                            
+			    GetHeadM();
+			    GetMembres();
                             getIdMA();
                           //  GetMembres();
                             MM_preloadImages(urlbase+'system/application/images/boutons/OKrol.gif');

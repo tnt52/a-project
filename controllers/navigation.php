@@ -89,15 +89,19 @@ class Navigation extends Controller {
                      switch ($cat){
                             case TOson:
                             $vue="sons_head";
+			    $data['libdefO']=lang("lib_chercher")." ".lang("lib_unson");
                             break;
                             case TOimg:
                             $vue="images_head";
+			    $data['libdefO']=lang("lib_chercher")." ".lang("lib_uneimage");
                             break;
                             case TOvdo:
                             $vue="videos_head";
+			    $data['libdefO']=lang("lib_chercher")." ".lang("lib_unevideo");
                             break;
                             default:
                             $vue="oeuvres_head";
+			    $data['libdefO']=lang("lib_chercher")." ".lang("lib_uneoeuvre");
                             break;
                      }
                      break;
@@ -150,19 +154,20 @@ class Navigation extends Controller {
              $v=array("search"=>$search,"fields"=>$fields);
              return $v;
     }
-    function search($cat,$limit,$page,$champtri="",$senstri="ASC",$keyMsel=-1){
+    function search($cat,$limit,$page,$champtri="",$senstri="ASC"){
              $v=$this->srchandflds();
-             $this->liste_view($cat,$limit,$page,$champtri,$senstri,$keyMsel,$v['search'],$v['fields'],false);
+	     $addvars=$this->input->post('addvars');
+             $this->liste_view($cat,$limit,$page,$champtri,$senstri,$v['search'],$v['fields'],$addvars,false);
     }
-    function liste_view($cat,$limit,$page,$champtri="",$senstri="ASC",$keyMsel=-1,$search=false,$fields=null,$readjs=false){
-             if ($cat==null) return;
+    function liste_view($cat,$limit,$page,$champtri="",$senstri="ASC",$search=false,$fields=null,$addvars,$readjs=false){
+	    if ($cat==null) return;
              $dir="listes/";
              $vue="";
              if ($champtri=="") $v=$this->getTriDef($cat);
              else $v=array('tri'=>$champtri,"sens"=>$senstri);
              switch(floor($cat/20)*20){
                 case TO:
-                     $data=$this->Getlistes->getoeuvres($cat,$page,$limit,$v['tri'],$v['sens'],$keyMsel,$search,$fields);$vue="oeuvres_v";
+                     $data=$this->Getlistes->getoeuvres($cat,$page,$limit,$v['tri'],$v['sens'],$addvars,$search,$fields);$vue="oeuvres_v";
                      $data['champs']=array('titre','nom');
                      $data['cols']=array(col_titre,col_nom);
                      break;
@@ -172,14 +177,14 @@ class Navigation extends Controller {
                      $data['cols']=array(col_libelle,col_pseudo,col_sexe);
                      break;
                 case TS:
-                     $data=$this->Getlistes->getoeuvres($cat,$page,$limit,$v['tri'],$v['sens'],$keyMsel,$search,$fields);$vue="oeuvres_v";
+                     $data=$this->Getlistes->getoeuvres($cat,$page,$limit,$v['tri'],$v['sens'],$addvars,$search,$fields);$vue="oeuvres_v";
                      $data['champs']=array('titre','nom');
                      $data['cols']=array(col_titre,col_nom);
                      break;
                 default:
                      switch ($cat){
                             case TMmem:
-                            $data=$this->Getlistes->getmembres($page,$limit,$v['tri'],$v['sens'],$search,$fields);
+                            $data=$this->Getlistes->getmembres($page,$limit,$v['tri'],$v['sens'],$search,$addvars);
                             $vue="membres_v";
                             break;
                             case TMart:

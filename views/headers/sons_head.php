@@ -5,6 +5,7 @@
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="generator" content="HAPedit 3.1">
 <SCRIPT>
+var libdefO='<?=$libdefO?>';
 <?=$js?>
 </SCRIPT>
 <style>
@@ -14,82 +15,19 @@
 <body bgcolor="#FFFFFF">
 <DIV id="titleQ" class="CatTitle" ALIGN=CENTER><?=lang("nav_sons")?></DIV>
 <DIV id="logoCat"><img src="<?=base_url()?>system/application/images/CatTitles/sons_logoxl.gif" alt="" title="Images" border="0" /></DIV>
-<!--<DIV id="limitLignes">
-            <span>
-            <select id="limitQO" name="limitQO" size="1" style="width:30px">
-            <option>20</option>
-            <option>50</option>
-            <option>100</option>
-            </select>
-            <?=lang("lib_lignes")."/".lang("lib_page")?>
-            <label  for="#"></label>
-            </span>
-</DIV>-->
 <span id="SearchCat" >
       <form method="post" action="#" onsubmit="searchCat(this,event)">
-      <DIV id="searchQO"><input type="text" name="searchtextcat" id="searchtextcat" size="15" value="<?=lang("lib_chercher")?>" /><label for="searchtextcat"></label></DIV>
-      <input type="checkbox" name="inTC1" id="inTC1" value="oeuvres.titre" checked /><label for="inTC1"><?=lang("lib_oeuvres")?></label>
-      <input type="checkbox" name="inTC2" id="inTC2" value="artistes.nom" checked /><label for="inTC2"><?=lang("lib_artistes")?></label>
+      <DIV id="searchQO">
+      	<input type="text" name="searchtextcat" id="searchtextcat" size="25" onfocus="focusDef(this,libdefO)" onblur="blurDef(this,libdefO)" onkeyup="keyupSearch.delay(500,this)" value="<?=$libdefO?>" /><label for="searchtextcat"></label>
+      </DIV>
       <DIV id="avismanquants">
-      <input type="checkbox" name="avismanq" id="avismanq" /><label id="labelavismq" for="#"><?=lang("lib_avismanquants")?></label>
+      	<input type="checkbox" name="avismanq" id="avismanq" /><label id="labelavismq" for="#"><?=lang("lib_avismanquants")?></label>
       </DIV>
-      <DIV id="limitLignes">
-                  <select id="limitQO" name="limitQO" size="1" width="<?=wLimitQ?>px">
-                  <option width="<?=wLimitQ?>px" value="20">20</option>
-                  <option width="<?=wLimitQ?>px" value="50">50</option>
-                  <option width="<?=wLimitQ?>px" value="100">100</option>
-                  </select>
-                  <label id="labellimitQO" for="#" ><?=lang("lib_lignes")." ".lang("lib_par")." ".lang("lib_page")?></label>
-      </DIV>
-      <DIV id="GOsrchq"><input type="submit" class="GO" value="GO"/></DIV>
+      <input id="searchtablescat" name="searchtablescat" type="hidden" value=",oeuvres.titre,artistes.nom"/>
       </form>
 </span>
-<!--<TABLE BORDER=0 width="100%" CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid">
-    <COL WIDTH="33%">
-    <COL WIDTH="33%">
-    <COL WIDTH="34%">
-    <TR valign="top">
-    <TD></TD>
-    <TD ALIGN="RIGHT">
-      <span id="SearchCat" >
-      <form method="post" action="#" onsubmit="searchCat(this,event)">
-        <TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid">
-        <TR>
-            <TD ALIGN="Center">
 
-            </TD>
-            <TD ALIGN="LEFT">
-            <?=" ".lang("lib_parmiles")?>
-            <input type="checkbox" name="inTC1" id="inTC1" value="oeuvres.titre" checked /><label for="inTC1"><?=lang("lib_oeuvres")?></label>
-            <input type="checkbox" name="inTC2" id="inTC2" value="artistes.nom" checked /><label for="inTC2"><?=lang("lib_artistes")?></label>
-            </TD>
-            <TD ALIGN="RIGHT">
-            <input type="submit" class="GO" value="GO"/>
-    </TD>
-
-    <TD ALIGN="Center">
- <DIV id="limitLignes">
-            <select id="limitQO" name="limitQO" size="1">
-            <option value="20">20</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            </select>
-      </DIV>
-
-
-    </TD>
-</TR>
-</TABLE>
-      </form>
-      </span>
-    </TD>
-    <TD ALIGN="RIGHT">
-        <span id="PagesCat"></span>
-    </TD>
-    </TR>
-</TABLE>-->
-<DIV id="CatHeads"><!---->
-     <TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='center'>
+     <TABLE id="CatHeads" WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='center'>
      <? foreach($cols as $value):?>
      <COL WIDTH=<?=$value?>>
      <?endforeach;?>
@@ -131,7 +69,7 @@
      </TD>
      </TR>
      </TABLE>
-</DIV>
+
 </body>
 <STYLE>
 <?$wTri=10;$hTri=10?>

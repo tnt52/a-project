@@ -24,16 +24,16 @@ body
     color:white;
     background-color:<?=Rec1_coul?>;
   }
-  #header
+  #HeadCat
   {
    color:black;
    background-color:<?=Rec2_coul?>;
   }
-      #limitLignes,#labellimitQO,#avismanquants{
+      #limitLignes,#labellimitQO,#ResultsM{
             font-size:<?=hLmini?>px;
       }
 
-  #HeadLM {
+  #HeadLM,#ResultsM {
     color:white;
     background-color:<?=Rec3_coul?>;
   }

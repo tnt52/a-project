@@ -84,14 +84,39 @@ label.F{color:#cc3300;}
 .jsTextSlide .jsText,.jsPasswordSlide .jsPassword{
     float:left;display:inline;
     background: url(<?=$baseurl?>system/application/images/customcfe/cfeTextR.gif) no-repeat right top;
-    border: none; margin:0 0 0 6px;
-    padding: 5px 6px 5px 0;
+    border: none; margin:0 0 0 0px;
+    padding: 5px 0px 5px 0;
     height: 20px;
 }
-.jsTextSlide.F,.jsPasswordSlide.F{background-position: 0 -40px;}
-.jsTextSlide.F .jsText,.jsPasswordSlide.F .jsPassword{background-position: 100% -40px;}
-.jsTextSlide.H,.jsPasswordSlide.H{background-position: 0 -40px;}
-.jsTextSlide.H .jsText,.jsPasswordSlide.H .jsPassword{background-position: 100% -40px;}
+.jsTextSlide.F,.jsPasswordSlide.F{background-position: 0 -40px;color:red;}
+.jsTextSlide.F .jsText,.jsPasswordSlide.F .jsPassword{background-position: 100% -40px;color:red;}
+.jsTextSlide.H,.jsPasswordSlide.H{background-position: 0 -40px;color:red;}
+.jsTextSlide.H .jsText,.jsPasswordSlide.H .jsPassword{background-position: 100% -40px;color:red;}
+
+#HeadLM .jsTextSlide{
+    background: url(<?=$baseurl?>system/application/images/customcfe/cfeTextL.gif) no-repeat left top;
+    color:white;    
+}
+#HeadLM .jsTextSlide .jsText{
+    background: url(<?=$baseurl?>system/application/images/customcfe/cfeTextR.gif) no-repeat right top;
+    color:white;
+}
+#HeadCat .jsTextSlide{
+    background: url(<?=$baseurl?>system/application/images/customcfe/cfeTextL_white.gif) no-repeat left top;    
+}
+#HeadCat .jsTextSlide .jsText{
+    background: url(<?=$baseurl?>system/application/images/customcfe/cfeTextR_white.gif) no-repeat right top;    
+}
+#HeadLM .jsTextSlide.F,#HeadCat .jsTextSlide.F{background-position: 0 -40px;color:red;}
+#HeadLM .jsTextSlide.F .jsText,#HeadCat .jsTextSlide.F .jsText{background-position: 100% -40px;color:red;}
+#HeadLM .jsTextSlide.H,#HeadCat .jsTextSlide.H{background-position: 0 -40px;color:red;}
+#HeadLM .jsTextSlide.H .jsText,#HeadCat .jsTextSlide.H .jsText{background-position: 100% -40px;color:red;}
+
+
+/*#HeadCat .jsTextSlide.F{background-position: 0 -40px;}
+#HeadCat .jsTextSlide.F .jsText{background-position: 100% -40px;}
+#HeadCat .jsTextSlide.H{background-position: 0 -40px;}
+#HeadCat .jsTextSlide.H .jsText{background-position: 100% -40px;}*/
 
 /* teaxtareas with sliding doors */
 .jsTextareaSlide{

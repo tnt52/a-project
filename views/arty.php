@@ -16,12 +16,12 @@
     var MainSel=null;
     var SubSel=null;
     var limitQO=20,pageQO=1;
-    var triQO='',sensQO='';
+    var champtriCAT='',sensQO='';
     var Msel=null;
     var Mvisu=null;
     var vmopen=false;
     var limitM=20,pageM=1;
-    var triM='pseudo',sensM='ASC';
+    var champtriM='pseudo',sensM='ASC';    
     var repmsels=new Array();
     var repMsel=false;//false si pas de col repMsel dans liste
     var searchTextCat;
@@ -41,10 +41,12 @@
      <form id="LookCat" method="post" action="#" onsubmit="searchCat(this,event)">
      <input id="tobesrchcat" name="tobesearched" type="hidden" value=""/>
      <input id="srchtblcat" name="searchtables" type="hidden" value=""/>
+     <input id="varscat" name="addvars" type="hidden" value="-1"/>
      </form>
      <form id="LookM" method="post" action="#">
      <input id="tobesrchm" name="tobesearched" type="hidden" value=""/>
      <input id="srchtblm" name="searchtables" type="hidden" value=""/>
+     <input id="varsm" name="addvars" type="hidden" value="<?=TAglo?>"/>
      </form>
      <DIV id="Inavigation">
       <DIV id="artystNav">
@@ -72,12 +74,13 @@
          <COL WIDTH=<?=wLM?>>
          <TR>
          <TD VALIGN="top" align="center"><DIV id="slogo">arty.st<br> c'est</DIV></TD>
-         <TD id="header" VALIGN="top">
+         <TD id="HeadCat" VALIGN="top">
            <DIV >
            </DIV>
          </TD>
          <TD valign="top"  align="left">
          <DIV id="HeadLM"></DIV>
+	 <DIV id="ResultsM"> <span></span> <span></span></DIV>
          </TD>
          </TR></TABLE>
     </DIV>

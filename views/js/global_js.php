@@ -31,3 +31,13 @@ function StopEvent(pE)
       pE.cancel = true;
 }
 var urlbase='<?=base_url()?>';
+var lib_ligne='<?=lang("lib_ligne")?>';
+var lib_lignes='<?=lang("lib_lignes")?>';
+var libdefSSon='<?=lang("lib_chercher")." ".lang("lib_unson")?>';
+var libdefSM='<?=lang("lib_chercher")." ".lang("lib_unmembre")?>';
+function focusDef(field,def){
+    if (field.value==def) field.value='';
+}
+function blurDef(field,def){
+    if (field.value=='') field.value=def;
+}

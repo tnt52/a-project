@@ -9,8 +9,6 @@ window.addEvent('domready', function(){
     cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/images/spacer.gif", toolTips: true, toolTipsStyle: "normal"});
 });
 
-
-
 function init(){
          if (Msel==null) $$('.repMselCol').setStyle('opacity',0);
 }
@@ -21,79 +19,59 @@ window.addEvent('domready',function (){
 </SCRIPT>
 </head>
 <body bgcolor="#FFFFFF">
-<DIV class="CatTitle membres" ALIGN=CENTER><?=lang("lib_membres")?></DIV>
+<DIV id="titleLM" class="CatTitle membres" ALIGN=CENTER><?=lang("lib_membres")?></DIV>
 <DIV id="SearchM">
-     <form method="post" action="#" onsubmit="searchM(this,event)">
-           <input type="text" id="searchtextm" name="searchtextm"/><label for="searchtextm"></label>
+<form method="post" action="#" onsubmit="searchM(this,event)"><!--setTimeout('$(\'searchtextm\').select()',1)-->
+           <input type="text" id="searchtextm" name="searchtextm" size="25" onfocus="focusDef(this,libdefSM)" onblur="blurDef(this,libdefSM)" onkeyup="keyupSearch.delay(500,this)" value="<?=lang("lib_chercher")." ".lang("lib_unmembre")?>"/><label for="searchtextm"></label>
            <input id="searchtablesm" name="searchtablesm" type="hidden" value=",pseudo"/>
-           <input type="submit" class="GO" value="GO" />
+           <!--<input type="submit" class="GO" value="GO" />-->
      </form>
 </DIV>
-<!--<div>
-  <TABLE ALIGN="RIGHT" BORDER=0 width="100%" CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid">
-  <TR>
-  <TD ALIGN="RIGHT"><? if ($page>1):?><a href="javascript:membres_page(<?=$page-1?>)" target="_self">&lt;</a><?endif?></TD>
-  <TD ALIGN="RIGHT"><?for ($i=1; $i<$page; $i++) :?>
-      <a href="javascript:membres_page(<?=$i?>)" target="_self"><?=$i?></a>
-      <?endfor?>
-  </TD>
-  <TD ALIGN="CENTER"><strong><a href="javascript:membres_page(<?=$page?>)" target="_self"><?=$page?></a></strong>
-  </TD>
-  <TD ALIGN="LEFT"><?for ($i=$page+1; $i<$Ptot+1; $i++) :?>
-      <a href="javascript:membres_page(<?=$i?>)" target="_self"><?=$i?></a>
-      <?endfor?>
-  </TD>
-  <TD ALIGN="LEFT"><? if ($page<$Ptot):?><a href="javascript:membres_page(<?=$page+1?>)" target="_self">&gt;</a><?endif?></TD>
-  </TR>
-  </TABLE>
-</div>-->
-<DIV id="ResultsM"></DIV>
-<DIV STYLE="bottom:0px; background=#000000">
-<TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='left'>
-     <COL WIDTH=<?=col_lm_pseudo?>>
-     <COL WIDTH=<?=col_lm_sexe?>>
-     <COL WIDTH=<?=col_lm_voix?>>
-     <COL WIDTH=<?=col_lm_aff?>>
-     <TR>
-     <TD COLSPAN=4>
-     <span>
-            <label for="typeaff">Affinité sur</label>
-            <select id="typeaff" name="typeaff" size="1" style="width:30px">
-            <option>tout</option>
-            <option>les sons</option>
+<DIV id="SelTA">
+            <label id="labeltypeaff" for="#"><?=lang('lib_affinitesur')?></label>
+	    <select id="typeaff" name="typeaff" size="1" >
+            <option value="<?=TAglo?>">tout</option>
+            <option value="<?=TAson?>">les sons</option>
             <option>les images</option>
             <option>les textes</option>
             <option>les vidéos</option>
             <option>les avis</option>
             <option>les goûts</option>
             </select>
-      </span>
+</DIV>
+<TABLE id="LMHeads" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='left'>
+     <COL WIDTH=<?=col_lm_pseudo?>>
+     <COL WIDTH=<?=col_lm_sexe?>>
+     <COL WIDTH=<?=col_lm_voix?>>
+     <COL WIDTH=<?=col_lm_aff?>>
+     <TR>
+     <TD COLSPAN=4>
+     
      </TD>
      </TR>
      <TR >
      <TD >
-         <DIV champ="pseudo"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV nowrap champ="pseudo"  style="cursor:pointer;width:<?=col_lm_pseudo?>px;overflow: hidden" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_pseudo")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>
      <TD >
-         <DIV champ="sexe"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV nowrap champ="sexe"  style="cursor:pointer;width:<?=col_lm_sexe?>px;overflow: hidden" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_sexe")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>
      <TD >
-         <DIV champ="voix"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV nowrap champ="voix"  style="cursor:pointer;width:<?=col_lm_voix?>px;overflow: hidden" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_voix")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>
      <TD >
-         <DIV champ="affinite"  style="cursor:pointer" onclick="triCatM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV nowrap champ="affinite"  style="cursor:pointer;width:<?=col_lm_aff?>px;overflow: hidden" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_affinite")?> <img class="tri desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>
      </TR>
 </TABLE>
-</DIV>
 </body>
 <STYLE>
 <?$wTri=10;$hTri=10?>

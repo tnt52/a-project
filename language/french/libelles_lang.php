@@ -12,7 +12,7 @@ $lang['lib_marep'] = "moi";
 $lang['lib_sarep'] = "lui";
 
 $lang['lib_liens'] = "liens";
-$lang['lib_membres'] = "tribuns";
+$lang['lib_membres'] = "Tribuns";
 
 $lang['lib_de'] = "de";
 $lang['lib_dateIns'] = "inscrit le";
@@ -35,11 +35,15 @@ $lang['lib_oeuvres']="oeuvres";
 $lang['lib_artistes']="artistes";
 $lang['lib_etsur']="et sur";
 $lang['lib_parmiles']="parmi les";
-$lang['lib_chercher']="Chercher";
+$lang['lib_chercher']="chercher";
+$lang['lib_unson']="un son";
+$lang['lib_unmembre']="un tribun";
+$lang['lib_affinitesur']="affinité sur";
 $lang['lib_questions']="questions";
 $lang['lib_lignes']="lignes";
+$lang['lib_ligne']="ligne";
 $lang['lib_page']="page";
 $lang['lib_par']="par";
-$lang['lib_avismanquants']="avis manquants<br>seulement";
+$lang['lib_avismanquants']="avis manquants seulement";
 
 ?>

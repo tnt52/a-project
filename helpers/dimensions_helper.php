@@ -11,10 +11,10 @@ define ('col_count',30);
 
 //define ('hl_lm',12);
 define ('col_lm_plus',20);
-define ('col_lm_pseudo',50);
-define ('col_lm_sexe',10);
-define ('col_lm_voix',20);
-define ('col_lm_aff',20);
+define ('col_lm_pseudo',80);
+define ('col_lm_sexe',20);
+define ('col_lm_voix',40);
+define ('col_lm_aff',40);
 
 define ('hLmini',10);
 define ('hL',12);

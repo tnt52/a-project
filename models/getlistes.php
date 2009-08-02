@@ -45,25 +45,23 @@
                 }
                 return $Ntot;
        }
-       function getmembres($page,$limit,$champtri,$senstri,$search,$TA=null){
-		switch ($TA){
-		case TAglo:
-			$champaff="affglobal";
-			break;
-		default:
-			$champaff="affglobal";
-			break;
-		}
-		if ($champtri=="affinite") $champtri=$champaff;
-	        $select="cle,type,pseudo,sexe,voix,$champaff,avatar,nbrepquetot,nbrepoeutot";
+       function getmembres($page,$limit,$champtri,$senstri,$search,$TA=null){	       
+	       switch ($TA){
+		case TAglo:$champaff="affglobal";break;
+		case TAson:$champaff="affson";break;
+		case TAson:$champaff="affson";break;
+		case TAson:$champaff="affson";break;
+		default:$champaff="affglobal";break;
+		}		
+	        $select="cle,type,pseudo,sexe,voix,$champaff as affinite,avatar,nbrepquetot,nbrepoeutot";
                 $keyMA=$this->session->userdata('keyMA');
                 $v=array('page'=>$page, 'limit'=>$limit);
                 $where="TRUE";
                 if ($search) {
                        $where="";
                        $search=strtoupper($search);
-                       $ormatchs=explode(" ",$search);
-                       $andmatchs=explode("+",$ormatchs[0]);
+                       $ormatchs=explode("+",$search);
+                       $andmatchs=explode(" ",$ormatchs[0]);
                        $where="UPPER(pseudo) LIKE '%".$andmatchs[0]."%'";
                        for ($i=1;$i<count($andmatchs);$i++){
                            $where.=" AND UPPER(pseudo) LIKE '%".$andmatchs[$i]."%'";
@@ -116,11 +114,11 @@
        function docSQLsearch($search,$fields){
                 if ($search) {
                   $search=strtoupper($search);
-                  $ormatchs=explode(" ",$search);
+                  $ormatchs=explode("+",$search);
                   $where="";
                   foreach ($fields as $field){
                           foreach ($ormatchs as $val){
-                             $andmatchs=explode("+",$val);
+                             $andmatchs=explode(" ",$val);
                              $this->db->or_like("UPPER($field)",$andmatchs[0]);
                              for ($i=1;$i<count($andmatchs);$i++){
                                        $this->db->like("UPPER($field)",$andmatchs[$i]);

@@ -49,7 +49,7 @@
              height:<?=hHaut?>px;
              width:<?=wNav?>px;
             }
-            #header
+            #HeadCat
             {
              margin: 0 0 0 0;
              padding: 0 0 0 0;
@@ -62,60 +62,21 @@
                  bottom:<?=hBand+5?>px;
                 }
                 .CatTitle{
-                    position:relative;
-                    bottom: <?=((hHaut-hBand-hLtitle)/2)?>px;
+                    position:absolute;
+                    top: -10px;//<?=((hHaut-hBand-hLtitle)/2)?>px;
                 }
                 #titleQ{
-                    position:absolute;
-                    bottom: <?=hBand-3?>px;
-                    left:<?=wNav+wLogoCat+30?>px;
-                }
-                <?$left1=wNav+5;?>
-                #searchQO{
-                      position:absolute;
-                      bottom: <?=hBand+60?>px;
-                      left: <?=$left1?>px;
-                      z-index:5;
-                }
-                <?$mrg1=3?>
-                #limitLignes{
-                      position:absolute;
-                      bottom: <?=hBand+5?>px;
-                      left: <?=$left1?>px;
-                      z-index:5;
-                }
-                #labellimitQO{
-                      position:absolute;
-                      bottom: <?=$mrg1?>px;
-                      left: <?=55?>px;
-                }
-                #avismanquants{
-                      position:absolute;
-                      bottom: <?=hBand+35?>px;
-                      left: <?=$left1?>px;
-                      z-index:5;
-                }
-                      #labelavismq{
-                           text-align:left;
-                           vertical-align:bottom;
-                           position:absolute;
-                           bottom: <?=0?>px;
-                           left: <?=20?>px;
-                           z-index:5;
-                      }
-                #GOsrchq{
-                      position:absolute;
-                      bottom: <?=hBand+35?>px;
-                      left: <?=$left1+100?>px;
-                      z-index:5;
-                }
+                   left:<?=wNav+5?>px;
+                }		
+                
+                <?$mrg1=3?> 
                 #CatHeads{
                  position:absolute;
                  left:50%;
                  margin-left:-<?=wHead/2?>px;
-                 bottom:0px;
+                 bottom:<?=$mrg1?>px;
                  width:<?=wHead?>px;
-                 height:<?=hBand?>px
+                 //height:<?=hBand?>px;
                 }
                 /*#bandeau{
                  position:absolute;
@@ -131,6 +92,68 @@
               height:<?=hHaut?>px;
               width:<?=wLM?>px;
             }
+	    #titleLM{
+		   left:<?=wCpit-wLM?>px;
+		}
+	    <?$left2=75;$mrg2=2;?>
+	    #SearchM{
+		position: absolute;
+		left:<?=wCpit-wLM?>px;
+		bottom:<?=hBand+25?>px;
+		width:<?=wLM?>px;
+	    }
+	    #SelTA{
+		position: absolute;
+		left:<?=wCpit-wLM+$left2-5?>px;
+		bottom:<?=hBand+5?>px;
+		width:<?=wLM?>px;	
+	    }
+	    #labeltypeaff{
+			position:absolute;
+			bottom: <?=$mrg2?>px;
+			left: -<?=$left2-5?>px;
+	    }
+	    <?$left1=wNav+5;?>
+	#searchQO{
+	      position:absolute;
+	      bottom: <?=hBand+25?>px;
+	      left: <?=$left1?>px;
+	      z-index:5;
+	}
+	/*#GOsrchq{
+	      position:absolute;
+	      bottom: <?=hBand+35?>px;
+	      left: <?=$left1+100?>px;
+	      z-index:5;
+	}*/
+	<?$offset=170;?>	               
+	#avismanquants{
+	      position:absolute;
+	      bottom: <?=hBand+5?>px;
+	      left: <?=$left1?>px;
+	      z-index:5;
+	}
+	      #labelavismq{
+		   text-align:left;
+		   vertical-align:bottom;
+		   position:absolute;
+		   bottom: <?=2?>px;
+		   left: <?=15?>px;
+		   z-index:5;
+	      }
+	    #ResultsM{
+		position: absolute;
+		left:<?=wCpit-wLM?>px;
+		bottom:<?=15?>px;
+	    }
+	    #LMHeads{
+		 position:absolute;
+                 left:<?=wCpit-wLM?>px;
+                 bottom:<?=$mrg1?>px;
+                 //height:<?=hBand?>px;
+	    
+	    }
+
    #idMA {
        position:absolute;
        z-index:5;
@@ -209,7 +232,7 @@
   #Imembres
   {
         position:absolute;
-        z-index:4;
+        z-index:3;
         top:<?=hHaut?>px;
         left:<?=wCpit-wLM?>px;
         height:<?=hNav-100?>px; /*100%;*/
