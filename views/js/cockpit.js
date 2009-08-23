@@ -14,7 +14,7 @@ function switchCat(cat){
          $('tobesrchcat').value="";
          $('srchtblcat').value="";
          GetHeader(cat);
-         liste_page(1);
+         GetListe();
          GetPlayer(cat);
 }
 function clickNav(el){
@@ -43,17 +43,57 @@ function outNav(el){
          "font-weight":"normal"
          });
 }
-function liste_page(page){
-         GetCatPages(page);
+/*function liste_page(page){
+         /*GetCatPages(page);
          GetListe(cat);
-}
-function GetListe(cat){
-         closeVisuMS();
-         new Request.HTML({
+}*/
+function GetListe(){
+	closeVisuMS();
+	pageQO=1;
+	$('ResultsCat').getFirst().set('html',"");
+	$('ResultsCat').getLast().set('html',"");
+	i=1;
+	while($('liste'+i)!=null){
+	$('liste'+i).set('html',"");
+	i++;
+	
+	}
+	GetAllListe();
+         /*new Request.HTML({
                 url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
                 update: $('liste'),
                 onComplete: function () {majfromM(Msel);}
-         }).post($('LookCat'));
+         }).post($('LookCat'));*/
+}
+function GetAllListe(){
+	if ($('liste'+pageQO)==null) new Element('div',{id:'liste'+pageQO}).inject($('liste'+(pageQO-1)),"after");
+	new Request.HTML({
+             url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
+             update: $('liste'+pageQO),
+             method: 'get',
+	     onComplete:function(){
+		     //document.write(pageQO);		     
+		     n=parseInt($('Catnumrows'+pageQO).value);		     
+		     DivN=$('ResultsCat').getFirst();
+		     if (DivN.get('html')=="") m=0;
+		     else m=parseInt(DivN.get('html'));
+		     DivN.set('html', m+n);
+		     if (m+n>1) $('ResultsCat').getLast().set('html',lib_lignes);
+		     else $('ResultsCat').getLast().set('html',lib_ligne);
+		     if (n<limitQO){
+			     i=pageQO+1;
+			     while($('liste'+i)!=null){
+				     $('liste'+i).set('html',"");
+				     i++;
+			     }
+			     $('liste').scrollUpdate();
+			     return;
+		     }
+		     pageQO++;
+		     GetAllListe();
+	     },
+             evalScripts: true
+         }).post($('LookCat'));	 
 }
 function GetHeader(cat){
          new Request.HTML({
@@ -64,7 +104,7 @@ function GetHeader(cat){
              evalScripts: true
          }).send();
 }
-function GetCatPages(page){
+/*function GetCatPages(page){
          pageQO=page;
          new Request.HTML({
               url: urlbase+'index.php/navigation/pages/'+cat+'/'+limitQO+'/'+pageQO+'/',
@@ -72,7 +112,7 @@ function GetCatPages(page){
               onComplete: function () {}
          }).post($('LookCat'));
      //    new Request.HTML({url: urlbase+'index.php/navigation/pages/'+cat+'/'+limitQO+'/'+pageQO,update: $('PagesCat'),method: 'get', evalScripts: true}).send();
-}
+}*/
 function GetPlayer(cat){
          new Request.HTML({
              url: urlbase+'index.php/navigation/player/'+cat,
@@ -97,16 +137,7 @@ function searchCat(form,e){
          closeVisuMS();
          $('tobesrchcat').value=$('searchtextcat').value;
 	 $('srchtblcat').value=$('searchtablescat').value;
-         /*chkbxs=$(form).getElements("input[type=checkbox]");         
-         for(i=chkbxs.length-1;i>-1;i--){
-             if (chkbxs[i].checked==true) $('srchtblcat').value+=","+chkbxs[i].value;
-         }*/
-         new Request.HTML({
-         url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
-         update: $('liste'),
-         onComplete: function () {}
-         }).post($('LookCat'));
-         GetCatPages(1);
+	 GetListe();        
          StopEvent(e);
 }
 
@@ -154,6 +185,7 @@ function GetAllMembres(){
 				     $('membres'+i).set('html',"");
 				     i++;
 			     }
+			     $('Imembres').scrollUpdate();
 			     return;
 		     }
 		     pageM++;
@@ -162,9 +194,89 @@ function GetAllMembres(){
              evalScripts: true
          }).post($('LookM'));	 
 }
+function hoverTri(el){
+         el=$(el);
+         el.getChildren()[0].addClass('H');
+}
+function pressTri(el){
+         el=$(el);
+         el.getChildren()[0].addClass('C');
+}
+function releaseTri(el){
+         el=$(el);
+         img=el.getChildren()[0];
+         if (img.hasClass('C')) img.removeClass('C');
+}
+function unhoverTri(el){
+         el=$(el);
+         img=el.getChildren()[0];
+         if (img.hasClass('C')) img.removeClass('C');
+         img.removeClass('H');
+}
+var lastTriM=null;
 var lastTriCat=null;
 var img;
-function tri(el,divupdate,categ,limit,page,lastTri){
+function triM(el){
+	el=$(el);
+	img=el.getChildren()[0];
+	//img.addClass('C');
+	//if (img.hasClass('A')) {
+		if (img.hasClass('asc')){
+			img.removeClass('asc');
+			img.addClass('desc');
+		}
+		else if (img.hasClass('desc')){
+			img.removeClass('desc');
+			img.addClass('asc');
+		}
+	//}
+	//else {
+		if (lastTriM!=null && lastTriM.hasClass('A')) {
+		 lastTriM.removeClass('A');
+	}
+	img.addClass('A');
+	lastTriM=img;
+	//}
+	champtriM=el.getProperty('champ');
+	if (img.hasClass('asc')) sensM='ASC'; else sensM='DESC';
+	//if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+	GetMembres();
+	/*new Request.HTML({
+		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
+		update: divupdate,
+		method: 'get',
+		evalScripts: true
+	}).send();
+	/*tri(el,$('membres'),TM,limitM,pageM,this.lastTriM);*/
+}
+function triCat(el){
+	//tri(el,$('liste'),cat,limitQO,pageQO,lastTriCat);
+         el=$(el);
+         img=el.getChildren()[0];
+         img.addClass('C');
+         if (img.hasClass('A')) {
+            if (img.hasClass('asc')){
+               img.removeClass('asc');
+               img.addClass('desc');
+            }
+            else if (img.hasClass('desc')){
+               img.removeClass('desc');
+               img.addClass('asc');
+            }
+         }
+         else {
+              if (lastTriCat!=null && lastTriCat.hasClass('A')) {
+                 lastTriCat.removeClass('A');
+              }
+              img.addClass('A');
+              lastTriCat=img;
+         }
+         champtriCat=el.getProperty('champ');
+         if (img.hasClass('asc')) sensQO='ASC'; else sensQO='DESC';
+	 GetListe();
+
+}
+/*function tri(el,divupdate,categ,limit,page,lastTri){
 	el=$(el);
 	img=el.getChildren()[0];
 	img.addClass('C');
@@ -189,82 +301,14 @@ function tri(el,divupdate,categ,limit,page,lastTri){
 	if (img.hasClass('asc')) sens='ASC'; else sens='DESC';
 	if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
 	$('varscat').value=keyMsel;
-	//GetAllMembres();
-	new Request.HTML({
+	GetListe();
+	/*new Request.HTML({
 		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens,
 		update: divupdate,
 		method: 'get',
 		evalScripts: true
 	}).send();
-}
-var lastTriM=null;
-function triM(el){
-	categ=TM;
-	limit=limitM;page=pageM;
-	el=$(el);
-	img=el.getChildren()[0];
-	img.addClass('C');
-	if (img.hasClass('A')) {
-		if (img.hasClass('asc')){
-			img.removeClass('asc');
-			img.addClass('desc');
-		}
-		else if (img.hasClass('desc')){
-			img.removeClass('desc');
-			img.addClass('asc');
-		}
-	}
-	else {
-		if (lastTriM!=null && lastTriM.hasClass('A')) {
-		 lastTriM.removeClass('A');
-	}
-	img.addClass('A');
-	lastTriM=img;
-	}
-	champtriM=el.getProperty('champ');
-	if (img.hasClass('asc')) sensM='ASC'; else sensM='DESC';
-	//if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
-	GetMembres();
-	/*new Request.HTML({
-		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
-		update: divupdate,
-		method: 'get',
-		evalScripts: true
-	}).send();
-	/*tri(el,$('membres'),TM,limitM,pageM,this.lastTriM);*/
-}
-function triCat(el){
-	tri(el,$('liste'),cat,limitQO,pageQO,lastTriCat);
-        /* el=$(el);
-         img=el.getChildren()[0];
-         img.addClass('C');
-         if (img.hasClass('A')) {
-            if (img.hasClass('asc')){
-               img.removeClass('asc');
-               img.addClass('desc');
-            }
-            else if (img.hasClass('desc')){
-               img.removeClass('desc');
-               img.addClass('asc');
-            }
-         }
-         else {
-              if (lastTriCat!=null && lastTriCat.hasClass('A')) {
-                 lastTriCat.removeClass('A');
-              }
-              img.addClass('A');
-              lastTriCat=img;
-         }
-         triQO=el.getProperty('champ');
-         if (img.hasClass('asc')) sensQO='ASC'; else sensQO='DESC';
-         if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
-         new Request.HTML({
-             url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO+'/'+keyMsel,
-             update: $('liste'),
-             method: 'get',
-             evalScripts: true
-         }).send();*/
-}
+}*/
 function showAffinites(){
          new Request.HTML({
              url: urlbase+'index.php/navigation/affinites',
@@ -326,16 +370,7 @@ function majPR(Qsel){
          }
 }
 /* HEADER JS */
-function hoverTri(el){
-         el=$(el);
-         el.getChildren()[0].addClass('H');
-}
-function unhoverTri(el){
-         el=$(el);
-         img=el.getChildren()[0];
-         if (img.hasClass('C')) img.removeClass('C');
-         img.removeClass('H');
-}
+
 var cfeHeadM = new cfe.base();
 var cfeHead = new cfe.base();
 //cfeHeadM.setModuleOptions('text',{onBlur: document.write("test")});
@@ -348,11 +383,6 @@ switch (limitQO){
        case 50: defsel=2;break;
        case 100: defsel=3;break;
 }
-function NewLimQO(){
-         limitQO=$('limitQO').options[$('limitQO').options.selectedIndex].text;
-         liste_page(1);
-}
-
 
 /* Visu navigation */
 function closeVisuMS(){
@@ -394,13 +424,13 @@ function unhover(el){
 /* Positionning */
 function repositionner(el) {
          setTimeout(function (){
-         var effetTop = new Fx.Tween(el, {duration : 500,transition: Fx.Transitions.Elastic.easeOut}) ;
+         var effetTop = new Fx.Tween(el, {duration : 00,transition: Fx.Transitions.Bounce.easeOut}) ;
          var position_actuelle = el.getStyle('top');
          //NB : document.documentElement.scrollTop est un variable javascript de base, c'est pas du Mootools
          //NB2 : C'est start(valeur depart, valeur arrive) et non plus custom() comme dans la version 0.83 de Mootools   Math.max(document.body.scrollTop document.documentElement.scrollTop+window.getScrollTop()+position_actuelle
          effetTop.start('top',position_actuelle,Math.max(document.body.scrollTop,window.getScrollTop()));
          }
-         ,500);
+         ,00);
 }
 function centrer(el,w,h){
          el.setStyle('top',el.getStyle('top')-h/2);
@@ -414,7 +444,7 @@ window.addEvent('domready', function() {
                             //centrer($('VisuQ'),400,400);
                             majPR(null);
                             majNewQ();
-                            liste_page(1);;                            
+                            GetListe();;                            
 			    GetHeadM();
 			    GetMembres();
                             getIdMA();

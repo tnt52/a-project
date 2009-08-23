@@ -47,13 +47,13 @@
        }
        function getmembres($page,$limit,$champtri,$senstri,$search,$TA=null){	       
 	       switch ($TA){
-		case TAglo:$champaff="affglobal";break;
-		case TAson:$champaff="affson";break;
-		case TAson:$champaff="affson";break;
-		case TAson:$champaff="affson";break;
-		default:$champaff="affglobal";break;
+		case TAglo:$champaff="affglobal";$liens="liens";break;
+		case TAson:$champaff="affson";$liens="liensson";break;
+		case TAson:$champaff="affson";$liens="liensson";break;
+		case TAson:$champaff="affson";$liens="liensson";break;
+		default:$champaff="affglobal";$liens="liens";break;
 		}		
-	        $select="cle,type,pseudo,sexe,voix,$champaff as affinite,avatar,nbrepquetot,nbrepoeutot";
+	        $select="cle,type,pseudo,sexe,voix,$liens as liens,$champaff as affinite,avatar,nbrepquetot,nbrepoeutot";
                 $keyMA=$this->session->userdata('keyMA');
                 $v=array('page'=>$page, 'limit'=>$limit);
                 $where="TRUE";
@@ -145,6 +145,8 @@
                 $this->db->where('oeuvres.type',$type);
                 $this->db->where('oeuvres.actif',1);
                 $r=$this->db->get();
+		$v['page']=$page;
+		$v['numrows']=$r->num_rows();
                 $v['result']=$r;
                 return $v;
        }

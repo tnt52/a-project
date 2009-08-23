@@ -36,4 +36,9 @@ define ("Val_LittleOK",-1);
 define ("ValOKKO",0);
 define ("ValLittleOK",1);
 define ("ValBigOK",3);
+
+//CHOIX//
+define ("ALL",0);
+define ("SSavis",1);
+define ("AVavis",2);
 ?>

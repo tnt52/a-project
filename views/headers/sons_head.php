@@ -21,8 +21,14 @@ var libdefO='<?=$libdefO?>';
       	<input type="text" name="searchtextcat" id="searchtextcat" size="25" onfocus="focusDef(this,libdefO)" onblur="blurDef(this,libdefO)" onkeyup="keyupSearch.delay(500,this)" value="<?=$libdefO?>" /><label for="searchtextcat"></label>
       </DIV>
       <DIV id="avismanquants">
-      	<input type="checkbox" name="avismanq" id="avismanq" /><label id="labelavismq" for="#"><?=lang("lib_avismanquants")?></label>
+      	<label id="libselavis" for="#"></label>
+	    <select id="selavis" name="selavis" size="1" >
+            <option value="<?=ALL?>"><?=lang('lib_tous')?></option>
+            <option value="<?=SSavis?>"><?=lang("lib_avismanquants")?></option>
+            <option value="<?=AVavis?>"><?=lang("lib_avecavis")?></option>
+            </select>	    
       </DIV>
+      <!--<input type="checkbox" name="avismanq" id="avismanq" /><label id="labelavismq" for="#"><?=lang("lib_avismanquants")?></label>-->
       <input id="searchtablescat" name="searchtablescat" type="hidden" value=",oeuvres.titre,artistes.nom"/>
       </form>
 </span>

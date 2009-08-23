@@ -1,6 +1,6 @@
 <?header("Content-Type: text/javascript");require("../../helpers/dimensions_helper.php");?>
 window.addEvent('domready', function() {
-               window.addEvent('scroll',function () {repositionner($('cockpit'));});
+               //window.addEvent('scroll',function () {repositionner($('cockpit'));});
                $('VQcontainer').makeDraggable({
                    handle: 'VQhandle'
                    });

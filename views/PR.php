@@ -89,7 +89,9 @@ function writeLibQ(input){
 </SCRIPT>
 <STYLE>
 #repMA input, #NewQ{
- color: white;
+ position:absolute;
+  left:-925%;
+	color: white;
  border: red solid 1px;
 }
 #NewQ{
@@ -99,11 +101,11 @@ top:0px;
 <?$wNQ=48;$hNQ=48;?>
 #NewG{
   position:absolute;
-  left:75%;
+  left:-975%;
 }
 #NewA{
   position:absolute;
-  left:25%;
+  left:-925%;
 }
 #NewA, #NewG {
   width: <?=$wNQ?>px;

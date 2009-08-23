@@ -80,6 +80,7 @@ label.F{color:#cc3300;}
     background: url(<?=$baseurl?>system/application/images/customcfe/cfeTextL.gif) no-repeat left top;
     float:left;display:inline;
     border: none;
+    text-decoration: underline;
 }
 .jsTextSlide .jsText,.jsPasswordSlide .jsPassword{
     float:left;display:inline;

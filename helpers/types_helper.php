@@ -33,5 +33,10 @@ define ("TAglo",101);
 define ("TAoeu",102);
 define ("TAson",103);
 define ("TAimg",104);
+define ("TAtxt",105);
+define ("TAvdo",106);
 define ("TAque",120);
+define ("TAgou",121);
+define ("TAavi",122);
+
 ?>

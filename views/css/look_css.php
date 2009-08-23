@@ -15,10 +15,10 @@ body
 	 color:black;
  }
  #haut{
-	background: url(<?=baseurl?>system/application/images/Fonds/FondHaut.gif) no-repeat left top;	 
+	/*background: url(<?=baseurl?>system/application/images/Fonds/FondHaut.gif) no-repeat left top;*/	 
  }
  #bas{
-	background: url(<?=baseurl?>system/application/images/Fonds/FondBas.gif) no-repeat left top;	 
+	/*background: url(<?=baseurl?>system/application/images/Fonds/FondBas.gif) no-repeat left top;*/	 
  }
   #slogo {
     color:white;
@@ -29,7 +29,7 @@ body
    color:black;
    background-color:<?=Rec2_coul?>;
   }
-      #limitLignes,#labellimitQO,#ResultsM{
+      #limitLignes,#labellimitQO,#ResultsM,#ResultsCat,#Imembres{
             font-size:<?=hLmini?>px;
       }
 
@@ -46,7 +46,7 @@ body
        font-size:<?=hLpseudo?>px;
       }
   #RelationMAMS{
-	background-color:red;
+	/*background-color:red;*/
   }
   #panel {
    color:white;

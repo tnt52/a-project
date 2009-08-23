@@ -49,6 +49,10 @@
              height:<?=hHaut?>px;
              width:<?=wNav?>px;
             }
+	     <?$mrg1=3;$offsetliste=+10;$mrg_r_lst=$offsetliste+10;$mrg_b_logo=2;$offsetlm=5;?>
+	     <?$left2=75;$mrg2=2;$bot_srch=hBand+$mrg_b_logo+hL;?>
+	     
+	      // HEAD CAT //
             #HeadCat
             {
              margin: 0 0 0 0;
@@ -58,54 +62,83 @@
             }
                 #logoCat{
                  position:absolute;
-                 right:<?=wNav+5?>px;
-                 bottom:<?=hBand+5?>px;
+                 right:<?=wLM+$mrg_r_lst+3?>px;
+                 bottom:<?=hBand+$mrg_b_logo?>px;
                 }
                 .CatTitle{
                     position:absolute;
-                    top: -10px;//<?=((hHaut-hBand-hLtitle)/2)?>px;
+                    top: 10px;/*<?=((hHaut-hBand-hLtitle)/2)?>px;*/
                 }
                 #titleQ{
-                   left:<?=wNav+5?>px;
+                   left:<?=wNav+$offsetliste?>px;
                 }		
                 
-                <?$mrg1=3?> 
-                #CatHeads{
-                 position:absolute;
-                 left:50%;
-                 margin-left:-<?=wHead/2?>px;
-                 bottom:<?=$mrg1?>px;
-                 width:<?=wHead?>px;
-                 //height:<?=hBand?>px;
-                }
-                /*#bandeau{
-                 position:absolute;
-                 left:<?=wNav?>px;
-                 bottom:0px;
-                 width:<?=wHead+7?>px;
-                 height:<?=hBand?>px
-                }*/
+               #searchQO{
+		      position:absolute;
+		      bottom: <?=$bot_srch?>px;
+		      left: <?=wNav+3+$offsetliste?>px;
+		      z-index:5;
+		}		               
+		#avismanquants{
+		      position:absolute;
+		      bottom: <?=hBand+$mrg_b_logo?>px;
+		      left: <?=wNav-4+$offsetliste?>px;
+		      z-index:5;
+		}
+		      #labelavismq{
+			   text-align:left;
+			   vertical-align:bottom;
+			   position:absolute;
+			   bottom: <?=2?>px;
+			   left: <?=15?>px;
+			   z-index:5;
+		      }
+		#ResultsCat{
+		position: absolute;
+		left:<?=wNav+2+$offsetliste?>px;
+		bottom:<?=15?>px;
+		}
+		#CatHeads{
+		 position:absolute;
+		 left:50%;
+		 margin-left:<?=-wHead/2+$offsetliste?>px;
+		 bottom:<?=$mrg1?>px;
+		 width:<?=wHead-$mrg_r_lst-$offsetliste?>px;
+		 /*height:<?=hBand?>px;*/
+		}
+	#liste{
+		position:absolute;
+		width:<?=wHead-$mrg_r_lst-$offsetliste?>px;
+		height:<?=hNav?>px;
+		top: <?=hHaut?>px;
+		left:50%;
+		margin-left:<?=-wHead/2+$offsetliste?>px;
+		z-index:3;
+		overflow-x:hidden;
+		overflow-y:auto;
+	}
+		// HEAD LM//		
             #HeadLM {
               margin: 0 0 0 0;
               padding: 0 0 0 0;
               border:solid #FF0000 1 1 1 1;
               height:<?=hHaut?>px;
-              width:<?=wLM?>px;
+              width:<?=wLM-$offsetlm?>px;
             }
 	    #titleLM{
-		   left:<?=wCpit-wLM?>px;
+		   left:<?=wCpit-wLM+$offsetlm?>px;
 		}
-	    <?$left2=75;$mrg2=2;?>
+	    
 	    #SearchM{
 		position: absolute;
-		left:<?=wCpit-wLM?>px;
-		bottom:<?=hBand+25?>px;
+		left:<?=wCpit-wLM+$offsetlm?>px;
+		bottom:<?=$bot_srch?>px;
 		width:<?=wLM?>px;
 	    }
 	    #SelTA{
 		position: absolute;
-		left:<?=wCpit-wLM+$left2-5?>px;
-		bottom:<?=hBand+5?>px;
+		left:<?=wCpit-wLM+$left2-5+$offsetlm?>px;
+		bottom:<?=hBand+$mrg_b_logo?>px;
 		width:<?=wLM?>px;	
 	    }
 	    #labeltypeaff{
@@ -113,46 +146,20 @@
 			bottom: <?=$mrg2?>px;
 			left: -<?=$left2-5?>px;
 	    }
-	    <?$left1=wNav+5;?>
-	#searchQO{
-	      position:absolute;
-	      bottom: <?=hBand+25?>px;
-	      left: <?=$left1?>px;
-	      z-index:5;
-	}
-	/*#GOsrchq{
-	      position:absolute;
-	      bottom: <?=hBand+35?>px;
-	      left: <?=$left1+100?>px;
-	      z-index:5;
-	}*/
-	<?$offset=170;?>	               
-	#avismanquants{
-	      position:absolute;
-	      bottom: <?=hBand+5?>px;
-	      left: <?=$left1?>px;
-	      z-index:5;
-	}
-	      #labelavismq{
-		   text-align:left;
-		   vertical-align:bottom;
-		   position:absolute;
-		   bottom: <?=2?>px;
-		   left: <?=15?>px;
-		   z-index:5;
-	      }
 	    #ResultsM{
 		position: absolute;
-		left:<?=wCpit-wLM?>px;
+		left:<?=wCpit-wLM+$offsetlm?>px;
 		bottom:<?=15?>px;
 	    }
 	    #LMHeads{
 		 position:absolute;
-                 left:<?=wCpit-wLM?>px;
+                 left:<?=wCpit-wLM+$offsetlm?>px;
                  bottom:<?=$mrg1?>px;
-                 //height:<?=hBand?>px;
+                 /*height:<?=hBand?>px;*/
 	    
 	    }
+	    
+	   
 
    #idMA {
        position:absolute;
@@ -177,6 +184,14 @@
 	right:5px;
 	bottom:5px;
 	}
+  
+  #idMS {
+       width:<?=wID?>px;
+       height:<?=hID?>px;
+  }
+  
+  
+  
   #RelationMAMS{
 	position:absolute;
 	z-index:5;
@@ -199,10 +214,7 @@
       /*       width:200px;*/
        height:<?=hID?>px;
       }
-      #idMS {
-       width:<?=wID?>px;
-       height:<?=hID?>px;
-      }
+      
   #Inavigation
   {
         position:absolute;
@@ -234,20 +246,14 @@
         position:absolute;
         z-index:3;
         top:<?=hHaut?>px;
-        left:<?=wCpit-wLM?>px;
+        left:<?=wCpit-wLM+$offsetlm?>px;
         height:<?=hNav-100?>px; /*100%;*/
-        width:<?=wLM?>px;
+        width:<?=wLM-$offsetlm-wScroll?>px;
 	overflow-x:hidden;
 	overflow-y:auto;
   }
-  #liste{
-        position:absolute;
-        width:<?=wHead?>px;
-        top: <?=hHaut?>px;
-        left:50%;
-        margin-left:-<?=wHead/2?>px;
-        z-index:3;
-  }
+  
+  
   #PagesCat{
         position:absolute;
         top: <?=(hHaut+hNav-hL-5)?>px;

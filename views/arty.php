@@ -74,9 +74,10 @@
          <COL WIDTH=<?=wLM?>>
          <TR>
          <TD VALIGN="top" align="center"><DIV id="slogo">arty.st<br> c'est</DIV></TD>
-         <TD id="HeadCat" VALIGN="top">
-           <DIV >
+         <TD  VALIGN="top">
+           <DIV id="HeadCat" >
            </DIV>
+	   <DIV id="ResultsCat"> <span></span> <span></span></DIV>
          </TD>
          <TD valign="top"  align="left">
          <DIV id="HeadLM"></DIV>
@@ -84,7 +85,7 @@
          </TD>
          </TR></TABLE>
     </DIV>
-    <DIV ALIGN=RIGHT id="Imembres">
+    <DIV ALIGN=RIGHT id="Imembres" class="flexcroll">
            <DIV id="membres" >
 	   	<DIV id="membres1" ></DIV>
 	   </DIV>
@@ -119,23 +120,16 @@
       </TABLE>
     </DIV>
   </DIV>
-  <DIV id="liste"></DIV>
+  <DIV id="liste" class="flexcroll">
+  	<DIV id="liste1" >
+	</DIV>
+	<DIV id="endliste" style="position:relatif;height:200px">	
+	<!--<img src="<?=base_url()?>system/application/images/Fonds/FondBas.gif" alt="" title="" width="1001" height="151" border="0" />-->
+	</DIV>
+  </DIV>
   <DIV id="PagesCat"></DIV>
- <!-- <div STYLE="z-index:3">
-  <TABLE WIDTH="<?=wCpit?>px" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="position:absolute; left:50%;margin-left:-<?=wCpit/2?>px; top:0px; page-break-before: always; page-break-inside: avoid; white-space: nowrap;">
-    <COL WIDTH=<?=wNav?>>
-    <COL>
-    <COL WIDTH=<?=wLM?>>
-    <TR><TD colspan=3 height="<?=hHaut?>px"></TD></TR>
-    <TR VALIGN=TOP>
-    <TD></TD>
-    <TD></TD>
-    <TD></TD>
-    </TR>
-  </TABLE>
-  </div>  -->
   <DIV id="status">STATUS</DIV>
-  <DIV id="visuaff"></DIV>
+  <DIV id="visuaff" class="derriere"></DIV>
   <DIV id="visus">
        <DIV id="VQcontainer" class="derriere">
             <DIV STYLE="height:<?=hVhead?>px;position:absolute;left:0px;top:0px;z-index:100" id="VQhandle">

@@ -19,8 +19,8 @@ window.addEvent('domready', function() {
 <BODY>
 <input type="hidden" id="Mnumrows<?=$page?>" value="<?=$numrows?>"/>
 <TABLE ALIGN="LEFT" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid;">
-    <COL WIDTH=<?=col_lm_pseudo?>>
     <COL WIDTH=<?=col_lm_sexe?>>
+    <COL WIDTH=<?=col_lm_pseudo?>>
     <COL WIDTH=<?=col_lm_voix?>>
     <COL WIDTH=<?=col_lm_aff?>>
     <?php
@@ -28,6 +28,16 @@ window.addEvent('domready', function() {
            foreach ($result as $row): ?>
     <TR VALIGN=TOP CLASS="listitem" liste="ML" visu="2" cle="<?=$row['cle']?>" cat="<?=TMmem?>" type="<?=$row['type']?>" sel="false" maj="true">
         <TD>
+            <DIV nowrap style="width:<?=col_lm_sexe?>px;overflow: hidden">
+	    <img src="<?=base_url()?>/system/application/images/<?
+	    switch ($row['sexe']){
+		    case 0: echo "icones/femi.png";break;
+		    case 1: echo "icones/masc";break;
+		    default:echo "spacer.gif";break;
+	    }?>"/>
+	   </DIV>
+        </TD>
+    	<TD>
             <DIV nowrap style="width:<?=col_lm_pseudo?>px;overflow: hidden"><?=$row['pseudo']?></DIV>
             <input type="hidden" id="<?=$row['cle']."avatarML"?>" value="<?if ($row['avatar']=="") echo "images/AvatarDef.gif";else echo "catalogue/".$row['cle']."/".$row['avatar'];?>"/>
             <DIV STYLE="Display:none" ID="<?=$row['cle']."idML"?>">
@@ -37,10 +47,7 @@ window.addEvent('domready', function() {
                  <DIV ><?=lang("lib_ilexprime")." ".$row['nbrepoeutot']." ".lang("lib_oeuvres")." ".lang("lib_etsur")." ".$row['nbrepquetot']." ".lang("lib_questions")?></DIV>
             </DIV>
             <DIV STYLE="Display:none" ID="<?=$row['cle']."moreML".TMmem?>"></DIV>
-        </TD>
-        <TD>
-            <DIV nowrap style="width:<?=col_lm_sexe?>px;overflow: hidden"><?=$row['sexe']?></DIV>
-        </TD>
+        </TD>        
         <TD>
             <DIV nowrap style="width:<?=col_lm_voix?>px;overflow: hidden"><?=$row['voix']?></DIV>
 

@@ -11,20 +11,19 @@ ul.lines {
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color:#CCCCCC;
+    //background-color:#000000;
     border: none; /*1px solid #444;*/
     position: absolute;
     z-index: 9999;
     cursor: default;
     display: none;
 }
-
 ul.lines li {
 //width: <?=wLimitQ?>px;
     -moz-user-select: none;
     padding: 3px 0 3px 8px;
     _padding: 0 0 0 8px; /* IE ... */
-    color: #444;
+    //color: #444;
     font-size: <?=hL?>px;
     //background: #FFF;
     text-decoration: none;
@@ -34,6 +33,7 @@ ul.lines li {
 
 ul.lines li.selected {
     color:#FF0000;
+    text-decoration:underline;
     /*font-weight:bold;
     background: lightsteelblue;*/
 }
@@ -41,7 +41,7 @@ ul.lines li.selected {
 a.lines {
     display: block;
     //width: <?=wLimitQ?>px;
-    height: <?=hLimitQ?>px;
+    //height: <?=hLimitQ?>px;
     background: url(<?=baseurl?>system/application/images/selects/lines.gif) no-repeat left 0;
     font-size: <?=hL?>px;
     text-decoration: none;
@@ -50,6 +50,7 @@ a.lines {
 }
 
 a.lines div {
+    text-decoration: underline;
     background: url(<?=baseurl?>system/application/images/selects/lines.gif) no-repeat right 0;
     padding: 2px 0 4px 0;
     height: 13px;
@@ -59,7 +60,7 @@ a.lines div {
     -moz-user-select: none;
 }
 
-a.lines div * { font: 11px Arial; color: #444; }
+/*a.lines div * {font: 11px Arial; color: #444; }*/
 
 a.lines:hover,
 a.lines:focus,

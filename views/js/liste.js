@@ -31,6 +31,7 @@ function showID(m){
               if (vmopen=="true") showMore(m);
          }
          Msel=m;
+	 $('varscat').value=Msel.getProperty('cle');
          majfromM(m);
 }
 function majfromM(m){

@@ -2,7 +2,7 @@
 <?=$script?>
 window.addEvent('domready', function() {
   this.repMsel=true;
-  var mores=$$("div#liste tr");
+  var mores=$$("div#liste<?=$page?> tr");
   mores.each(function(m){
       m.addEvent('mouseout',function (){unhoverQO(m)});
       m.addEvent('mouseover',function (){hoverQO(m)});
@@ -10,7 +10,11 @@ window.addEvent('domready', function() {
   });
 });
 </script>
-  <TABLE width="<?=wHead?>px" border="0" cellpadding="0" cellspacing="0" style="page-break-before: always; page-break-inside: avoid; white-space: nowrap;" align="left">
+<input type="hidden" id="Catnumrows<?=$page?>" value="<?=$numrows?>"/>
+<?if ($result->num_rows() > 0):
+  foreach ($result->result_array() as $indice=>$row): ?>
+<DIV nowrap ALIGN="LEFT" STYLE="height:<?=hL?>px;overflow:hidden">
+  <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" style="page-break-before: always; page-break-inside: avoid; white-space: nowrap;" align="left">
   <? foreach($cols as $value):?>
   <COL WIDTH=<?=$value?>>
   <?endforeach;?>
@@ -18,8 +22,7 @@ window.addEvent('domready', function() {
   <COL WIDTH=<?=col_avis?>>
   <COL WIDTH=<?=col_avis?>>
   <COL WIDTH=<?=col_avis?>>
-  <?if ($result->num_rows() > 0):
-  foreach ($result->result_array() as $indice=>$row): ?>
+  
   <TR CLASS="listitem" cle="<?=$row['cle']?>" liste="LO" cat="<?=$row['type']?>" visu="0" majpr="true" keyM="<?=$row['keymembre']?>" repM="<?=$row['repMA']?>" sel="false" maj="true">
     <? foreach($champs as $key=>$value):?>
     <TD nowrap>
@@ -36,5 +39,6 @@ window.addEvent('domready', function() {
         <INPUT ID="<?=$row['cle']."fichier"?>" TYPE="HIDDEN" VALUE="<?=isset($row['fichier'])? $row['fichier']:""?>">
     </TD>
   </TR>
-  <? endforeach; endif;?>
   </TABLE>
+</DIV>
+<? endforeach; endif;?>

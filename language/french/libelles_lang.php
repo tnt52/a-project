@@ -45,5 +45,14 @@ $lang['lib_ligne']="ligne";
 $lang['lib_page']="page";
 $lang['lib_par']="par";
 $lang['lib_avismanquants']="avis manquants seulement";
+$lang['lib_avecavis']="avec avis seulement";
+$lang['lib_tous']="tous";
+$lang['lib_tout']="tout";
+$lang['lib_sons']="sons";
+$lang['lib_images']="images";
+$lang['lib_textes']="textes";
+$lang['lib_videos']="vidéos";
+$lang['lib_avis']="avis";
+$lang['lib_gouts']="goûts";
 
 ?>

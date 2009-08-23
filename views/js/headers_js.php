@@ -11,14 +11,14 @@ function initHeadCat(){
          sensQO='<?=$sens?>';
 }
 window.addEvent('domready', function(){
-var s3 = new CustomSelect($('typeaff'), {
+var s1 = new CustomSelect($('selavis'), {
       theme : 'lines',
       
       onSelect: function(el) {
 
       },
       onChange: function(el) {
-	      SelTA();
+	      //SelTA();
       },
       onShow: function(el) {
 
@@ -27,10 +27,11 @@ var s3 = new CustomSelect($('typeaff'), {
 
       }
     });
+    initHeadCat();
+    cfeHead.init({scope:$('header') ,spacer: "http://127.0.0.1/system/application/images/spacer.gif", toolTips: true, toolTipsStyle: "normal"});
+    
     /*s1=$('limitQO').getPrevious(".jsSelectorCWrapper");
     s2=s1.getElement(".jsSelectorC");
     s2.addEvent('click',function (){NewLimQO()});*/
-    initHeadCat();
-    cfeHead.init({scope:$('header') ,spacer: "http://127.0.0.1/system/application/images/spacer.gif", toolTips: true, toolTipsStyle: "normal"});
-    GetCatPages(1);
+    /*GetCatPages(1);*/
 });

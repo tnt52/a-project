@@ -13,7 +13,12 @@ class Navigation extends Controller {
     function test(){
              $data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-beta-1.2b2-compatible.js"></script>';//mootools-release-1.11.js
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/customlselect/CustomlSelect.js"></script>';
-             $this->load->view('customselect',$data);
+	     $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/flexcroll/flexcrollstyles.css">';	     
+             $this->load->view('testflexcroll',$data);
+    }
+    function addflexcroll(){
+	$this->load->view('addflexcroll',null);    
     }
     function compte(){
 	    $this->load->view('formulaires/InfoArtiste');
@@ -48,12 +53,15 @@ class Navigation extends Controller {
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/positionnement_js.php"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/liste.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/swfobject/swfobject.js"></script>';//swfobject_1_5/
+	     $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/flexcroll/flexcrollstyles.css">';
 	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/global.css">';
 	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/affimap.css">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/navigation_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/cfe_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/look_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/visuqo_css.php">';
+	     
              $data['Footer']="";
              $data['cat']=$cat;
          //    $data['account']=$this->load->view('account',array('login'=>$this->load->view('login',array('page'=>'navigation'),true),'voix'=>10),true);
@@ -156,7 +164,7 @@ class Navigation extends Controller {
     }
     function search($cat,$limit,$page,$champtri="",$senstri="ASC"){
              $v=$this->srchandflds();
-	     $addvars=$this->input->post('addvars');
+	     $addvars=$this->input->post('addvars'); // Type Aff pour LM, keyMsel pour liste
              $this->liste_view($cat,$limit,$page,$champtri,$senstri,$v['search'],$v['fields'],$addvars,false);
     }
     function liste_view($cat,$limit,$page,$champtri="",$senstri="ASC",$search=false,$fields=null,$addvars,$readjs=false){
@@ -185,7 +193,7 @@ class Navigation extends Controller {
                      switch ($cat){
                             case TMmem:
                             $data=$this->Getlistes->getmembres($page,$limit,$v['tri'],$v['sens'],$search,$addvars);
-                            $vue="membres_v";
+                            $vue="membresdivtable_v";
                             break;
                             case TMart:
                             $data=$this->Getlistes->getartistes($page,$limit,$v['tri'],$v['sens'],$search,$fields);
