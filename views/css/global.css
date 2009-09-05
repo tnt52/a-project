@@ -1,0 +1,7 @@
+  .devant {
+   z-index:10;
+  }
+  .derriere {
+   z-index:0;
+   display:none;
+  }

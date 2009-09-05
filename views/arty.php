@@ -52,19 +52,19 @@
       <DIV id="artystNav">
 <!--      <DIV id="Sons"><a href="#" onclick="GetListe(<?=TOson?>)">Sons</a></DIV> -->
            <DIV id="Sons"><?echo anchor(base_url().'index.php/navigation/affiche/'.TOson, lang("nav_sons"), null);?></DIV>
-           <DIV id="Images"><a href="#" onclick="switchCat(<?=TOimg?>);StopEvent(event);"><?=lang("nav_images")?></a></DIV>
-           <DIV id="Textes" ><a href="#" cat=<?=TOson?> onclick="clickNav(this);switchCat(<?=TOson?>); StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_textes")?></a></DIV>
-           <DIV id="Videos"><a href="#" onclick="switchCat(<?=TOvdo?>);StopEvent(event);"><?=lang("nav_videos")?></a></DIV>
-           <DIV id="Agenda"><?=lang("nav_agenda")?></DIV>
-           <DIV id="Artistes"><a href="#" onclick="switchCat(<?=TMart?>);StopEvent(event);"><?=lang("nav_artistes")?></a></DIV>
+           <DIV id="Images" class="navlink" href="#" onclick="clickNav(this);switchCat(<?=TOimg?>);StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_images")?></DIV>
+           <DIV id="Textes"  class="navlink" href="#" onclick="clickNav(this);switchCat(<?=TOson?>); StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_textes")?></DIV>
+           <DIV id="Videos" class="navlink" href="#" onclick="clickNav(this);switchCat(<?=TOvdo?>);StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_videos")?></DIV>
+           <DIV id="Agenda" class="navlink" href="#" onclick="clickNav(this);switchCat(<?=TAgenda?>);StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_agenda")?></DIV>
+           <DIV id="Artistes" class="navlink" href="#" onclick="clickNav(this);switchCat(<?=TMart?>);StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_artistes")?></DIV>
       </DIV>
       <DIV id="servicesNav">
-           <DIV id="Cours"><a href="#" onclick="switchCat(<?=TScours?>);StopEvent(event);"><?=lang("nav_cours")?></a></DIV>
-           <DIV id="Services"><a href="#" onclick="switchCat(<?=TSevenement?>);StopEvent(event);"><?=lang("nav_evenementiel")?></a></DIV>
+           <DIV id="Cours"><a href="#" onclick="switchCat(<?=TScours?>);StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_cours")?></a></DIV>
+           <DIV id="Services"><a href="#" onclick="switchCat(<?=TScommande?>);StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_evenementiel")?></a></DIV>
       </DIV>
       <DIV id="affinitestNav">
-           <DIV id="tribunes"><a href="#" onclick="switchCat(<?=TQ?>);StopEvent(event);"><?=lang("nav_tribunes")?></a></DIV>
-           <DIV id="affinites"><a href="#" onclick="showAffinites()"><?=lang("nav_affinites")?></a></DIV>
+           <DIV id="tribunes"><a href="#" onclick="switchCat(<?=TQ?>);StopEvent(event);" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_tribunes")?></a></DIV>
+           <DIV id="affinites"><a href="#" onclick="showAffinites()" onmouseover="hoverNav(this);" onmousedown="pressNav(this);" onmouseout="outNav(this);"><?=lang("nav_affinites")?></a></DIV>
       </DIV>
     </DIV>
     <DIV id="haut">
@@ -85,13 +85,19 @@
          </TD>
          </TR></TABLE>
     </DIV>
-    <DIV ALIGN=RIGHT id="Imembres" class="flexcroll">
+    <DIV ALIGN=RIGHT id="Imembres" >
            <DIV id="membres" >
 	   	<DIV id="membres1" ></DIV>
 	   </DIV>
     </DIV>
-    <DIV id="idMA">AVATAR MA</DIV>
+    <DIV id="idMA" class="idM" onclick="window.open('<?=base_url()?>index.php/compte','Mon Compte','');" >AVATAR MA</DIV>
     <DIV id="RelationMAMS"></DIV>
+    
+    <DIV id="idMS" class="idM" onmouseover="hoverQO(this)" onmouseout="unhoverQO(this)" onclick="More(Msel)">
+	    <img id="idMSimg" alt='' width='<?=wIDimg?>px' height='<?=hIDimg?>px' border='0' />    
+	    <DIV id="idMStxt"></DIV>
+    </DIV>
+	
     <DIV id="bas">
        <TABLE WIDTH="<?=wCpit?>px" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid">
          <COL WIDTH=300>
@@ -102,17 +108,7 @@
           <?=$panelrep?>
         </DIV></TD>
         <TD align="right">
-        <DIV id="idMS" onmouseover="hoverQO(this)" onmouseout="unhoverQO(this)" onclick="More(Msel)">
-        IDMS     Artiste inscrit
-        <TABLE border="0" cellpadding="0" cellspacing="0">
-        <TR>
-          <TD id="idMS1"> IDMS1 Artiste inscrit
-          </TD>
-          <TD id="idMS2">
-          </TD>
-        </TR>
-        </TABLE>
-        </DIV>
+        
         <DIV id="miniNP" STYLE="DISPLAY:NONE"><P><?echo anchor(base_url().'index.php/navigation/affiche/'.TM, 'Mes affinites', array('title' => 'Mes affinites','target'=>'_self'));?>
              (Nuage Points)</P></DIV>
         </TD>
@@ -120,11 +116,8 @@
       </TABLE>
     </DIV>
   </DIV>
-  <DIV id="liste" class="flexcroll">
+  <DIV id="liste" >
   	<DIV id="liste1" >
-	</DIV>
-	<DIV id="endliste" style="position:relatif;height:200px">	
-	<!--<img src="<?=base_url()?>system/application/images/Fonds/FondBas.gif" alt="" title="" width="1001" height="151" border="0" />-->
 	</DIV>
   </DIV>
   <DIV id="PagesCat"></DIV>

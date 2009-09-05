@@ -1,0 +1,26 @@
+#cible{
+	position:relative;
+	left:0;
+	top:0;
+	width: 343px;
+	height:343px;
+	background-image: url(http://127.0.0.1/system/application/images/7zones.gif);
+}
+.spot{
+	position:absolute;
+	z-index:10;
+	background: no-repeat 0 0;
+}
+
+.spot.dim1{
+	width: 16px;
+	height:20px;
+	background-image: url(http://127.0.0.1/system/application/images/radio.gif);
+}
+
+.spot.dim1.H{
+	background-position: 0 -20px;
+}
+.spot.dim1.H.S,.spot.dim1.S{
+	background-position: 0 -40px;
+}

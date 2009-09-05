@@ -1,0 +1,138 @@
+#scrollbar-demo{
+	margin:auto;
+	width: 500px;
+	height:600px;
+	border:10px solid #888;
+	padding:5px;
+	text-align:justify;
+	overflow:auto;
+}
+
+
+.scrollBar .bar{
+	width:20px;
+	height:20px;
+}
+
+.scrollBar .button{
+	width:20px;
+	height:20px;
+	background-color:#FFB119;
+	outline:none;
+	background-position:top center;
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+
+.scrollBar .button.topButton{
+	background-image:url('arrow-up.gif');
+}
+
+.scrollBar .button.bottomButton{
+	background-image:url('arrow-down.gif');
+}
+
+.scrollBar .button.leftButton{
+	background-image:url('arrow-left.gif');
+}
+
+.scrollBar .button.rightButton{
+	background-image:url('arrow-right.gif');
+}
+
+.scrollBar .button.active{
+	background-position:bottom center ;
+}
+
+.scrollBar .scrollable{
+	cursor:pointer;
+	background-image:url('stripe.gif');
+	background-repeat:repeat;
+}
+
+.scrollBar .knob{
+	height:20px;
+}
+
+.scrollBar .knob.verticalKnob{
+	/*cursor:n-resize;*/
+}
+
+.scrollBar .knob.horizontalKnob{
+	cursor:w-resize;
+}
+
+.scrollBar .knobHorizontalTip{
+	width:12px;
+	position:absolute;
+	background-position:left center;
+	background-repeat:no-repeat;
+}
+
+.scrollBar .active .knobHorizontalTip{
+	background-position:right center;
+}
+
+.scrollBar .leftTip{
+	left:0;
+	background-image:url('knob-left.gif');
+}
+
+.scrollBar .rightTip{
+	right:0;
+	background-image:url('knob-right.gif');
+}
+
+.scrollBar  .knobHorizontalFill{
+	background-color:#FFB119;
+	background-position:top center;
+	background-repeat:repeat-x;
+	background-image:url('horizontal-knob.gif');
+	margin:0 12px;
+}
+
+.scrollBar .active .knobHorizontalFill{
+	background-position:bottom center;
+}
+
+.scrollBar .knobVerticalTip{
+	height:12px;
+	background-position:top center;
+	background-repeat:no-repeat;
+}
+
+.scrollBar .active .knobVerticalTip{
+	background-position:bottom center;
+}
+
+.scrollBar .knobVerticalFill{
+	background-color:#FFB119;
+	background-position:left center;
+	background-repeat:repeat-y;
+	background-image:url('vertical-knob.gif');
+	position:absolute;
+	bottom:12px;
+	top:12px;
+}
+
+.scrollBar .active .knobVerticalFill{
+	background-position:right center;
+}
+
+.scrollBar .topTip{
+	background-image:url('knob-top.gif');
+}
+
+.scrollBar .bottomTip{
+	position:absolute;
+	bottom:0;
+	background-image:url('knob-bottom.gif');
+}
+
+.scrollBar .knob.active{
+	border:none;
+}
+
+.scrollBar .corner{
+	background:#FFB119 url('corner.gif') center center no-repeat;
+}

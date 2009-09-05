@@ -8,6 +8,9 @@ body
       font-family:Verdana;
       font-size:<?=hL?>px;
   }
+input{
+	  cursor:pointer;	  
+}
 #cockpit{
       background: url(<?=baseurl?>system/application/images/Fonds/FondCpit.gif) no-repeat left top;
  }
@@ -20,18 +23,30 @@ body
  #bas{
 	/*background: url(<?=baseurl?>system/application/images/Fonds/FondBas.gif) no-repeat left top;*/	 
  }
+ .idM{
+	background: url(<?=baseurl?>system/application/images/Fonds/FondId.png) no-repeat left top;
+	background-position: -2px -3px
+ }
   #slogo {
     color:white;
     background-color:<?=Rec1_coul?>;
   }
+  .hovered .pseudo,.hovered .titre,.hovered .nom, .clicked,.H, #idMS .pseudo {
+    color:red;
+}
+.idM .pseudo{
+    font-size:<?=hLpseudo?>px;
+    font-weight:bold;
+}
+#limitLignes,#labellimitQO,#ResultsM,#ResultsCat,#Imembres, .date,#deconnect{
+    font-size:<?=hLmini?>px;
+}
+
   #HeadCat
   {
    color:black;
    background-color:<?=Rec2_coul?>;
   }
-      #limitLignes,#labellimitQO,#ResultsM,#ResultsCat,#Imembres{
-            font-size:<?=hLmini?>px;
-      }
 
   #HeadLM,#ResultsM {
     color:white;
@@ -42,9 +57,7 @@ body
     color:white;
     background-color:<?=Rec7_coul?>;
   }
-      #mypseudo{
-       font-size:<?=hLpseudo?>px;
-      }
+
   #RelationMAMS{
 	/*background-color:red;*/
   }
@@ -56,6 +69,7 @@ body
    color:white;
    background-color:<?=Rec9_coul?>;
   }
+  
   #Inavigation
   {
         font-family:courier new;
@@ -81,6 +95,7 @@ body
   {
       color:white;
   }
+  
   #Imembres
   {
         background-color:<?=Rec6_coul?>;
@@ -147,12 +162,9 @@ body
           color:red;
           position:absolute;
     }
-#liste .clicked{
+/*#liste .clicked{
     background-color:#000000;
     color:#FFFFFF;
-}
-#liste .hovered{
-    background-color:#CCCCCC;
 }
 #membres .hovered{
     background-color:#CCCCCC;
@@ -161,6 +173,12 @@ body
     background-color:#FFFFFF;
     color:#000000;
 }
+*/
+.listitem, .navlink, #idMA, #idMS{
+	cursor:pointer;
+}
+
+
 .CatTitle{
  font-size:<?=hLtitle?>px;
 }

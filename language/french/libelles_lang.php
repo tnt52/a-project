@@ -10,9 +10,12 @@ $lang['lib_affinite'] = "Affinite";
 $lang['lib_voix'] = "Voix";
 $lang['lib_marep'] = "moi";
 $lang['lib_sarep'] = "lui";
+$lang['lib_Membres'] = "Tribuns";
 
 $lang['lib_liens'] = "liens";
-$lang['lib_membres'] = "Tribuns";
+$lang['lib_lien'] = "lien";
+$lang['lib_membres'] = "tribuns";
+$lang['lib_membre'] = "tribun";
 
 $lang['lib_de'] = "de";
 $lang['lib_dateIns'] = "inscrit le";

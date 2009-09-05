@@ -12,27 +12,15 @@
 if ($row['avatar']=="") $avasrc="images/AvatarDef.gif";
 else $avasrc="catalogue/".$row['cle']."/".$row['avatar'];
 ?>
-<DIV STYLE="position:absolute;top:10px;left:5px;width:<?=wID-wIDimg-15?>px;line-height:20px;text-align:center;">
-  <DIV id="mypseudo"><?=htmlentities($row['pseudo'])?></DIV>
-  <DIV CLASS="Date"><?=lang("lib_dateIns")." ".formatOutDBdate($row['datecrea'])?></DIV>
-  <DIV CLASS="Voix"><?=lang("lib_voix").": ".htmlentities($row['voix'])?></DIV>
-</DIV>
-
-<DIV STYLE="position:absolute;top:<?=hIDimg+10?>px;left:5px;width:<?=wID-10?>px;text-align:center;">
-  <?=lang("lib_jai")." ".$row['nblienstot']." ".lang("lib_liens")." ".lang("lib_avec")." ".$row['nbmemlies']." ".lang("lib_membres")?>
-  <?//=lang("lib_jexprime")." ".$row['nbrepoeutot']." ".lang("lib_oeuvres")." ".lang("lib_etsur")." ".$row['nbrepquetot']." ".lang("lib_questions"),?>
-</DIV>
+<DIV class="pseudo"><?=htmlentities($row['pseudo'])?></DIV>
+<DIV CLASS="date"><?=lang("lib_dateIns")." ".formatOutDBdate($row['datecrea'])?></DIV>
+<?$liblien= $row['nblienstot']>1? lang("lib_liens"):lang("lib_lien");
+$libmembre= $row['nbmemlies']>1? lang("lib_membres"):lang("lib_membre");?>
+<DIV class="lienstxt"><?=$row['nblienstot']." ".$liblien." ".lang("lib_avec")." ".$row['nbmemlies']." ".$libmembre?></DIV>
+<DIV CLASS="voix"><?=lang("lib_voix").": ".htmlentities($row['voix'])?></DIV>
+<DIV class="texte"><?=$row['texte']?></DIV>
 <DIV id="avatar"><img src="<?=base_url()?>system/application/<?=$avasrc?>" alt="" title="smiling" width="<?=wIDimg?>px" height="<?=hIDimg?>px" border="0" /></DIV>
 <DIV id="deconnect"><?=lang("lib_medeconnecter")?></DIV>
-<DIV id="moncompte"><a href="<?=base_url()?>index.php/compte">Le lien</a> <a href="#" onclick="StopEvent(event);"><?=lang("lib_moncompte")?></a></DIV>
-<!--<TABLE border="0" cellpadding="0" cellspacing="0">
-<TR>
-<TD>
-
-</TD>
-<TD>
-
-</TD>-->
 <?endforeach?>
 </body>
 

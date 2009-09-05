@@ -6,14 +6,12 @@ function showID(m){
                               Msel.setProperty("sel","false");
                               Msel.removeClass("clicked");
               }
-              $('idMS1').set('html',$(m.getProperty('cle')+'id'+m.getProperty('liste')).innerHTML);
-              $('idMS2').set('html',
-              "<DIV><img src='"+urlbase+"system/application/"+$(m.getProperty('cle')+'avatar'+m.getProperty('liste')).value+"' alt='' width='100' height='100' border='0' /></DIV>");
+              $('idMStxt').set('html',$(m.getProperty('cle')+'id'+m.getProperty('liste')).innerHTML);
+              $('idMSimg').set('src',urlbase+"system/application/"+$(m.getProperty('cle')+'avatar'+m.getProperty('liste')).value);
               new Fx.Morph($('idMS'),{
                                duration: 600,
                                transition: Fx.Transitions.Bounce.easeOut
                    }).start({
-                               'height':[0,100],
                                'opacity':[0,1]
               });
               if (vmopen=="true") More(m);

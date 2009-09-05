@@ -32,7 +32,7 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
 </SCRIPT>
 </head>
 <body bgcolor="#FFFFFF">
-<DIV id="titleLM" class="CatTitle membres" ALIGN=CENTER><?=lang("lib_membres")?></DIV>
+<DIV id="titleLM" class="CatTitle membres" ALIGN=CENTER><?=lang("lib_Membres")?></DIV>
 <DIV id="SearchM">
 <form method="post" action="#" onsubmit="searchM(this,event)"><!--setTimeout('$(\'searchtextm\').select()',1)-->
            <input type="text" id="searchtextm" name="searchtextm" size="25" onfocus="focusDef(this,libdefSM)" onblur="blurDef(this,libdefSM)" onkeyup="keyupSearch.delay(500,this)" value="<?=lang("lib_chercher")." ".lang("lib_unmembre")?>"/><label for="searchtextm"></label>
@@ -55,7 +55,7 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
 <TABLE id="LMHeads" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='left'>
      <COL WIDTH=<?=col_lm_sexe?>>
      <COL WIDTH=<?=col_lm_pseudo?>>
-     <COL WIDTH=<?=col_lm_voix?>>
+     <COL WIDTH=<?=col_lm_liens?>>
      <COL WIDTH=<?=col_lm_aff?>>
      <TR>
      <TD COLSPAN=4>
@@ -64,8 +64,7 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
      </TR>
      <TR >
      <TD VALIGN="BOTTOM" >
-         <DIV nowrap champ="sexe"><!--  style="cursor:pointer;width:<?=col_lm_sexe?>px;overflow: hidden" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
-         <img class="trisexe desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />-->
+         <DIV nowrap champ="sexe">
          </DIV>
      </TD>
      <TD VALIGN="BOTTOM">
@@ -75,7 +74,7 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
      </TD>
      
      <TD VALIGN="BOTTOM" ALIGN="CENTER">
-         <DIV nowrap champ="liens"  style="cursor:pointer;width:<?=col_lm_voix?>px;overflow: hidden" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+         <DIV nowrap champ="liens"  style="cursor:pointer;width:<?=col_lm_liens?>px;overflow: hidden" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <!--<?=lang("lib_voix")?>--> <img id="liens" class="desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif" />
          </DIV>
      </TD>

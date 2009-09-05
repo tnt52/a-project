@@ -53,7 +53,7 @@
 		case TAson:$champaff="affson";$liens="liensson";break;
 		default:$champaff="affglobal";$liens="liens";break;
 		}		
-	        $select="cle,type,pseudo,sexe,voix,$liens as liens,$champaff as affinite,avatar,nbrepquetot,nbrepoeutot";
+	        $select="cle,type,pseudo,sexe,voix,texte,nblienstot,nbmemlies,$liens as liens,$champaff as affinite,avatar";
                 $keyMA=$this->session->userdata('keyMA');
                 $v=array('page'=>$page, 'limit'=>$limit);
                 $where="TRUE";

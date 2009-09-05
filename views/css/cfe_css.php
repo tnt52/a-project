@@ -59,7 +59,7 @@ label.jsTextL,label.jsPasswordL, label.jsFileL, label.jsSelectorL{
  }
 
 /* labels */
-label{cursor:pointer;}
+/*label{cursor:pointer;}*/
 label.H{color:#339999;}
 label.F{color:#cc3300;}
 

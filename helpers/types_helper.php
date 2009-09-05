@@ -24,9 +24,11 @@ define ("TTheme4",54);
 define ("TTribu",60);
 define ("TTribu1",61);
 define ("TS",70);
-define ("TScours",71);
-define ("TSannonces",72);
-define ("TSevenement",71);
+define ("TScommande",71);
+define ("TScours",72);
+define ("TSannonces",73);
+
+define ("TAgenda",80);
 
 define ("TA",100);
 define ("TAglo",101);

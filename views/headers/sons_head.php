@@ -20,7 +20,7 @@ var libdefO='<?=$libdefO?>';
       <DIV id="searchQO">
       	<input type="text" name="searchtextcat" id="searchtextcat" size="25" onfocus="focusDef(this,libdefO)" onblur="blurDef(this,libdefO)" onkeyup="keyupSearch.delay(500,this)" value="<?=$libdefO?>" /><label for="searchtextcat"></label>
       </DIV>
-      <DIV id="avismanquants">
+      <DIV id="avismanquants" >
       	<label id="libselavis" for="#"></label>
 	    <select id="selavis" name="selavis" size="1" >
             <option value="<?=ALL?>"><?=lang('lib_tous')?></option>

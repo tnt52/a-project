@@ -1,0 +1,14 @@
+<?
+class Compte extends Controller {
+    function Compte()
+    {
+        parent::Controller();
+        $this->session->set_userdata(array('keyMA'=>1,'profil'=>TMmem));
+    }
+    
+    function index()
+    {
+             $this->load->view('InfoArtiste');
+    }
+}
+?>

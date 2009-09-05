@@ -8,27 +8,14 @@ class Navigation extends Controller {
     
     function index()
     {
-             $this->affiche(TQavis);
+             $this->affiche(TOson);
     }
     function test(){
-             $data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-beta-1.2b2-compatible.js"></script>';//mootools-release-1.11.js
-             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/customlselect/CustomlSelect.js"></script>';
-	     $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
-	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/flexcroll/flexcrollstyles.css">';	     
-             $this->load->view('testflexcroll',$data);
-    }
-    function addflexcroll(){
-	$this->load->view('addflexcroll',null);    
-    }
-    function compte(){
-	    $this->load->view('formulaires/InfoArtiste');
-    }
-    function affiche($cat){
-             $data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/basics.js"></script>';
+            $data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/basics.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/constantes_js.php"></script>';
-             /*$data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-beta-1.2b2-compatible.js"></script>';*/
-             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-1.2.1-core.js"></script>';//mootools-release-1.11.js
-             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-1.2-more.js"></script>';
+             //$data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-beta-1.2b2-compatible.js"></script>';
+            // $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-1.2.1-core.js"></script>';//mootools-release-1.11.js
+             //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-1.2-more.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/custom_select/js/custom_select.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/custom_select/js/custom_select_text.js"></script>';
 //             $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/mooplugs/custom_select/themes/simplifica/custom-select-simplifica.css">';
@@ -53,21 +40,67 @@ class Navigation extends Controller {
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/positionnement_js.php"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/liste.js"></script>';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/swfobject/swfobject.js"></script>';//swfobject_1_5/
-	     $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
-	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/flexcroll/flexcrollstyles.css">';
 	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/global.css">';
 	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/affimap.css">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/navigation_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/cfe_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/look_css.php">';
              $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/visuqo_css.php">';
-	     
-             $data['Footer']="";
+	     //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/flexcroll/flexcrollstyles.css">';
+	     $data['panelrep']=$this->load->view('PR',array('keyQ'=>null,'keyM'=>null,'keyMq'=>null,'rep'=>null),true);	     
+             $this->load->view('testflexcroll',$data);
+    }
+    function addflexcroll(){
+	$this->load->view('addflexcroll',null);    
+    }
+    function compte(){
+	    $this->load->view('formulaires/InfoArtiste');
+    }
+    function affiche($cat){
+             $data['Header']='<script type="text/javascript" src="'.base_url().'system/application/views/js/basics.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/constantes_js.php"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-1.2.1-core.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mootools/mootools-1.2-more.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/custom_select/js/custom_select.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/custom_select/js/custom_select_text.js"></script>';
+//             $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/mooplugs/custom_select/themes/simplifica/custom-select-simplifica.css">';
+             $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/custom-select-artyst.php">';
+//             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/customlselect/CustomlSelect.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.base.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.checkbox.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.fieldset.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.file.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.image.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.password.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.radio.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.reset.js"></script>';
+//             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.select.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.submit.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.text.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.textarea.js"></script>';
+             $data['Header'].='<!--[if IE]> <link rel="stylesheet" type="text/css" href="'.base_url().'system/application/views/js/mooplugs/cfe/fixPrematureIE.css" /> <![endif]-->';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/customscrollbar/sources/UvumiScrollbar.js"></script>';//UvumiScrollbar-compressed.js
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/mooplugs/customscrollbar/css/uvumi-scrollbar.css">';
+	     $data['Header'].='<!--[if lt IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/mooplugs/customscrollbar/css/uvumi-scrollbar-ie6.css"> <![endif]-->';
+	     //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/global_js.php"></script>';
+	     //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
+	     //$data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/flexcroll/flexcrollstyles.css">';
+	     $data['Header'].='<script>'.$this->load->view('js/global_js',null,true).'</script>';
+	     $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/cockpit.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/positionnement_js.php"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/liste.js"></script>';
+             $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/swfobject/swfobject.js"></script>';//swfobject_1_5/
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/global.css">';
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/affimap.css">';
+             $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/navigation_css.php">';
+             $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/cfe_css.php">';
+             $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/look_css.php">';
+             $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/css/visuqo_css.php">';
+	     $data['Footer']="";
              $data['cat']=$cat;
          //    $data['account']=$this->load->view('account',array('login'=>$this->load->view('login',array('page'=>'navigation'),true),'voix'=>10),true);
              $data['panelrep']=$this->load->view('PR',array('keyQ'=>null,'keyM'=>null,'keyMq'=>null,'rep'=>null),true);
-             //$data['liste_v']="";//$this->liste_view($cat,true);
-             //$data['test']=$this->load->view('oeuvre_v',null,true);
              $this->load->view('arty',$data);
     }
     function repmsel($cat,$keyM,$sel,$limit,$page,$champtri,$senstri){

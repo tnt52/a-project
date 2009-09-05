@@ -49,7 +49,7 @@
              height:<?=hHaut?>px;
              width:<?=wNav?>px;
             }
-	     <?$mrg1=3;$offsetliste=+10;$mrg_r_lst=$offsetliste+10;$mrg_b_logo=2;$offsetlm=5;?>
+	     <?$mrg1=3;$offsetliste=+10;$mrg_r_lst=$offsetliste;$mrg_b_logo=2;$offsetlm=5;?>
 	     <?$left2=75;$mrg2=2;$bot_srch=hBand+$mrg_b_logo+hL;?>
 	     
 	      // HEAD CAT //
@@ -109,7 +109,7 @@
 	#liste{
 		position:absolute;
 		width:<?=wHead-$mrg_r_lst-$offsetliste?>px;
-		height:<?=hNav?>px;
+		height:<?=hNav-7?>px;
 		top: <?=hHaut?>px;
 		left:50%;
 		margin-left:<?=-wHead/2+$offsetliste?>px;
@@ -165,31 +165,56 @@
        position:absolute;
        z-index:5;
        top:<?=hHaut+hNav?>px;
-       left:0px;
+       left:9px;
        width:<?=wID?>px;
        height:<?=hID?>px;
       }
-      	#avatar{
-              position:absolute;
-              left:<?=wID-5-wIDimg?>px;
-              top:5px;
-          }
-	#deconnect{
+   #deconnect{
 	position:absolute;
-	left:5px;
-	bottom:5px;
+	right:8px;
+	bottom:2px;
 	}
-	#moncompte{
-	position:absolute;
-	right:5px;
-	bottom:5px;
-	}
+
   
   #idMS {
+       position:absolute;
+       z-index:5;
+       top:<?=hHaut+hNav?>px;
+       right:12px;         
        width:<?=wID?>px;
        height:<?=hID?>px;
   }
-  
+  <?$mrg3=10;$mrg4=10;$mrg5=3;?>
+  .idM .pseudo{
+       position:absolute;
+       top:<?=$mrg4?>px;
+       left:<?=wIDimg+$mrg3+$mrg5?>px;                
+  }
+  .idM .date{
+       position:absolute;
+       top:<?=20+$mrg4?>px;
+       left:<?=wIDimg+$mrg3+$mrg5?>px;                
+  }
+  .idM .lienstxt{
+       position:absolute;
+       top:<?=38+$mrg4?>px;
+       left:<?=wIDimg+$mrg3+$mrg5?>px;                
+  }
+  .idM .voix{
+       position:absolute;
+       top:<?=55+$mrg4?>px;
+       left:<?=wIDimg+$mrg3+$mrg5?>px;                
+  }
+  .idM .texte{
+       position:absolute;
+       top:<?=hIDimg+3+$mrg4?>px;
+       left:<?=$mrg3?>px;                
+  }
+  #idMSimg, #avatar{
+       position:absolute;
+       top:<?=$mrg4?>px;
+       left:<?=$mrg3?>px;      
+  }
   
   
   #RelationMAMS{
@@ -233,12 +258,12 @@
     }
     #servicesNav{
        position:absolute;
-       top:175px;
+       top:170px;
        margin-left:<?=$mrgNav?>px;
     }
     #affinitestNav {
        position:absolute;
-       top:240px;
+       top:230px;
        margin-left:<?=$mrgNav?>px;
     }
   #Imembres

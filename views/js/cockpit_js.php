@@ -1,3 +1,4 @@
+<?header("Content-Type: text/javascript");?>
 /* NAVIGATION */
 function getIdMA(){
          new Request.HTML({
@@ -7,85 +8,72 @@ function getIdMA(){
          }).send();
 }
 function switchCat(cat){
-	 this.cat=cat;
+         this.cat=cat;
          this.pageQO=1;
          this.champtriCAT="";
          this.sensQO="";
          $('tobesrchcat').value="";
          $('srchtblcat').value="";
          GetHeader(cat);
-         GetListe();
+         liste_page(1);
          GetPlayer(cat);
 }
 function clickNav(el){
-	$$('.navlink').removeClass('clicked');
-	//for (link in links) document.write(link);//links[link].removeClass('clicked');
-         $(el).addClass('clicked');
+         $(el).setStyles(
+         {
+         "color":"#FF0000",
+         "font-weight":"normal"
+         });
 }
 function pressNav(el){
-
+         $(el).setStyles(
+         {
+         "color":"#FF0000",
+         "font-weight":"bold"
+         });
 }
 function hoverNav(el){
-         $(el).addClass('H');
+         $(el).setStyle("color","#FF0000");
 }
 function outNav(el){
-         $(el).removeClass('H')
+         if (this.cat==el.cat) c="#FF0000";
+         else c="#FFFFFF";
+         $(el).setStyles(
+         {
+         "color":c,
+         "font-weight":"normal"
+         });
 }
-
-function GetListe(){
-	closeVisuMS();
-	pageQO=1;
-	$('ResultsCat').getFirst().set('html',"");
-	$('ResultsCat').getLast().set('html',"");
-	i=1;
-	while($('liste'+i)!=null){
-	$('liste'+i).set('html',"");
-	i++;
-	
-	}
-	GetAllListe();
+function liste_page(page){
+         GetCatPages(page);
+         GetListe(cat);
 }
-function GetAllListe(){
-	if ($('liste'+pageQO)==null) new Element('div',{id:'liste'+pageQO}).inject($('liste'+(pageQO-1)),"after");
-	new Request.HTML({
-             url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
-             update: $('liste'+pageQO),
-             method: 'get',
-	     onComplete:function(){
-		     //document.write(pageQO);		     
-		     n=parseInt($('Catnumrows'+pageQO).value);		     
-		     DivN=$('ResultsCat').getFirst();
-		     if (DivN.get('html')=="") m=0;
-		     else m=parseInt(DivN.get('html'));
-		     DivN.set('html', m+n);
-		     if (m+n>1) $('ResultsCat').getLast().set('html',lib_lignes);
-		     else $('ResultsCat').getLast().set('html',lib_ligne);
-		     if (n<limitQO){
-			     i=pageQO+1;
-			     while($('liste'+i)!=null){
-				     $('liste'+i).set('html',"");
-				     i++;
-			     }
-			     if (scroll_liste) scroll_liste.update();
-			     return;
-		     }
-		     if (scroll_liste) scroll_liste.update();
-		     pageQO++;
-		     GetAllListe();
-	     },
-             evalScripts: true
-         }).post($('LookCat'));	 
+function GetListe(cat){
+         closeVisuMS();
+         new Request.HTML({
+                url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
+                update: $('liste'),
+                onComplete: function () {majfromM(Msel);}
+         }).post($('LookCat'));
 }
 function GetHeader(cat){
          new Request.HTML({
              url: urlbase+'index.php/navigation/header/'+cat+'/'+limitQO+'/'+pageQO+"/"+champtriCAT+"/"+sensQO,
-             update: $('HeadCat'),
+             update: $('header'),
              method: 'get',
              onComplete: function () {majfromM(Msel);},
              evalScripts: true
          }).send();
 }
-
+function GetCatPages(page){
+         pageQO=page;
+         new Request.HTML({
+              url: urlbase+'index.php/navigation/pages/'+cat+'/'+limitQO+'/'+pageQO+'/',
+              update: $('PagesCat'),
+              onComplete: function () {}
+         }).post($('LookCat'));
+     //    new Request.HTML({url: urlbase+'index.php/navigation/pages/'+cat+'/'+limitQO+'/'+pageQO,update: $('PagesCat'),method: 'get', evalScripts: true}).send();
+}
 function GetPlayer(cat){
          new Request.HTML({
              url: urlbase+'index.php/navigation/player/'+cat,
@@ -94,6 +82,11 @@ function GetPlayer(cat){
              evalScripts: true
          }).send();
 }
+/*function membres_page(page){
+         pageM=page;
+         GetHeadM();
+         GetMembres();
+}*/
 function GetHeadM(){
          new Request.HTML({
              url: urlbase+'index.php/navigation/header/'+TM+'/'+limitM+'/'+pageM+"/"+champtriM+"/"+sensM,
@@ -102,21 +95,25 @@ function GetHeadM(){
              evalScripts: true
          }).send();
 }
-function keyupSearch(){
-	this.getParent('form').onsubmit();
-}
 function searchCat(form,e){
          //document.write("test"+form);
          closeVisuMS();
          $('tobesrchcat').value=$('searchtextcat').value;
-	 $('srchtblcat').value=$('searchtablescat').value;
-	 GetListe();        
+         chkbxs=$(form).getElements("input[type=checkbox]");
+         $('srchtblcat').value="";
+         for(i=chkbxs.length-1;i>-1;i--){
+             if (chkbxs[i].checked==true) $('srchtblcat').value+=","+chkbxs[i].value;
+         }
+         new Request.HTML({
+         url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
+         update: $('liste'),
+         onComplete: function () {}
+         }).post($('LookCat'));
+         GetCatPages(1);
          StopEvent(e);
 }
-
 function searchM(form,e){
-	if ($('searchtextm').value==libdefSM) $('tobesrchm').value="";
-	else $('tobesrchm').value=$('searchtextm').value;
+	$('tobesrchm').value=$('searchtextm').value;
 	$('srchtblm').value=$('searchtablesm').value;	
 	GetMembres();
 	StopEvent(e);
@@ -127,14 +124,7 @@ function SelTA(){
 }
 function GetMembres(){
 	pageM=1;
-	$('ResultsM').getFirst().set('html',"");
-	$('ResultsM').getLast().set('html',"");
-	i=1;
-	while($('membres'+i)!=null){
-	     $('membres'+i).set('html',"");
-	     i++;
-	     
-	}
+	DivN=$('ResultsM').getFirst().set('html',"0");
 	GetAllMembres();
 }
 function GetAllMembres(){
@@ -156,46 +146,23 @@ function GetAllMembres(){
 			     i=pageM+1;
 			     while($('membres'+i)!=null){
 				     $('membres'+i).set('html',"");
-				     i++;
+				     i++
 			     }
-			     if (scroll_lm) scroll_lm.update();
-			     //if ($('Imembres').scrollUpdate) $('Imembres').scrollUpdate();
 			     return;
 		     }
-		     if (scroll_lm) scroll_lm.update();
 		     pageM++;
 		     GetAllMembres();
 	     },
              evalScripts: true
          }).post($('LookM'));	 
 }
-function hoverTri(el){
-         el=$(el);
-         el.getChildren()[0].addClass('H');
-}
-function pressTri(el){
-         el=$(el);
-         el.getChildren()[0].addClass('C');
-}
-function releaseTri(el){
-         el=$(el);
-         img=el.getChildren()[0];
-         if (img.hasClass('C')) img.removeClass('C');
-}
-function unhoverTri(el){
-         el=$(el);
-         img=el.getChildren()[0];
-         if (img.hasClass('C')) img.removeClass('C');
-         img.removeClass('H');
-}
-var lastTriM=null;
 var lastTriCat=null;
 var img;
-function triM(el){
+function tri(el,divupdate,categ,limit,page,lastTri){
 	el=$(el);
 	img=el.getChildren()[0];
-	//img.addClass('C');
-	//if (img.hasClass('A')) {
+	img.addClass('C');
+	if (img.hasClass('A')) {
 		if (img.hasClass('asc')){
 			img.removeClass('asc');
 			img.addClass('desc');
@@ -204,23 +171,65 @@ function triM(el){
 			img.removeClass('desc');
 			img.addClass('asc');
 		}
-	//}
-	//else {
+	}
+	else {
+		if (lastTri!=null && lastTri.hasClass('A')) {
+		 lastTri.removeClass('A');
+	}
+	img.addClass('A');
+	lastTri=img;
+	}
+	champtri=el.getProperty('champ');
+	if (img.hasClass('asc')) sens='ASC'; else sens='DESC';
+	if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+	$('varscat').value=keyMsel;
+	//GetAllMembres();
+	new Request.HTML({
+		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens,
+		update: divupdate,
+		method: 'get',
+		evalScripts: true
+	}).send();
+}
+var lastTriM=null;
+function triM(el){
+	categ=TM;
+	limit=limitM;page=pageM;
+	el=$(el);
+	img=el.getChildren()[0];
+	img.addClass('C');
+	if (img.hasClass('A')) {
+		if (img.hasClass('asc')){
+			img.removeClass('asc');
+			img.addClass('desc');
+		}
+		else if (img.hasClass('desc')){
+			img.removeClass('desc');
+			img.addClass('asc');
+		}
+	}
+	else {
 		if (lastTriM!=null && lastTriM.hasClass('A')) {
 		 lastTriM.removeClass('A');
 	}
 	img.addClass('A');
 	lastTriM=img;
-	//}
+	}
 	champtriM=el.getProperty('champ');
 	if (img.hasClass('asc')) sensM='ASC'; else sensM='DESC';
 	//if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
 	GetMembres();
-
+	/*new Request.HTML({
+		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
+		update: divupdate,
+		method: 'get',
+		evalScripts: true
+	}).send();
+	/*tri(el,$('membres'),TM,limitM,pageM,this.lastTriM);*/
 }
 function triCat(el){
-	//tri(el,$('liste'),cat,limitQO,pageQO,lastTriCat);
-         el=$(el);
+	tri(el,$('liste'),cat,limitQO,pageQO,lastTriCat);
+        /* el=$(el);
          img=el.getChildren()[0];
          img.addClass('C');
          if (img.hasClass('A')) {
@@ -240,12 +249,16 @@ function triCat(el){
               img.addClass('A');
               lastTriCat=img;
          }
-         champtriCat=el.getProperty('champ');
+         triQO=el.getProperty('champ');
          if (img.hasClass('asc')) sensQO='ASC'; else sensQO='DESC';
-	 GetListe();
-
+         if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
+         new Request.HTML({
+             url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+triQO+'/'+sensQO+'/'+keyMsel,
+             update: $('liste'),
+             method: 'get',
+             evalScripts: true
+         }).send();*/
 }
-
 function showAffinites(){
          new Request.HTML({
              url: urlbase+'index.php/navigation/affinites',
@@ -307,12 +320,20 @@ function majPR(Qsel){
          }
 }
 /* HEADER JS */
-
+function hoverTri(el){
+         el=$(el);
+         el.getChildren()[0].addClass('H');
+}
+function unhoverTri(el){
+         el=$(el);
+         img=el.getChildren()[0];
+         if (img.hasClass('C')) img.removeClass('C');
+         img.removeClass('H');
+}
 var cfeHeadM = new cfe.base();
 var cfeHead = new cfe.base();
-//cfeHeadM.setModuleOptions('text',{onBlur: document.write("test")});
-/*cfeHeadM.setModuleOptions('select',{defaultSelect: 1, scrolling:true, scrollSteps: 7});
-cfeHead.setModuleOptions('select',{defaultSelect: defsel, scrolling:true, scrollSteps: 3});*/
+cfeHeadM.setModuleOptions('select',{defaultSelect: 1, scrolling:true, scrollSteps: 7});
+cfeHead.setModuleOptions('select',{defaultSelect: defsel, scrolling:true, scrollSteps: 3});
 
 var defsel=1;
 switch (limitQO){
@@ -320,6 +341,11 @@ switch (limitQO){
        case 50: defsel=2;break;
        case 100: defsel=3;break;
 }
+function NewLimQO(){
+         limitQO=$('limitQO').options[$('limitQO').options.selectedIndex].text;
+         liste_page(1);
+}
+
 
 /* Visu navigation */
 function closeVisuMS(){
@@ -361,34 +387,30 @@ function unhover(el){
 /* Positionning */
 function repositionner(el) {
          setTimeout(function (){
-         var effetTop = new Fx.Tween(el, {duration : 00,transition: Fx.Transitions.Bounce.easeOut}) ;
+         var effetTop = new Fx.Tween(el, {duration : 500,transition: Fx.Transitions.Elastic.easeOut}) ;
          var position_actuelle = el.getStyle('top');
          //NB : document.documentElement.scrollTop est un variable javascript de base, c'est pas du Mootools
          //NB2 : C'est start(valeur depart, valeur arrive) et non plus custom() comme dans la version 0.83 de Mootools   Math.max(document.body.scrollTop document.documentElement.scrollTop+window.getScrollTop()+position_actuelle
          effetTop.start('top',position_actuelle,Math.max(document.body.scrollTop,window.getScrollTop()));
          }
-         ,00);
+         ,500);
 }
 function centrer(el,w,h){
          el.setStyle('top',el.getStyle('top')-h/2);
          el.setStyle('left',el.getStyle('left')-w/2);
 }
-var scroll_liste=new UvumiScrollbar("liste");
-var scroll_lm=new UvumiScrollbar("Imembres");
 /* INITIALISATION */
 window.addEvent('domready', function() {
                             /*$('Artistes').addEvent('click',function() {GetListe($('Artistes').getProperty('cat'))});
                             $('Sons').addEvent('click',function() {void(window.location.reload()); GetListe($('Sons').getProperty('cat'))});*/
                             /*$('compte').makeDraggable();*/
                             //centrer($('VisuQ'),400,400);
-                            //scroll_liste = new UvumiScrollbar("liste");
-			    //scroll_lm = new UvumiScrollbar("Imembres");
-			    majPR(null);
+                            majPR(null);
                             majNewQ();
-                            GetListe();;                            
+                            liste_page(1);;                            
 			    GetHeadM();
 			    GetMembres();
                             getIdMA();
                           //  GetMembres();
-			  //MM_preloadImages(urlbase+'system/application/images/boutons/OKrol.gif');
+                            MM_preloadImages(urlbase+'system/application/images/boutons/OKrol.gif');
 });

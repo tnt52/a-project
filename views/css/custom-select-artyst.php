@@ -7,27 +7,27 @@
                                  margin: 0;
                 }
 ul.lines {
-    //width: <?=wLimitQ?>px;
+    /*width: <?=wLimitQ?>px;
+    background-color:#000000;
+    */
     list-style: none;
     margin: 0;
     padding: 0;
-    //background-color:#000000;
+    
     border: none; /*1px solid #444;*/
     position: absolute;
     z-index: 9999;
-    cursor: default;
+    cursor: pointer;
     display: none;
 }
 ul.lines li {
-//width: <?=wLimitQ?>px;
+/*width: <?=wLimitQ?>px;color: #444;background: #FFF;*/
     -moz-user-select: none;
     padding: 3px 0 3px 8px;
     _padding: 0 0 0 8px; /* IE ... */
-    //color: #444;
     font-size: <?=hL?>px;
-    //background: #FFF;
     text-decoration: none;
-    cursor: default;
+    cursor: pointer;
     z-index: 9999;
 }
 
@@ -40,12 +40,12 @@ ul.lines li.selected {
 
 a.lines {
     display: block;
-    //width: <?=wLimitQ?>px;
-    //height: <?=hLimitQ?>px;
+    /*width: <?=wLimitQ?>px;
+    height: <?=hLimitQ?>px;*/
     background: url(<?=baseurl?>system/application/images/selects/lines.gif) no-repeat left 0;
     font-size: <?=hL?>px;
     text-decoration: none;
-    cursor: default;
+    cursor: pointer;
     color: #444;
 }
 
