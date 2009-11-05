@@ -12,15 +12,15 @@
     var cat=<?=$cat?>;
     var TM=<?=TMmem?>;
     //var urlbase='<?=base_url()?>'; dans global.js
-    var Qsel=null; // A remplacer par MainSel
+    //var Qsel=null; // A remplacer par MainSel
     var MainSel=null;
     var SubSel=null;
-    var limitQO=20,pageQO=1;
+    var limitQO=<?=limitQO?>,pageQO=1;
     var champtriCAT='',sensQO='';
     var Msel=null;
     var Mvisu=null;
     var vmopen=false;
-    var limitM=20,pageM=1;
+    var limitM=<?=limitM?>,pageM=1;
     var champtriM='pseudo',sensM='ASC';    
     var repmsels=new Array();
     var repMsel=false;//false si pas de col repMsel dans liste
@@ -68,22 +68,11 @@
       </DIV>
     </DIV>
     <DIV id="haut">
-         <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" style="page-break-before: always; page-break-inside: avoid; margin: 0em 0em 0em 0em;" height="100%">
-         <COL WIDTH=<?=wNav?>>
-         <COL>
-         <COL WIDTH=<?=wLM?>>
-         <TR>
-         <TD VALIGN="top" align="center"><DIV id="slogo">arty.st<br> c'est</DIV></TD>
-         <TD  VALIGN="top">
-           <DIV id="HeadCat" >
-           </DIV>
-	   <DIV id="ResultsCat"> <span></span> <span></span></DIV>
-         </TD>
-         <TD valign="top"  align="left">
-         <DIV id="HeadLM"></DIV>
-	 <DIV id="ResultsM"> <span></span> <span></span></DIV>
-         </TD>
-         </TR></TABLE>
+    	<DIV id="slogo">arty.st<br> c'est</DIV>	    
+	<DIV id="HeadCat" ></DIV>
+	<DIV id="ResultsCat"> <span></span> <span></span></DIV>
+	<DIV id="HeadLM"></DIV>
+	<DIV id="ResultsM"> <span></span> <span></span></DIV>         
     </DIV>
     <DIV ALIGN=RIGHT id="Imembres" >
            <DIV id="membres" >
@@ -91,8 +80,7 @@
 	   </DIV>
     </DIV>
     <DIV id="idMA" class="idM" onclick="window.open('<?=base_url()?>index.php/compte','Mon Compte','');" >AVATAR MA</DIV>
-    <DIV id="RelationMAMS"></DIV>
-    
+    <DIV id="RelationMAMS"></DIV>    
     <DIV id="idMS" class="idM" onmouseover="hoverQO(this)" onmouseout="unhoverQO(this)" onclick="More(Msel)">
 	    <img id="idMSimg" alt='' width='<?=wIDimg?>px' height='<?=hIDimg?>px' border='0' />    
 	    <DIV id="idMStxt"></DIV>

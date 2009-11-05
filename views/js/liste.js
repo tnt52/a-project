@@ -57,6 +57,7 @@ function unhoverQO(el){
 }
 
 n=0;
+
 function More(m){
 //    document.write(m);
          m=$(m);
@@ -70,8 +71,8 @@ function More(m){
                 case 2: Vstr='M';break;
          }
          type=$('V'+Vstr+'cadre').getElement('div').getProperty('type');
-         if (m.getNext('.listitem')==null) $('V'+Vstr+'nxt').setStyle('opacity',0); else $('V'+Vstr+'nxt').setStyle('opacity',1);
-         if (m.getPrevious('.listitem')==null) $('V'+Vstr+'prv').setStyle('opacity',0); else $('V'+Vstr+'prv').setStyle('opacity',1);
+         if (getNextItem(m)==null) $('V'+Vstr+'nxt').setStyle('opacity',0); else $('V'+Vstr+'nxt').setStyle('opacity',1);
+         if (getPrevItem(m)==null) $('V'+Vstr+'prv').setStyle('opacity',0); else $('V'+Vstr+'prv').setStyle('opacity',1);
          if (m.getProperty('cat')!=type){
             new Request.HTML({
                 url: urlbase+'index.php/navigation/player/'+m.getProperty('cat'),

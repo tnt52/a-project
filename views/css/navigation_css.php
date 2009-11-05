@@ -44,6 +44,7 @@
       vertical-align:top;
   }
             #slogo {
+	     position : absolute;
              margin: 0 0 0 0;
              padding: 0 0 0 0;
              height:<?=hHaut?>px;
@@ -103,12 +104,13 @@
 		 left:50%;
 		 margin-left:<?=-wHead/2+$offsetliste?>px;
 		 bottom:<?=$mrg1?>px;
-		 width:<?=wHead-$mrg_r_lst-$offsetliste?>px;
-		 /*height:<?=hBand?>px;*/
+		 /*width:<?=wHead-$mrg_r_lst-$offsetliste?>px;
+		 height:<?=hBand?>px;*/
 		}
+		<?$w=wHead-$mrg_r_lst-$offsetliste?>
 	#liste{
 		position:absolute;
-		width:<?=wHead-$mrg_r_lst-$offsetliste?>px;
+		width:<?=$w?>px;
 		height:<?=hNav-7?>px;
 		top: <?=hHaut?>px;
 		left:50%;
@@ -116,6 +118,9 @@
 		z-index:3;
 		overflow-x:hidden;
 		overflow-y:auto;
+	}
+	.wListe{
+		width:<?=$w-wScroll?>px;
 	}
 		// HEAD LM//		
             #HeadLM {

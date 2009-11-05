@@ -79,14 +79,16 @@
                 LEFT JOIN affinites
                      ON (affinites.keyobjet=membres.cle && affinites.keysujet=$keyMA)
                 WHERE membres.actif=1 AND ($where))
-                UNION
+		ORDER BY $champtri $senstri
+                LIMIT ".($page-1)*$limit.",$limit";
+                /*UNION
                 (SELECT artistes.$select,artistes.datecrea
                 FROM artistes
                 LEFT JOIN affinites
                      ON (affinites.keyobjet=artistes.cle && affinites.keysujet=$keyMA)
                 WHERE artistes.actif=1 AND ($where))
                 ORDER BY $champtri $senstri
-                LIMIT ".($page-1)*$limit.",$limit";
+                LIMIT ".($page-1)*$limit.",$limit";*/
                 $r=$this->db->query($qstring);
                 /*$this->db->from('membres');
                 $this->db->where('actif',1);
@@ -133,13 +135,8 @@
                 $this->db->from('oeuvres');
                 $this->db->select('oeuvres.cle,oeuvres.keymembre,oeuvres.type,titre,artistes.nom,portee,adhesion,fichier,rep1.reponse as repMA,rep2.reponse as repMsel');
                 $this->db->join('artistes','artistes.cle=oeuvres.keymembre','left');
-                if ($champtri=="sarep") $keyM=$keyMA; else $keyM=$keyMsel;
                 $this->db->join('repoeuvres as rep1','rep1.keyquestion=oeuvres.cle AND rep1.keymembre='.$keyMA,'left');
                 $this->db->join('repoeuvres as rep2','rep2.keyquestion=oeuvres.cle AND rep2.keymembre='.$keyMsel,'left');
-                /*if (is_string($champtri)) {
-                   if ($champtri=="sarep") $champ1="reponse"; else $champ1=$champtri;
-                   $this->db->order_by($champtri,$senstri);
-                } */
                 $this->db->order_by($champtri,$senstri);
                 $this->docSQLsearch($search,$fields);
                 $this->db->where('oeuvres.type',$type);
@@ -150,17 +147,17 @@
                 $v['result']=$r;
                 return $v;
        }
-       function getquestions($type,$page,$limit){
+       function getquestions($type,$page,$limit,$champtri,$senstri,$keyMsel,$search,$fields){
                 $keyMA=$this->session->userdata('keyMA');
                 $v=array('page'=>$page, 'limit'=>$limit);
                 $this->db->limit($limit,($page-1)*$limit);
                 $this->db->from('questions');
-                //$this->db->select('cle,titre,nomM,adhesion,fichier');
-                $this->db->select('questions.cle,questions.keymembre,libelle,membres.pseudo,membres.sexe,adhesion,repquestio.reponse');
+                $this->db->select('questions.cle,questions.keymembre,libelle,membres.pseudo,membres.sexe,portee,adhesion,repquestio.reponse,repquestion.keytribu');
                 $this->db->join('membres','membres.cle=questions.keymembre','left');
-                $this->db->join('repquestio','repquestio.keyquestion=questions.cle AND repquestio.keymembre='.$keyMA,'left');
-                $this->db->order_by('libelle','asc');
-                $this->db->order_by('pseudo','desc');
+                $this->db->join('repquestio as rep1','rep1.keyquestion=questions.cle AND rep1.keymembre='.$keyMA,'left');
+		$this->db->join('repquestio as rep2','rep2.keyquestion=questions.cle AND rep2.keymembre='.$keyMSel,'left');
+                $this->db->order_by($champtri,$senstri);
+                $this->docSQLsearch($search,$fields);
                 $this->db->where('questions.type',$type);
                 $this->db->where('questions.actif',1);
                 $r=$this->db->get();

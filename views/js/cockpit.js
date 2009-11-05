@@ -240,7 +240,7 @@ function triCat(el){
               img.addClass('A');
               lastTriCat=img;
          }
-         champtriCat=el.getProperty('champ');
+         champtriCAT=el.getProperty('champ');
          if (img.hasClass('asc')) sensQO='ASC'; else sensQO='DESC';
 	 GetListe();
 
@@ -257,15 +257,16 @@ function showAffinites(){
 	 DIVdevant($('visuaff'));
 }
 /* MAJ PR */
-function majPR(Qsel){
+function majPR(Sel){
+	return;
          var NewQ=$('NewQ');
          var spanR;
          var PR=$('PanelRep');
          var cle="";
-         if (Qsel!=null){
-            var cle=$('keyQpoR').value=Qsel.getProperty('cle');
-            $('keyMQpoR').value=Qsel.getProperty('keyM');
-            var cat=$('typeQpoR').value=Qsel.getProperty('cat');
+         if (Sel!=null){
+            var cle=$('keyQpoR').value=Sel.getProperty('cle');
+            $('keyMQpoR').value=Sel.getProperty('keyM');
+            var cat=$('typeQpoR').value=Sel.getProperty('cat');
             var LibNQ="";
             if (cle=="" || cle==null) LibNQ=$('LibNewQ').value;
             libelleQ=$('LibelleQ');
@@ -273,22 +274,22 @@ function majPR(Qsel){
             libQgout=$('LibQgout');
             PRgout=$('panelgout');
             PRavis=$('panelavis');
-            switchDiv(PR,NewQ);
+            DIVdevant(PR);//switchDiv(PR,NewQ);
             switch(parseInt(cat)){
                 case TQavis:
-                     libelleQ.set('html',LibNQ==""? $(cle+"libelle"+Qsel.getProperty('liste')).innerHTML : LibNQ);
+                     libelleQ.set('html',LibNQ==""? $(cle+"libelle"+Sel.getProperty('liste')).innerHTML : LibNQ);
                      libQavis.setStyle('display','block');
                      libQgout.setStyle('display','none');
                      PRavis.setStyle('display','block');
                      PRgout.setStyle('display','none');
                      break;
                 default:
-                     libelleQ.set('html',LibNQ==""? $(cle+"titre"+Qsel.getProperty('liste')).innerHTML + "?": LibNQ + "?");
+                     libelleQ.set('html',LibNQ==""? $(cle+"titre"+Sel.getProperty('liste')).innerHTML + "?": LibNQ + "?");
                      libQavis.setStyle('display','none');
                      libQgout.setStyle('display','block');
                      PRavis.setStyle('display','none');
                      PRgout.setStyle('display','block');
-                     switch (Qsel.getProperty('repM')){
+                     switch (Sel.getProperty('repM')){
                             case $('BigS').value:$('BigS').retrieve('cfe').clicked();spanR=$('BigS').getParent();break;
                             case $('LittleS').value:$('LittleS').retrieve('cfe').clicked();spanR=$('LittleS').getParent();break;
                             case $('NoF').value:$('NoF').retrieve('cfe').clicked();spanR=$('NoF').getParent();break;
@@ -302,7 +303,7 @@ function majPR(Qsel){
             DIVdevant($('retourPR'));
          }
          else {
-            switchDiv(NewQ,PR);
+            DIVderriere(PR);//switchDiv(NewQ,PR);
             $('typeQpoR').value=$('keyMQpoR').value=$('keyQpoR').value="";
          }
 }
@@ -332,20 +333,26 @@ function closeVisuS(){
          if (SubSel!=null && SubSel.getProperty("sel")=="true") showMore(SubSel);
          SubSel=null;
 }
+function getNextItem(m){
+	return $(m.getProperty('liste')+(parseInt(m.getProperty('ligne'))+1));	
+}
+function getPrevItem(m){
+	return $(m.getProperty('liste')+(parseInt(m.getProperty('ligne'))-1));
+}
 function next(Sel){
-         var nxt=Sel.getNext('.listitem');
+         var nxt=getNextItem(Sel);
          nxt==null? showMore(Sel):More(nxt);
 }
 function prev(Sel){
-         var prv=Sel.getPrevious('.listitem');
+         var prv=getPrevItem(Sel);
          prv==null? showMore(Sel):More(prv);
 }
 function nextM(Sel){
-         var nxt=Sel.getNext('.listitem');
+         var nxt=getNextItem(Sel);
          nxt==null? showID(Sel):showID(nxt);
 }
 function prevM(Sel){
-         var prv=Sel.getPrevious('.listitem');
+         var prv=getPrevItem(Sel);
          prv==null? showID(Sel):showID(prv);
 }
 
@@ -384,7 +391,7 @@ window.addEvent('domready', function() {
                             //scroll_liste = new UvumiScrollbar("liste");
 			    //scroll_lm = new UvumiScrollbar("Imembres");
 			    majPR(null);
-                            majNewQ();
+                            //majNewQ();
                             GetListe();;                            
 			    GetHeadM();
 			    GetMembres();

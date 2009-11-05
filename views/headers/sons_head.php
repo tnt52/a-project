@@ -33,7 +33,7 @@ var libdefO='<?=$libdefO?>';
       </form>
 </span>
 
-     <TABLE id="CatHeads" WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='center'>
+     <TABLE id="CatHeads" class="wListe" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE='page-break-before: always; page-break-inside: avoid' align='center'>
      <? foreach($cols as $value):?>
      <COL WIDTH=<?=$value?>>
      <?endforeach;?>

@@ -226,7 +226,7 @@ class Navigation extends Controller {
                      switch ($cat){
                             case TMmem:
                             $data=$this->Getlistes->getmembres($page,$limit,$v['tri'],$v['sens'],$search,$addvars);
-                            $vue="membresdivtable_v";
+                            $vue="membres_v";
                             break;
                             case TMart:
                             $data=$this->Getlistes->getartistes($page,$limit,$v['tri'],$v['sens'],$search,$fields);

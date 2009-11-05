@@ -27,7 +27,7 @@ input{
 	background: url(<?=baseurl?>system/application/images/Fonds/FondId.png) no-repeat left top;
 	background-position: -2px -3px
  }
-  #slogo {
+ #slogo {
     color:white;
     background-color:<?=Rec1_coul?>;
   }

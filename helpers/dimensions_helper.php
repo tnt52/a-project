@@ -16,7 +16,7 @@ define ('col_lm_sexe',10);
 define ('col_lm_liens',40);
 define ('col_lm_aff',40);
 
-define ('wScroll',15);
+define ('wScroll',20);
 
 define ('hLmini',10);
 define ('hL',12);

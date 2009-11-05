@@ -12,9 +12,10 @@ window.addEvent('domready', function() {
 </script>
 <input type="hidden" id="Catnumrows<?=$page?>" value="<?=$numrows?>"/>
 <?if ($result->num_rows() > 0):
+  $l=($page-1)*limitQO;
   foreach ($result->result_array() as $indice=>$row): ?>
 <DIV nowrap ALIGN="LEFT" STYLE="height:<?=hLListe?>px;overflow:hidden">
-  <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" style="page-break-before: always; page-break-inside: avoid; white-space: nowrap;" align="left">
+  <TABLE class="wListe"  border="0" cellpadding="0" cellspacing="0" style="page-break-before: always; page-break-inside: avoid; white-space: nowrap;" align="left">
   <? foreach($cols as $value):?>
   <COL WIDTH=<?=$value?>>
   <?endforeach;?>
@@ -23,7 +24,7 @@ window.addEvent('domready', function() {
   <COL WIDTH=<?=col_avis?>>
   <COL WIDTH=<?=col_avis?>>
   
-  <TR CLASS="listitem" cle="<?=$row['cle']?>" liste="LO" cat="<?=$row['type']?>" visu="0" majpr="true" keyM="<?=$row['keymembre']?>" repM="<?=$row['repMA']?>" sel="false" maj="true">
+  <TR CLASS="listitem" id="LO<?=$l?>" ligne="<?=$l?>" cle="<?=$row['cle']?>" liste="LO" cat="<?=$row['type']?>" visu="0" majpr="true" keyM="<?=$row['keymembre']?>" repM="<?=$row['repMA']?>" sel="false" maj="true">
     <? foreach($champs as $key=>$value):?>
     <TD nowrap>
         <DIV id="<?=$row['cle'].$value.'LO'?>" CLASS="<?=$value?>" style="width:<?=$cols[$key]?>px;overflow: hidden"><?=htmlentities($row[$value])?></DIV>
@@ -41,4 +42,4 @@ window.addEvent('domready', function() {
   </TR>
   </TABLE>
 </DIV>
-<? endforeach; endif;?>
+<? $l++; endforeach; endif;?>

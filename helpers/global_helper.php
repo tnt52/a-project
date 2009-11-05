@@ -41,4 +41,8 @@ define ("ValBigOK",3);
 define ("ALL",0);
 define ("SSavis",1);
 define ("AVavis",2);
+
+//LIMITES//
+define("limitQO",20);
+define("limitM",20);
 ?>
