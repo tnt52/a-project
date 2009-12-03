@@ -24,14 +24,14 @@ input{
 	/*background: url(<?=baseurl?>system/application/images/Fonds/FondBas.gif) no-repeat left top;*/	 
  }
  .idM{
-	background: url(<?=baseurl?>system/application/images/Fonds/FondId.png) no-repeat left top;
-	background-position: -2px -3px
+	background: url(<?=baseurl?>system/application/images/Fonds/FondId.gif) no-repeat left top;
+	background-position: 3px 2px
  }
  #slogo {
     color:white;
     background-color:<?=Rec1_coul?>;
   }
-  .hovered .pseudo,.hovered .titre,.hovered .nom, .clicked,.H, #idMS .pseudo {
+  .hovered .pseudo,.hovered .titre,.hovered .nom, .hovered .libelle, .clicked,.H, #idMS .pseudo {
     color:red;
 }
 .idM .pseudo{
@@ -107,22 +107,40 @@ input{
   #visuaff{
         background-color:white;
   }
+  <?$w=13;$h=20?>
+.prev,.next,.close {
+  vertical-align: text-top;
+  width: <?=$w?>px;
+  height:<?=$h?>px;
+  background: no-repeat 0 0;
+}
+.prev {background-image: url(http://127.0.0.1/system/application/images/boutons/prev.png);}
+.next {background-image: url(http://127.0.0.1/system/application/images/boutons/next.png);}
+.close {background-image: url(http://127.0.0.1/system/application/images/boutons/close.png);}
+
+/*.prev,.next,.close {background-position: 0 0px;}*/
+.prev.H,.next.H,.close.H {background-position: 0 -<?=$h?>px;}
+
+
   #VQcontainer{
-        border: 2px solid red;
+        /*border: 2px solid red;*/
         color:white;
-        background-color:black;
+        /*background-color:black;*/
   }
     #VQhandle
-    {     background-color:black;
+    {     
+	  background: url(<?=baseurl?>system/application/images/Fonds/FondVQHaut.gif) no-repeat left top;
+	  /*background-color:black;*/
           color:white;
     }
-    #VisuQ
-    {     border: #FFCCFF simple 5px;
-          background: url(<?=baseurl?>system/application/images/FondVisuM.gif) no-repeat left top;
+    #VQcadre
+    {     /*border: #FFCCFF simple 5px;*/
+          background: url(<?=baseurl?>system/application/images/Fonds/FondVQ.gif) repeat-y left top;
           color:white;
     }
     #VQsizehand
-    {     background-color:black;
+    {     background: url(<?=baseurl?>system/application/images/Fonds/FondVQBas.gif) no-repeat left bottom;
+	   /* background-color:black;*/
           color:red;
     }
   #VAcontainer{

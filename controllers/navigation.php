@@ -112,7 +112,7 @@ class Navigation extends Controller {
              $v=array('tri'=>"","sens"=>"ASC");
              switch (floor($cat/20)*20){
                     case TO:$v['tri']="titre";$v['sens']="ASC";break;
-                    case TQ:break;
+                    case TQ:$v['tri']="libelle";$v['sens']="ASC";break;
                     default:
                      switch ($cat){
                             case TMmem:$v['tri']="voix";$v['sens']="DESC";break;
@@ -147,9 +147,10 @@ class Navigation extends Controller {
                      }
                      break;
                     case TQ:
-                     $vue="oeuvres_head";
+                     $vue="sons_head";
                      $data['champs']=array('libelle','pseudo','sexe');
                      $data['cols']=array(col_libelle,col_pseudo,col_sexe);
+		     $data['libdefO']=lang("lib_chercher")." ".lang("lib_une")." ".lang("lib_tribune");
                      break;
                     default:
                      switch ($cat){
@@ -164,8 +165,8 @@ class Navigation extends Controller {
              $data['cat']=$cat;
              $data['limit']=$limit;
              $data['page']=$page;
-             $data['Ntot']=$this->Getlistes->getNtot($cat,$limit);
-             $data['Ptot']=ceil($data['Ntot']/$limit);
+             //$data['Ntot']=$this->Getlistes->getNtot($cat,$limit);
+             //$data['Ptot']=ceil($data['Ntot']/$limit);
              $v=$this->getTriDef($cat);
              $v['page']=$page;
              $data['js']=$this->load->view("js/headers_js.php",$v,true);
@@ -181,12 +182,16 @@ class Navigation extends Controller {
     }
     function player($cat){
              switch ($cat){
-                    case TOson:$vue="VQ";break;
+                    case TOson:$vue="VOvdo";break;
+		    case TQ:;
+		    case TQavis:;
+		    case TQgout:$vue="VQ";break;
                     case TMart:$vue="VA";break;
                     case TMmem:$vue="VM";break;
 
              }
-             $this->load->view($vue,null,false);
+	     $data['type']=$cat;
+             $this->load->view($vue,$data,false);
     }
     function srchandflds(){
              $search= $this->input->post('tobesearched')==""? false:$this->input->post('tobesearched');
@@ -213,7 +218,7 @@ class Navigation extends Controller {
                      $data['cols']=array(col_titre,col_nom);
                      break;
                 case TQ:
-                     $data=$this->Getlistes->getquestions($cat,$page,$limit);$vue="oeuvres_v";
+                     $data=$this->Getlistes->getquestions($cat,$page,$limit,$v['tri'],$v['sens'],$addvars,$search,$fields);$vue="oeuvres_v";
                      $data['champs']=array('libelle','pseudo','sexe');
                      $data['cols']=array(col_libelle,col_pseudo,col_sexe);
                      break;
@@ -284,8 +289,9 @@ class Navigation extends Controller {
               else $data['vmore']=1;
               switch ($cat){
                      case TOson:$vue="oeuvre_v";break;
-                     case TQavis:$vue="avis_v";break;
-                     case TQgout:$vue="avis_v";break;
+                     case TQ:;
+		     case TQavis:;
+                     case TQgout:$vue="question_v";break;
                      case TMart:$vue="artiste_v";break;
                      case TMmem:$vue="membre_v";break;
                      default:$vue="oeuvre_v";break;

@@ -1,22 +1,11 @@
-#scrollbar-demo{
-	margin:auto;
-	width: 500px;
-	height:600px;
-	border:10px solid #888;
-	padding:5px;
-	text-align:justify;
-	overflow:auto;
-}
-
-
 .scrollBar .bar{
-	width:20px;
-	height:20px;
+	width:16px;
+	height:13px;
 }
 
 .scrollBar .button{
-	width:20px;
-	height:20px;
+	width:16px;
+	height:13px;
 	background-color:#FFB119;
 	outline:none;
 	background-position:top center;
@@ -24,30 +13,45 @@
 	cursor:pointer;
 }
 
-.scrollBar .button.topButton{
-	background-image:url('arrow-up.gif');
+#listeparent .scrollBar .button.topButton{
+	background-image:url('arrow-up-white.gif');
 }
-
-.scrollBar .button.bottomButton{
-	background-image:url('arrow-down.gif');
+#listeparent .scrollBar .button.bottomButton{
+	background-image:url('arrow-down-white.gif');
 }
-
-.scrollBar .button.leftButton{
-	background-image:url('arrow-left.gif');
+#listeparent .scrollBar .knobVerticalFill{
+	background-image:url('vertical-knob-black.gif');
 }
-
-.scrollBar .button.rightButton{
-	background-image:url('arrow-right.gif');
+/*#listeparent .scrollBar .topTip{
+	background-image:url('knob-top.gif');
 }
+#listeparent .scrollBar .bottomTip{
+	background-image:url('knob-bottom.gif');
+}*/
 
-.scrollBar .button.active{
+#membresparent .scrollBar .button.topButton{
+	background-image:url('arrow-up-black.gif');
+}
+#membresparent .scrollBar .button.bottomButton{
+	background-image:url('arrow-down-black.gif');
+}
+#membresparent .scrollBar .knobVerticalFill{
+	background-image:url('vertical-knob-white.gif');
+}
+/*#membresparent .scrollBar .topTip{
+	background-image:url('knob-top.gif');
+}
+#membresparent .scrollBar .bottomTip{
+	background-image:url('knob-bottom.gif');
+}*/
+
+.scrollBar .button.active, .scrollBar .button.H{
 	background-position:bottom center ;
 }
-
 .scrollBar .scrollable{
 	cursor:pointer;
-	background-image:url('stripe.gif');
-	background-repeat:repeat;
+	/*background-image:url('stripe.gif');
+	background-repeat:repeat;*/
 }
 
 .scrollBar .knob{
@@ -58,81 +62,35 @@
 	/*cursor:n-resize;*/
 }
 
-.scrollBar .knob.horizontalKnob{
-	cursor:w-resize;
-}
-
-.scrollBar .knobHorizontalTip{
-	width:12px;
-	position:absolute;
-	background-position:left center;
-	background-repeat:no-repeat;
-}
-
-.scrollBar .active .knobHorizontalTip{
-	background-position:right center;
-}
-
-.scrollBar .leftTip{
-	left:0;
-	background-image:url('knob-left.gif');
-}
-
-.scrollBar .rightTip{
-	right:0;
-	background-image:url('knob-right.gif');
-}
-
-.scrollBar  .knobHorizontalFill{
-	background-color:#FFB119;
-	background-position:top center;
-	background-repeat:repeat-x;
-	background-image:url('horizontal-knob.gif');
-	margin:0 12px;
-}
-
-.scrollBar .active .knobHorizontalFill{
-	background-position:bottom center;
-}
 
 .scrollBar .knobVerticalTip{
-	height:12px;
+	height:0px;
 	background-position:top center;
 	background-repeat:no-repeat;
 }
 
-.scrollBar .active .knobVerticalTip{
+.scrollBar .active .knobVerticalTip, .scrollBar .H .knobVerticalTip{
 	background-position:bottom center;
 }
 
 .scrollBar .knobVerticalFill{
-	background-color:#FFB119;
+	/*background-color:#FFB119;*/
 	background-position:left center;
 	background-repeat:repeat-y;
-	background-image:url('vertical-knob.gif');
 	position:absolute;
-	bottom:12px;
-	top:12px;
+	bottom:0px;
+	top:0px;
 }
 
-.scrollBar .active .knobVerticalFill{
+.scrollBar .active .knobVerticalFill,.scrollBar .H .knobVerticalFill {
 	background-position:right center;
-}
-
-.scrollBar .topTip{
-	background-image:url('knob-top.gif');
 }
 
 .scrollBar .bottomTip{
 	position:absolute;
 	bottom:0;
-	background-image:url('knob-bottom.gif');
 }
 
 .scrollBar .knob.active{
 	border:none;
-}
-
-.scrollBar .corner{
-	background:#FFB119 url('corner.gif') center center no-repeat;
 }

@@ -41,14 +41,14 @@ $w=wCpit-2*wID;
 define ('wPanel',$w);
 $h=hHaut+hNav+hID;
 define ('hCpit',$h);
-define ('wVQ',400);
+define ('wVQ',414);
 define ('hVQ',400);
 define ('wVA',400);
 define ('hVA',400);
 define ('wVM',400);
 define ('hVM',400);
-define ('hVhead',10);
-define ('hVfoot',10);
+define ('hVhead',30);
+define ('hVfoot',55);
 define ('wPlaVDO',200);
 define ('hPlaVDO',200);
 

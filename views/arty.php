@@ -74,18 +74,19 @@
 	<DIV id="HeadLM"></DIV>
 	<DIV id="ResultsM"> <span></span> <span></span></DIV>         
     </DIV>
+    <DIV id="membresparent">
     <DIV ALIGN=RIGHT id="Imembres" >
            <DIV id="membres" >
 	   	<DIV id="membres1" ></DIV>
 	   </DIV>
     </DIV>
-    <DIV id="idMA" class="idM" onclick="window.open('<?=base_url()?>index.php/compte','Mon Compte','');" >AVATAR MA</DIV>
+    </DIV>
+    <DIV id="idMA" class="idM" onclick="window.open('<?=base_url()?>index.php/compte','Mon Compte','');" ></DIV>
     <DIV id="RelationMAMS"></DIV>    
-    <DIV id="idMS" class="idM" onmouseover="hoverQO(this)" onmouseout="unhoverQO(this)" onclick="More(Msel)">
+    <DIV id="idMS" class="idM" style="opacity:0" onmouseover="hoverQO(this)" onmouseout="unhoverQO(this)" onclick="More(Msel)">
 	    <img id="idMSimg" alt='' width='<?=wIDimg?>px' height='<?=hIDimg?>px' border='0' />    
 	    <DIV id="idMStxt"></DIV>
     </DIV>
-	
     <DIV id="bas">
        <TABLE WIDTH="<?=wCpit?>px" BORDER=0 CELLPADDING=0 CELLSPACING=0 STYLE="page-break-before: always; page-break-inside: avoid">
          <COL WIDTH=300>
@@ -96,7 +97,6 @@
           <?=$panelrep?>
         </DIV></TD>
         <TD align="right">
-        
         <DIV id="miniNP" STYLE="DISPLAY:NONE"><P><?echo anchor(base_url().'index.php/navigation/affiche/'.TM, 'Mes affinites', array('title' => 'Mes affinites','target'=>'_self'));?>
              (Nuage Points)</P></DIV>
         </TD>
@@ -104,22 +104,26 @@
       </TABLE>
     </DIV>
   </DIV>
+  <DIV id="listeparent">
   <DIV id="liste" >
   	<DIV id="liste1" >
 	</DIV>
+  </DIV>
   </DIV>
   <DIV id="PagesCat"></DIV>
   <DIV id="status">STATUS</DIV>
   <DIV id="visuaff" class="derriere"></DIV>
   <DIV id="visus">
        <DIV id="VQcontainer" class="derriere">
-            <DIV STYLE="height:<?=hVhead?>px;position:absolute;left:0px;top:0px;z-index:100" id="VQhandle">
-                 handle <span id="VQprv" onclick="prev(MainSel)">previous</span> <span id="VQnxt" onclick="next(MainSel)">next</span> <span onclick="showMore(MainSel)">fermer</span>
+            <DIV STYLE="height:<?=hVhead?>px;position:absolute;top:0px;z-index:100" id="VQhandle">
+		<img id="VQprv" class="prev" onclick="prev(MainSel)" onmouseover="this.addClass('H')" onmouseout="this.removeClass('H')"src="<?=base_url()?>/system/application/images/spacer.gif" />
+		<img style="margin-top:1px"class="close" onclick="showMore(MainSel)" onmouseover="$(this).addClass('H')" onmouseout="$(this).removeClass('H')" src="<?=base_url()?>/system/application/images/spacer.gif" />
+		<img id="VQnxt" class="next" onclick="next(MainSel)" onmouseover="this.addClass('H')" onmouseout="this.removeClass('H')" src="<?=base_url()?>/system/application/images/spacer.gif" />
             </DIV>
-            <DIV id="VQcadre" STYLE="position:absolute;top:<?=hVhead?>px;height:<?=hVQ-2*hVhead?>px;width:100%;overflow-x:hidden;overflow-y:auto;">
-                <DIV id="VisuQ" ></DIV>
+            <DIV id="VQcadre" STYLE="position:absolute;top:<?=hVhead?>px;height:<?=hVQ-hVhead-hVfoot?>px;width:100%;overflow-x:hidden;overflow-y:auto;">
+                <DIV ></DIV>
             </DIV>
-            <DIV STYLE="height:<?=hVhead?>px;position:absolute;bottom:0px;right:0px;" id="VQsizehand" >resize</DIV>
+            <DIV STYLE="height:<?=hVfoot?>px;position:absolute;bottom:0px;right:0px;" id="VQsizehand" ></DIV>
        </DIV>
        <DIV id="VAcontainer" class="derriere">
             <DIV STYLE="height:<?=hVhead?>px;position:absolute;left:0px;top:0px;z-index:100" id="VAhandle">

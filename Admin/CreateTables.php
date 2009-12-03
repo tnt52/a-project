@@ -82,7 +82,7 @@ $queryString="CREATE TABLE `".TableAdministration."` (
 `compteur` INT NOT NULL AUTO_INCREMENT,
 `actif` TINYINT DEFAULT 1,
 PRIMARY KEY ( `cle` ),
-INDEX (`compteur` ) )";
+INDEX (`actif`) )";
 echo"Query : ".$queryString."\n";
 //echo "Test".mysql_query($queryString);
 $result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
@@ -147,7 +147,7 @@ $queryString="CREATE TABLE `".TableMembres."` (
 `pseudo` VARCHAR (20) NOT NULL,
 `sexe` TINYINT DEFAULT 0,
 `avatar` VARCHAR (30) NOT NULL,
-`mailmem` VARCHAR(50),
+`mailmempri` VARCHAR(50),
 `mailmempub` VARCHAR(50),
 `texte` TEXT,
 `cp` INTEGER,
@@ -190,7 +190,32 @@ $queryString="CREATE TABLE `".TableMembres."` (
 `nbqonat` INT NOT NULL  DEFAULT 0,
 `compteur` INT NOT NULL AUTO_INCREMENT ,
 PRIMARY KEY ( `cle` ) ,
-INDEX ( `compteur`))
+INDEX ( `actif`,`type`))
+;";
+echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TableMembresSuivis."` (
+`actif` TINYINT DEFAULT 1,
+`keymembre` INT NOT NULL,
+`keymembresuivi` INT NOT NULL,
+`keytribu` INT NOT NULL,
+`color` INT NOT NULL,
+`alias` VARCHAR (20) NOT NULL,
+`compteur` INT NOT NULL AUTO_INCREMENT ,
+PRIMARY KEY ( `compteur` ) ,
+INDEX ( `actif`,`keymembre`,`keytribu`))
+;";
+echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TableTribus."` (
+`actif` TINYINT DEFAULT 1,
+`keytribu` INT NOT NULL AUTO_INCREMENT,
+`libelle` INT NOT NULL,
+`color` INT NOT NULL,
+PRIMARY KEY ( `keytribu` ) ,
+INDEX ( `actif`))
 ;";
 echo"Query : ".$queryString."\n";
 $result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
@@ -199,6 +224,7 @@ $queryString="CREATE TABLE `".TableArtistes."` (
 `actif` TINYINT DEFAULT 1,
 `cle` INT NOT NULL,
 `type` TINYINT UNSIGNED NOT NULL DEFAULT ".TMmem.",
+`mailartpri` VARCHAR(50),
 `mailartpub` VARCHAR(50),
 `link` VARCHAR(50),
 `textearti` TEXT,
@@ -219,10 +245,21 @@ $queryString="CREATE TABLE `".TableArtistes."` (
 `fincontrat`  DATE,
 `compteur` INT NOT NULL AUTO_INCREMENT ,
 PRIMARY KEY ( `cle` ) ,
-INDEX (`compteur`) )
+INDEX ( `actif`,`type`))
 ;";
 echo"Query : ".$queryString."\n";
 $result=@mysql_query($queryString) or die('Erreur artis connexion MySQL: ' . mysql_error());
+
+$queryString="CREATE TABLE `".TableThemes."` (
+`actif` TINYINT DEFAULT 1,
+`keytheme` INT NOT NULL AUTO_INCREMENT,
+`libelle` INT NOT NULL,
+`color` INT NOT NULL,
+PRIMARY KEY ( `keytheme` ) ,
+INDEX ( `actif`))
+;";
+echo"Query : ".$queryString."\n";
+$result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());
 
 $queryString="CREATE TABLE `".TableQuestions."` (
 `cle` INT NOT NULL AUTO_INCREMENT ,
@@ -241,7 +278,7 @@ $queryString="CREATE TABLE `".TableQuestions."` (
 `datefin` TIMESTAMP DEFAULT 00000000000000,
 `actif` TINYINT DEFAULT 1,
 PRIMARY KEY ( `cle` ) ,
-INDEX (`keymembre`,`type`) );";
+INDEX (`actif`,`keymembre`,`type`) );";
 echo"Query : ".$queryString."\n";
 $result=@mysql_query($queryString) or die('Erreur quest connexion MySQL: ' . mysql_error());
 
@@ -267,7 +304,7 @@ $queryString="CREATE TABLE `".TableOeuvres."` (
 `datefin` TIMESTAMP DEFAULT 00000000000000,
 `actif` TINYINT DEFAULT 1,
 PRIMARY KEY ( `cle` ) ,
-INDEX ( `type`,`keymembre` ) )
+INDEX ( `actif`,`type`,`keymembre` ) )
 ;";
 echo"Query : ".$queryString."\n";
 $result=@mysql_query($queryString) or die('Erreur oeuvre connexion MySQL: ' . mysql_error());
@@ -333,7 +370,7 @@ $queryString="CREATE TABLE `".TableAffinites."` (
 `datemodif` TIMESTAMP DEFAULT 00000000000000,
 `actif` TINYINT DEFAULT 1,
 PRIMARY KEY ( `cle` ) ,
-INDEX ( `keysujet`,`keyobjet`,`cle` ) )
+INDEX ( `actif`,`keysujet`,`keyobjet`,`cle` ) )
 ;";
 //echo"Query : ".$queryString."\n";
 $result=@mysql_query($queryString) or die('Erreur connexion MySQL: ' . mysql_error());

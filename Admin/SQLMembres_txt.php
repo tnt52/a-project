@@ -1,5 +1,5 @@
 <?require("../helpers/types_helper.php");?>
-INSERT INTO membres (cle,type,pseudo,texte) VALUES (6,<?=TMmem?>,'Clone 1','I am clone number 1');
+INSERT INTO membres (cle,type,mailmempri,mailmempub,pseudo,texte) VALUES (6,<?=TMmem?>,'mailmem@pri.1','mailmem@pub.1',Clone 1','I am clone number 1');
 INSERT INTO membres (cle,type,pseudo,texte) VALUES (7,<?=TMmem?>,'Clone 2','I am clone number 2');
 INSERT INTO membres (cle,type,pseudo,texte) VALUES (8,<?=TMmem?>,'Clone 3','I am clone number 3');
 INSERT INTO membres (cle,type,pseudo,texte) VALUES (9,<?=TMmem?>,'Clone 4','I am clone number 4');

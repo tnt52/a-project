@@ -109,7 +109,6 @@ function showMore(m){
          Vcont=$('V'+Vstr+'container');
          Vcadre=$('V'+Vstr+'cadre');
          var divmore=$(m.getProperty('cle')+'more'+m.getProperty('liste')+m.getProperty('cat'));
-         var Vhead,Vfoot;
          if (m.getProperty("maj")!="false") m.setProperty("maj","false");
          if (visu==2){
             if (Mvisu!=m || vmopen=="false"){
@@ -146,19 +145,22 @@ function showMore(m){
          }
 }
 function showVisu(divmore,Vcadre,Vcont){
+	 var Vhead,Vfoot;
          var header=divmore.getElement('div');
          Vhead=Vcadre.getElement('.Vhead');
          Vhead.set('html',header.innerHTML);
          var footer=header.getNext('div');
          Vfoot=Vhead.getNext('.Vfoot');
          Vfoot.set('html',footer.innerHTML);
-         DIVdevant(Vcont);
-         new Fx.Morph(Vcont,{
-                     duration: 600,
-                     transition: Fx.Transitions.Bounce.easeOut
-         }).start({
-                     'opacity':[0,1]
-         });
+         if (!Vcont.hasClass('devant') || Vcont.get('opacity')!=1){
+		 DIVdevant(Vcont);
+		 new Fx.Morph(Vcont,{
+			     duration: 600,
+			     transition: Fx.Transitions.Bounce.easeOut
+		 }).start({
+			     'opacity':[0,1]
+		 });
+	 }
 }
 function hideVisu(Vcont){
          new Fx.Morph(Vcont,{

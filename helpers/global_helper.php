@@ -7,6 +7,7 @@ define ("TableRepOeu","repoeuvres");
 define ("TableAvis","avis");
 define ("TableQuestions","questions");
 define ("TableMembres","membres");
+define ("TableMembresSuivis","memsuiv");
 define ("TableAffinites","affinites");
 define ("TableTribus","tribus");
 define ("TableThemes","themes");

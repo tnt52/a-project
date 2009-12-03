@@ -45,6 +45,13 @@ function GetListe(){
 	}
 	GetAllListe();
 }
+function updatescroll(scr){
+	if (scr) {
+		scr.update();
+		scr.verticalScrollable.addEvent('mouseover',function (){this.addClass('H');});
+		scr.verticalScrollable.addEvent('mouseout',function (){$(this).removeClass('H');});
+	}
+}
 function GetAllListe(){
 	if ($('liste'+pageQO)==null) new Element('div',{id:'liste'+pageQO}).inject($('liste'+(pageQO-1)),"after");
 	new Request.HTML({
@@ -66,10 +73,10 @@ function GetAllListe(){
 				     $('liste'+i).set('html',"");
 				     i++;
 			     }
-			     if (scroll_liste) scroll_liste.update();
+			     updatescroll(scroll_liste);
 			     return;
 		     }
-		     if (scroll_liste) scroll_liste.update();
+		     updatescroll(scroll_liste);
 		     pageQO++;
 		     GetAllListe();
 	     },
@@ -158,11 +165,10 @@ function GetAllMembres(){
 				     $('membres'+i).set('html',"");
 				     i++;
 			     }
-			     if (scroll_lm) scroll_lm.update();
-			     //if ($('Imembres').scrollUpdate) $('Imembres').scrollUpdate();
+			     updatescroll(scroll_lm);
 			     return;
 		     }
-		     if (scroll_lm) scroll_lm.update();
+		     updatescroll(scroll_lm);
 		     pageM++;
 		     GetAllMembres();
 	     },
@@ -380,6 +386,10 @@ function centrer(el,w,h){
          el.setStyle('top',el.getStyle('top')-h/2);
          el.setStyle('left',el.getStyle('left')-w/2);
 }
+function addEventsScrollbars(){
+	$$('.scrollBar .button').addEvent('mouseover',function (){this.addClass('H');});
+	$$('.scrollBar .button').addEvent('mouseout',function (){this.removeClass('H');});	
+}
 var scroll_liste=new UvumiScrollbar("liste");
 var scroll_lm=new UvumiScrollbar("Imembres");
 /* INITIALISATION */
@@ -390,12 +400,14 @@ window.addEvent('domready', function() {
                             //centrer($('VisuQ'),400,400);
                             //scroll_liste = new UvumiScrollbar("liste");
 			    //scroll_lm = new UvumiScrollbar("Imembres");
+			    addEventsScrollbars();
 			    majPR(null);
                             //majNewQ();
                             GetListe();;                            
 			    GetHeadM();
 			    GetMembres();
                             getIdMA();
+			    addEventsScrollbars();
                           //  GetMembres();
 			  //MM_preloadImages(urlbase+'system/application/images/boutons/OKrol.gif');
 });

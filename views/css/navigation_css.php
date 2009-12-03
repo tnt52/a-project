@@ -291,15 +291,33 @@
         margin-right:-<?=wHead/2-10?>px;
         z-index:5;
   }
+  .prev,.close,.next{
+	  position:absolute;
+	  top:10px;	  
+  }
+  .next{
+	  right:10px;
+  }
+  .close{
+	  right:25px;
+  }
+  .prev{
+	  right:40px;
+  }
   #VQcontainer{
         width:<?=wVQ?>px;
         height:<?=hVQ?>px;
         position:absolute;
-        margin-left:50%;
+	top:<?=hHaut+10?>px;
+        left:50%;
+	margin-left:<?=-wVQ/2?>px;
         /*overflow-x:hidden;
         overflow-y:auto;*/
         /*left:<?=-wVQ/2?>px;
         top:50%;*/
+  }
+  #VQhandle, #VQsizehand{
+	  width:100%;	  
   }
   #VAcontainer{
         width:<?=wVA?>px;

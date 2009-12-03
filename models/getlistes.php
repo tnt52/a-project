@@ -19,7 +19,7 @@
                 return $this->db->get();
                 //return $this->db->last_query();
        }
-       function getNtot($cat,$limit,$search="",$fields=null){
+      /* function getNtot($cat,$limit,$search="",$fields=null){
                 $table="";
                 if ($cat==TMmem){
                      $this->db->from('membres');
@@ -44,7 +44,7 @@
                 $Ntot=$this->db->count_all_results();
                 }
                 return $Ntot;
-       }
+       }*/
        function getmembres($page,$limit,$champtri,$senstri,$search,$TA=null){	       
 	       switch ($TA){
 		case TAglo:$champaff="affglobal";$liens="liens";break;
@@ -152,15 +152,18 @@
                 $v=array('page'=>$page, 'limit'=>$limit);
                 $this->db->limit($limit,($page-1)*$limit);
                 $this->db->from('questions');
-                $this->db->select('questions.cle,questions.keymembre,libelle,membres.pseudo,membres.sexe,portee,adhesion,repquestio.reponse,repquestion.keytribu');
+                $this->db->select('questions.cle,questions.keymembre,questions.type,libelle,membres.pseudo,membres.sexe,portee,adhesion,rep1.reponse as repMA,rep2.reponse as repMsel');
                 $this->db->join('membres','membres.cle=questions.keymembre','left');
                 $this->db->join('repquestio as rep1','rep1.keyquestion=questions.cle AND rep1.keymembre='.$keyMA,'left');
-		$this->db->join('repquestio as rep2','rep2.keyquestion=questions.cle AND rep2.keymembre='.$keyMSel,'left');
+		$this->db->join('repquestio as rep2','rep2.keyquestion=questions.cle AND rep2.keymembre='.$keyMsel,'left');
                 $this->db->order_by($champtri,$senstri);
                 $this->docSQLsearch($search,$fields);
-                $this->db->where('questions.type',$type);
+                //$this->db->where('questions.type',$type);
                 $this->db->where('questions.actif',1);
                 $r=$this->db->get();
+		//echo $this->db->last_query();
+		$v['page']=$page;
+		$v['numrows']=$r->num_rows();
                 $v['result']=$r;
                 return $v;
 
@@ -186,8 +189,7 @@
        }
        function getquestion($cle){
                 $this->db->where('questions.cle',$cle);
-                $this->db->join('membres','membres.cle=questions.keymembre','left');
-                $this->db->join('artistes','artistes.cle=questions.keymembre','left');
+                $this->db->join('membres','membres.cle=questions.keymembre','left');          
                 $r=$this->db->get('questions');
                 $v=array('result'=>$r->result_array());
                 return $v;

@@ -64,7 +64,8 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
      </TR>
      <TR >
      <TD VALIGN="BOTTOM" >
-         <DIV nowrap champ="sexe">
+         <DIV nowrap champ="sexe" style="cursor:pointer;width:<?=col_lm_sexe?>px;overflow: hidden" onmousedown="pressTri(this)" onmouseup="releaseTri(this)" onclick="triM(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
+	 <img id="sexe" class="desc" rang="" src="<?=base_url()?>/system/application/images/spacer.gif"/>
          </DIV>
      </TD>
      <TD VALIGN="BOTTOM">
@@ -87,6 +88,21 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
 </TABLE>
 </body>
 <STYLE>
+<?$wSx=15;$hSx=20;?>
+#sexe{
+  vertical-align: text-top;
+  width: <?=$wSx?>px;
+  height: <?=$hSx?>px;
+  background: no-repeat 0 0;
+}
+#sexe {background-image: url(http://127.0.0.1/system/application/images/champs/sexes.png);}
+#sexe.asc.A {background-position: 0 -<?=4*$hSx?>px;}
+#sexe.desc.A {background-position: 0 -<?=3*$hSx?>px;}
+#sexe.H {background-position: 0 -<?=2*$hSx?>px;}
+#sexe.H.A {background-position: 0 -<?=2*$hSx?>px;}
+#sexe.H.C {background-position: 0 -<?=2*$hSx?>px;}
+#sexe.H.A.C {background-position: 0 -<?=2*$hSx?>px;}
+
 <?$hLA=20;$hLA=20?>
 #liens,#affinite {
   vertical-align: text-top;
@@ -131,7 +147,7 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
 .tri.desc.H.A {background-position: 0 -<?=2*$hTri?>px;}
 .tri.desc.H.A.C {background-position: 0 -<?=$hTri?>px;}
 <?$wTriSx=15;$hTriSx=20?>
-.trisexe {
+/*.trisexe {
   vertical-align: text-top;
   width: <?=$wTriSx?>px;
   height:<?=$hTriSx?>px;
@@ -150,6 +166,6 @@ cfeHeadM.init({scope:$('HeadLM') ,spacer: "http://127.0.0.1/system/application/i
 .trisexe.desc.H.A {background-position: 0 -<?=$hTriSx?>px;}
 .trisexe.desc.H.A.C {background-position: 0 -<?=2*$hTriSx?>px;}
 .trisexe.desc.H.C {background-position: 0 -<?=6*$hTriSx?>px;}
-
+*/
 </STYLE>
 </html>

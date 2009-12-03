@@ -15,7 +15,7 @@
            <?=lang('lib_de')?>
      <DIV CLASS="Nom">
           <!--<a href="#" onclick="GetArtiste(<?=$row['keymembre']?>);StopEvent(event);" liste="LO"><?=htmlentities($row['nom'])?></a>-->
-          <a href="#" liste="AO" onclick="More(this);StopEvent(event);" cle="<?=$row['keymembre']?>" liste="AO" visu="<?=$vmore?>" cat="<?=TMart?>" keyM="<?=$row['keymembre']?>" sel="false" maj="true">
+          <a href="#" onclick="More(this);StopEvent(event);" cle="<?=$row['keymembre']?>" liste="AO" visu="<?=$vmore?>" cat="<?=TMart?>" keyM="<?=$row['keymembre']?>" sel="false" maj="true">
           <?=htmlentities($row['nom'])?></a>
           <DIV STYLE="Display:none" ID="<?=$row['keymembre']."moreAO".TMart?>"></DIV>
      </DIV>

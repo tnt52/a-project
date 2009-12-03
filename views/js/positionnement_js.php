@@ -1,4 +1,5 @@
 <?header("Content-Type: text/javascript");require("../../helpers/dimensions_helper.php");?>
+<?exit()?>
 window.addEvent('domready', function() {
                //window.addEvent('scroll',function () {repositionner($('cockpit'));});
                $('VQcontainer').makeDraggable({
@@ -6,10 +7,10 @@ window.addEvent('domready', function() {
                    });
                $('VQcontainer').makeResizable({handle: 'VQsizehand'});
                $('VQcadre').makeResizable({handle: 'VQsizehand',modifiers:{x: false, y:'height'}});
-               $('VQcontainer').setStyles({
+               /*$('VQcontainer').setStyles({
                 left:<?=-wVQ?>,
                 top:<?=hHaut?>
-               });
+               });*/
                 $('VAcontainer').makeDraggable({
                    handle: 'VAhandle'
                    });

@@ -12,6 +12,8 @@ $lang['lib_marep'] = "moi";
 $lang['lib_sarep'] = "lui";
 $lang['lib_Membres'] = "Tribuns";
 
+$lang['lib_reponse'] = "réponse";
+$lang['lib_reponses'] = "réponses";
 $lang['lib_liens'] = "liens";
 $lang['lib_lien'] = "lien";
 $lang['lib_membres'] = "tribuns";
@@ -31,6 +33,11 @@ $lang['lib_jai'] = "J'ai";
 $lang['lib_avec'] = "avec";
 $lang['lib_medeconnecter'] = "me déconnecter";
 $lang['lib_moncompte'] = "mon compte";
+
+$lang['lib_un']="un";
+$lang['lib_une']="une";
+
+$lang['lib_tribune']="tribune";
 
 $lang['lib_jexprime']="Je me suis exprimé sur";
 $lang['lib_ilexprime']="Il s'est exprimé sur";

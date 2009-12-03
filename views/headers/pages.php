@@ -37,5 +37,5 @@
     </TR>
     </TABLE>
 </div>
-<div id="ResultsCat"><?=$Ntot." ".lang("lib_correspondances")?>
+<div id="ResultsCat"><?=//$Ntot." ".lang("lib_correspondances")?>
 </div>-->
