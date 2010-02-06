@@ -24,18 +24,20 @@ class Answer extends Controller {
           }
           $keyQ=$this->Inquest->newQ($keyM,$TQ,$libQ);
        }
-       if ($TQ==TQavis) {
+       /*if ($TQ==TQavis) {
           $TR=TRonat;
           $r='Ravis';
           }
        else {
             $TR=TRgout;
             $r='Rgout';
-            }
-       $reponse=$this->input->post($r);
+           }*/
+       $TR=$this->input->post("typerep");
+       $reponse=$this->input->post("reponse");
        $importance=$this->input->post('importance');
        $theme=$this->input->post('theme');
        $tribu=$this->input->post('tribu');
+       echo "$keyM,$keyMq,$keyQ,$reponse,$importance,$tribu,$theme,$TMact,$TQ,$TR";
        $this->Inrep->majrep($keyM,$keyMq,$keyQ,$reponse,$importance,$tribu,$theme,$TMact,$TQ,$TR);
        echo ("Rep RECU!!: TQ:$TQ,  Rep:$reponse,   keyM:$keyM,   keyQ:$keyQ");
     }

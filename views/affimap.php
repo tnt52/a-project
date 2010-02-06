@@ -8,6 +8,19 @@
 
 </STYLE>
 <SCRIPT>
+document.write("test");
+var r1=150;r2=100;r3=50;
+var teta;
+var xI=150;yI=150;
+var canvas=document.getElementById("affican");
+  if(!canvas.getContext){return;}
+  var ctx=canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.arcTo(xI, yI, r1, Math.asin(r2/r1), Math.asin(r2/r1)+Math.PI/2, false);
+  ctx.fillStyle = "rgba(255,127,90,0.6)";
+  ctx.fill();
+  
+  
 var lastspot=null;
 function selSpot(keyM){
 	var clear=focusSpot(keyM);
@@ -86,6 +99,8 @@ window.addEvent('domready', function() {
 </SCRIPT>
 </head>
 <body bgcolor="#FFFFFF">
+<canvas id="affican" width='300' height='300'>
+Sorry! - Browser does not support Graphics Canvas</canvas>
 <DIV ID="MspotInfo" cat="<?=TMmem?>">MspotInfo</DIV>
 hflhdsl<BR>
 ksdlmgjk<BR>

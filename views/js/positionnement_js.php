@@ -5,8 +5,8 @@ window.addEvent('domready', function() {
                $('VQcontainer').makeDraggable({
                    handle: 'VQhandle'
                    });
-               $('VQcontainer').makeResizable({handle: 'VQsizehand'});
-               $('VQcadre').makeResizable({handle: 'VQsizehand',modifiers:{x: false, y:'height'}});
+               $('VQcontainer').makeResizable({handle: 'VQ_PR'});
+               $('VQcadre').makeResizable({handle: 'VQ_PR',modifiers:{x: false, y:'height'}});
                /*$('VQcontainer').setStyles({
                 left:<?=-wVQ?>,
                 top:<?=hHaut?>

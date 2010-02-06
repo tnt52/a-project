@@ -94,10 +94,11 @@ function GetHeader(cat){
 }
 
 function GetPlayer(cat){
-         new Request.HTML({
+        new Request.HTML({
              url: urlbase+'index.php/navigation/player/'+cat,
              update: $('VQcadre'),
              method: 'get',
+	     onComplete: function () {},
              evalScripts: true
          }).send();
 }
@@ -264,7 +265,7 @@ function showAffinites(){
 }
 /* MAJ PR */
 function majPR(Sel){
-	return;
+	//return;
          var NewQ=$('NewQ');
          var spanR;
          var PR=$('PanelRep');
@@ -273,6 +274,7 @@ function majPR(Sel){
             var cle=$('keyQpoR').value=Sel.getProperty('cle');
             $('keyMQpoR').value=Sel.getProperty('keyM');
             var cat=$('typeQpoR').value=Sel.getProperty('cat');
+	    var typerep=$('typeRpoQ').value=Sel.getProperty('typerep');
             var LibNQ="";
             if (cle=="" || cle==null) LibNQ=$('LibNewQ').value;
             libelleQ=$('LibelleQ');
@@ -392,6 +394,7 @@ function addEventsScrollbars(){
 }
 var scroll_liste=new UvumiScrollbar("liste");
 var scroll_lm=new UvumiScrollbar("Imembres");
+var scroll_vq;//=new UvumiScrollbar("VQcontainer");
 /* INITIALISATION */
 window.addEvent('domready', function() {
                             /*$('Artistes').addEvent('click',function() {GetListe($('Artistes').getProperty('cat'))});
@@ -403,7 +406,7 @@ window.addEvent('domready', function() {
 			    addEventsScrollbars();
 			    majPR(null);
                             //majNewQ();
-                            GetListe();;                            
+                            switchCat(cat);//GetListe();;                            
 			    GetHeadM();
 			    GetMembres();
                             getIdMA();

@@ -14,8 +14,8 @@
                 $this->db->from($tableQ);
                 $this->db->join($tableM,"$tableM.cle=$tableQ.keymembre",'left');
                 $this->db->join($tableR,"$tableR.keyquestion=$tableQ.cle AND $tableR.keymembre=$keyM",'left');
-                $this->db->order_by('titre','asc');
-                $this->db->order_by('nom','desc');
+                $this->db->order_by($champtri,$senstri);
+                //$this->db->order_by('nom','desc');
                 return $this->db->get();
                 //return $this->db->last_query();
        }
@@ -133,7 +133,7 @@
                 $keyMA=$this->session->userdata('keyMA');
                 $this->db->limit($limit,($page-1)*$limit);
                 $this->db->from('oeuvres');
-                $this->db->select('oeuvres.cle,oeuvres.keymembre,oeuvres.type,titre,artistes.nom,portee,adhesion,fichier,rep1.reponse as repMA,rep2.reponse as repMsel');
+                $this->db->select('oeuvres.cle,oeuvres.keymembre,oeuvres.type,oeuvres.datecrea as datecreation,titre,artistes.nom,portee,adhesion,fichier,rep1.reponse as repMA,rep2.reponse as repMsel');
                 $this->db->join('artistes','artistes.cle=oeuvres.keymembre','left');
                 $this->db->join('repoeuvres as rep1','rep1.keyquestion=oeuvres.cle AND rep1.keymembre='.$keyMA,'left');
                 $this->db->join('repoeuvres as rep2','rep2.keyquestion=oeuvres.cle AND rep2.keymembre='.$keyMsel,'left');
@@ -152,7 +152,7 @@
                 $v=array('page'=>$page, 'limit'=>$limit);
                 $this->db->limit($limit,($page-1)*$limit);
                 $this->db->from('questions');
-                $this->db->select('questions.cle,questions.keymembre,questions.type,libelle,membres.pseudo,membres.sexe,portee,adhesion,rep1.reponse as repMA,rep2.reponse as repMsel');
+                $this->db->select('questions.cle,questions.keymembre,questions.type,questions.typerep,questions.datecrea as datecreation,libelle,membres.pseudo,membres.sexe,portee,nbrerep,adhesion,rep1.reponse as repMA,rep2.reponse as repMsel');
                 $this->db->join('membres','membres.cle=questions.keymembre','left');
                 $this->db->join('repquestio as rep1','rep1.keyquestion=questions.cle AND rep1.keymembre='.$keyMA,'left');
 		$this->db->join('repquestio as rep2','rep2.keyquestion=questions.cle AND rep2.keymembre='.$keyMsel,'left');
@@ -188,10 +188,11 @@
                 return $v;
        }
        function getquestion($cle){
-                $this->db->where('questions.cle',$cle);
+	        $this->db->where('questions.cle',$cle);
                 $this->db->join('membres','membres.cle=questions.keymembre','left');          
                 $r=$this->db->get('questions');
                 $v=array('result'=>$r->result_array());
+		//foreach ($v as $row) {echo $row['datecrea'];};
                 return $v;
        }
        function getmembre($cle,$type){

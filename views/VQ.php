@@ -7,15 +7,15 @@
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="generator" content="HAPedit 3.1">
 <SCRIPT type="text/javascript">
-
+scroll_vq=new UvumiScrollbar("VQscroll");
 </SCRIPT>
 <STYLE>
 </STYLE>
 </head>
 <body >
-<DIV  class="Vhead" type="<?=$type?>" style="text-align: center"></DIV>
+<DIV  id="VQscroll" class="Vhead" type="<?=$type?>" style="margin:0px 10px;"></DIV>
 <DIV id="player">
 </DIV>
-<DIV  class="Vfoot" style="text-align: center"></DIV>
+<DIV  class="Vfoot" style=""></DIV>
 </body>
 </html>

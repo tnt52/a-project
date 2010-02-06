@@ -240,10 +240,10 @@
   }
      
           
-      #panel {
-      /*       width:200px;*/
+      /*#panel {
+             width:200px;
        height:<?=hID?>px;
-      }
+      }*/
       
   #Inavigation
   {
@@ -293,32 +293,116 @@
   }
   .prev,.close,.next{
 	  position:absolute;
-	  top:10px;	  
+	  top:0px;	  
   }
   .next{
-	  right:10px;
+	  right:7px;
   }
   .close{
-	  right:25px;
+	  right:20px;
   }
   .prev{
-	  right:40px;
+	  right:33px;
   }
   #VQcontainer{
         width:<?=wVQ?>px;
-        height:<?=hVQ?>px;
         position:absolute;
 	top:<?=hHaut+10?>px;
         left:50%;
 	margin-left:<?=-wVQ/2?>px;
-        /*overflow-x:hidden;
-        overflow-y:auto;*/
-        /*left:<?=-wVQ/2?>px;
-        top:50%;*/
+	
   }
-  #VQhandle, #VQsizehand{
-	  width:100%;	  
-  }
+	  #VQhandle{
+		  position:absolute;
+		  top:10px;
+		  right:0px;
+		  height:<?=hVhead?>px;
+		  width:100px;
+		  z-index:50;
+	  }
+	  #VQcadre{
+		  position:relative;
+		  width:100%;
+		  margin-top:20px;
+		  z-index:50;
+	  }
+	  #VQscroll{
+		  min-height:50px;
+		  overflow-x:hidden;
+		  overflow-y:auto;
+		  z-index:50;
+	  }
+	  #VQ_PR{
+		  position:relative;
+		  height:<?=hPR?>px;
+		  top:10px;
+		  width:100%;
+	  }
+	  	#LibQ{
+			  position:absolute;
+			  top:0px;
+			  width:100%;
+			  text-align:center;
+		  }  
+		  #LibRep{
+			  position:absolute;
+			  bottom:0px;
+			  width:100%;
+			  text-align:center;
+		  }
+		  #PanelRep{
+			  position:absolute;
+			  top:17px;
+			  width:229px;
+			  height:57px;
+			  margin-left:<?=(wVQ-229)/2?>px;
+		  }
+			  #panelavis{
+				  position:absolute;
+				  top: 15px;
+				  width:100%
+			  }
+	  #VQsplash{
+		position:absolute;
+		z-index:20;
+		width:<?=wVQ?>px;
+		top:<?=hHaut+10?>px;
+		left:50%;
+		margin-left:<?=-wVQ/2?>px;
+	  }
+		  #VQFdlefttop{
+			  position:absolute;
+			  top:0px;
+			  left:0px;
+			  width:52%;
+			  height:52%;
+			  z-index:20;
+		  }
+		  #VQFdrighttop{
+			  position:absolute;
+			  top:0px;
+			  right:0px;
+			  width:52%;
+			  height:52%;
+			  z-index:21;
+		  }
+		  #VQFdleftbott{
+			  position:absolute;
+			  bottom:0px;
+			  left:0px;
+			  width:52%;
+			  height:52%;
+			  z-index:22;
+		  }
+		  #VQFdrightbott{
+			  position:absolute;
+			  bottom:0px;
+			  right:0px;
+			  width:52%;
+			  height:52%;
+			  z-index:23;
+		  }
+		   
   #VAcontainer{
         width:<?=wVA?>px;
         height:<?=hVA?>px;

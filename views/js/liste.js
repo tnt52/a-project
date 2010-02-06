@@ -70,7 +70,7 @@ function More(m){
                 case 1: Vstr='A';break;
                 case 2: Vstr='M';break;
          }
-         type=$('V'+Vstr+'cadre').getElement('div').getProperty('type');
+         type=$('V'+Vstr+'scroll').get('type');
          if (getNextItem(m)==null) $('V'+Vstr+'nxt').setStyle('opacity',0); else $('V'+Vstr+'nxt').setStyle('opacity',1);
          if (getPrevItem(m)==null) $('V'+Vstr+'prv').setStyle('opacity',0); else $('V'+Vstr+'prv').setStyle('opacity',1);
          if (m.getProperty('cat')!=type){
@@ -86,7 +86,7 @@ function More(m){
 }
 
 function GetMore(m){
-         if (m.getProperty("maj")!="false") {
+         if (m.getProperty("maj")!="false" && m.getProperty('cat')!=TQgout && m.getProperty('cat')!=TQavis) {
             new Request.HTML({
                 url: urlbase+'index.php/navigation/more/'+m.getProperty('cat')+'/'+m.getProperty('cle')+"/"+m.getProperty("visu")+"/"+m.getProperty("type"),
                 update: $(m.getProperty('cle')+'more'+m.getProperty('liste')+m.getProperty('cat')),
@@ -98,7 +98,7 @@ function GetMore(m){
          else  {showMore(m);}
 }
 function showMore(m){
-         var Vstr,Vcont,Vcadre;
+         var Vstr,Vcont,Vcadre,Vsplash;
          var Sel;
          var visu=parseInt(m.getProperty("visu"));
          switch (visu){
@@ -108,16 +108,17 @@ function showMore(m){
          }
          Vcont=$('V'+Vstr+'container');
          Vcadre=$('V'+Vstr+'cadre');
+	 Vsplash=$('V'+Vstr+'splash');
          var divmore=$(m.getProperty('cle')+'more'+m.getProperty('liste')+m.getProperty('cat'));
          if (m.getProperty("maj")!="false") m.setProperty("maj","false");
          if (visu==2){
             if (Mvisu!=m || vmopen=="false"){
                 vmopen="true";
-                showVisu(divmore,Vcadre,Vcont);
+                showVisu(divmore,Vcadre,Vcont,Vsplash);
             }
             else {
                 vmopen="false";
-                hideVisu(Vcont);
+                hideVisu(Vcont,Vsplash);
             }
          }
          else{
@@ -128,14 +129,17 @@ function showMore(m){
                                    Sel.setProperty("sel","false");
                                    Sel.removeClass("clicked");
                    }
-                   showVisu(divmore,Vcadre,Vcont);
+		  /*$('V'+Vstr+'scroll').setStyle('height',divmore.getHeight());
+		  $('V'+Vstr+'scroll').getParent().setStyle('height',divmore.getHeight());
+		  $('V'+Vstr+'scroll').getNext().getChildren()[1];*/ 
+                   showVisu(divmore,Vcadre,Vcont,Vsplash);
                    if (m.getProperty('majpr')=="true") majPR(m);
             }
             else {
                 m.removeClass("clicked");
                 m.setProperty("sel","false");
                 if (m.getProperty('majpr')=="true") majPR(null);
-                hideVisu(Vcont);
+                hideVisu(Vcont,Vsplash);
             }
          }
          switch (visu){
@@ -144,34 +148,91 @@ function showMore(m){
                 case 2: Vstr='M';Mvisu=m;break;
          }
 }
-function showVisu(divmore,Vcadre,Vcont){
+var VQscroll=new Element('div',{
+		'class':'Vhead',
+		id:'VQscroll'
+	     }
+);
+var hVc;
+function showVisu(divmore,Vcadre,Vcont,Vsplash){
 	 var Vhead,Vfoot;
          var header=divmore.getElement('div');
+	 $('VQscroll').getParent().destroy();
+	 VQscroll.setStyles({
+			 'left':'5px',
+			 'top':'11px'
+	 });
+	 VQscroll.inject($('VQcadre'),'top');
+	 var h=divmore.getHeight().toInt()+13;
+	 var w=divmore.getWidth().toInt();
+	 //wVc=divmore.getWidth().toInt()+13;
+	 $('VQscroll').setStyles({
+			 'overflow-x':'hidden',
+			 'overflow-y':'auto',
+			 'width':w
+	 });
+	 if (h>70) h=70;
+	 hVc=h+140;
+         $('VQscroll').setStyle('height',h);
          Vhead=Vcadre.getElement('.Vhead');
          Vhead.set('html',header.innerHTML);
+	 scroll_vq=new UvumiScrollbar("VQscroll");//update();
          var footer=header.getNext('div');
-         Vfoot=Vhead.getNext('.Vfoot');
+         Vfoot=Vhead.getParent().getNext('.Vfoot');
          Vfoot.set('html',footer.innerHTML);
-         if (!Vcont.hasClass('devant') || Vcont.get('opacity')!=1){
-		 DIVdevant(Vcont);
-		 new Fx.Morph(Vcont,{
-			     duration: 600,
+	 //hVc=Vcont.getHeight().toInt();
+	 //wVc=Vcont.getWidth().toInt();
+	 /*if (Vcont.getStyle('margin-left').toInt()<-2000)
+	 {
+		 Vcont.setStyles({
+				 'margin-left':Vcont.getStyle('margin-left').toInt()+500000
+		 });*/
+         //if (!Vcont.hasClass('devant') || Vcont.get('opacity')!=1)
+		 new Fx.Morph(Vsplash,{
+			     duration: 300,
 			     transition: Fx.Transitions.Bounce.easeOut
 		 }).start({
-			     'opacity':[0,1]
+			     'height':[Vsplash.getHeight().toInt(),hVc],
+			     'width':[Vsplash.getWidth().toInt(),wVc],
+			     'margin-left':[Vsplash.getStyle('margin-left').toInt(),-wVc/2],
+			     'margin-top':[Vsplash.getStyle('margin-top').toInt(),0]
 		 });
-	 }
+		this.DIVdevant.bind(Vcont).pass(Vcont).delay(350);
+		/*this.DIVdevant.bind(Vcont.getChildren()[1]).pass(Vcont.getChildren()[1]).delay(345);
+		this.DIVdevant.bind(Vcont.getChildren()[2]).pass(Vcont.getChildren()[2]).delay(340);*/
+		//this.DIVdevant.bind($('VQ_PR')).pass($('VQ_PR')).pass(600);
+		//$('VQ_PR').setStyles.bind($('VQ_PR')).pass({'height':60}).delay(600);
+	 //}
+	 
 }
-function hideVisu(Vcont){
-         new Fx.Morph(Vcont,{
-             duration: 600,
-             transition: Fx.Transitions.Bounce.easeOut
+function hideVisu(Vcont,Vsplash){
+	/*var h=Vcont.getHeight().toInt();
+	var w=Vcont.getWidth().toInt();*/
+	/*$('VQ_PR').setStyles({
+			'height':'0px'
+	});*/
+        new Fx.Morph(Vsplash,{
+             duration: 300
          }).start({
-                     'opacity':[1,0]
+                      'height':[hVc,0],
+		      'width':[wVc,0],
+		      'margin-left':[Vsplash.getStyle('margin-left').toInt(),Vsplash.getStyle('margin-left').toInt()+wVc/2],
+		      'margin-top':[Vsplash.getStyle('margin-top').toInt(),Vsplash.getStyle('margin-top').toInt()+hVc/2]
          });
-         this.DIVderriere.bind(Vcont).pass(Vcont).delay(600);
-         var plyr=$('player');
-         if (plyr!=null && plyr.getAttribute("sendEvent")!=null) plyr.sendEvent("STOP",null);
+	 this.DIVderriere.bind(Vcont).pass(Vcont).delay(300);
+	 /*this.DIVderriere.bind(Vcont.getChildren()[1]).pass(Vcont.getChildren()[1]).delay(300);
+	 this.DIVderriere.bind(Vcont.getChildren()[2]).pass(Vcont.getChildren()[2]).delay(300);*/
+         //this.DIVderriere.bind(Vcont).pass(Vcont).delay(600);
+	 /*if (Vcont.getStyle('margin-left').toInt()>-2000)
+		 Vcont.setStyles.bind(Vcont).pass({
+				 'margin-left':Vcont.getStyle('margin-left').toInt()-500000,
+		 }).delay(600);*/
+	/*Vcont.setStyles.bind(Vcont).pass({
+			 'height':hVc,
+			 'width':wVc
+	 }).delay(700);*/
+	var plyr=$('player');
+        if (plyr!=null && plyr.getAttribute("sendEvent")!=null) plyr.sendEvent("STOP",null);
 }
 /*function GetArtiste(cle){
          new Request.HTML({

@@ -1,6 +1,6 @@
 <?require("../helpers/types_helper.php");?>
 INSERT INTO questions (type,libelle,keymembre,keytheme,datecrea,portee,typerep)
-VALUES (<?=TQavis?>,'Question avis1',8,<?=TTheme1?>,'2007-12-26',52,<?=TRonat?>);
+VALUES (<?=TQavis?>,'Question avis1 hsdfj sdfk sdflkjsdf kjsd lkmsdjdf sdkkj sdkjs lsk slmkj skg mskjg skjkg mdkg msdgj sdmkg dmskjg msdkjg dlmfkg sdfmg ldkjgf mskjg mkdfjglmkdfjgmlsdfjgdflmjglmdfjmlsdfjgmldjgmsdkjgmdljgmldjgmsdjmlsdfjhdghmldjhmldfjhmldjfdmlk',8,<?=TTheme1?>,'2007-12-26',52,<?=TRonat?>);
 INSERT INTO questions (type,libelle,keymembre,keytheme,datecrea,portee,typerep)
 VALUES (<?=TQavis?>,'Question avis2',8,<?=TTheme1?>,'2007-12-26',52,<?=TRonat?>);
 INSERT INTO questions (type,libelle,keymembre,keytheme,datecrea,portee,typerep)

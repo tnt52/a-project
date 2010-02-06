@@ -1,10 +1,14 @@
 function DIVdevant(div){
-         div.removeClass("derriere");
-         div.addClass("devant");
+        /*if (div.getStyle('margin-left').toInt()<-5000) {
+		div.setStyle('margin-left',(div.getStyle('margin-left').toInt()+10000)+"px");
+	}*/
+	div.removeClass("derriere");
+        div.addClass("devant");
 }
 function DIVderriere(div){
-         div.removeClass("devant");
-         div.addClass("derriere");
+        //div.setStyle('margin-left',(div.getStyle('margin-left').toInt()-10000)+"px"); 
+	div.removeClass("devant");
+        div.addClass("derriere");
 }
 function switchDiv(show,hide){
          DIVderriere(hide);
@@ -35,6 +39,7 @@ var lib_ligne='<?=lang("lib_ligne")?>';
 var lib_lignes='<?=lang("lib_lignes")?>';
 var libdefSSon='<?=lang("lib_chercher")." ".lang("lib_unson")?>';
 var libdefSM='<?=lang("lib_chercher")." ".lang("lib_unmembre")?>';
+var wVc=<?=wVQ?>;
 function focusDef(field,def){
     if (field.value==def) field.value='';
 }

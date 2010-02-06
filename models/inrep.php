@@ -250,7 +250,7 @@ function majrep($keyM,$keyMq,$keyQ,$reponse,$importance,$tribu,$theme,$TMact,$TQ
           }
           break;               
     }
-
+    echo "TQ:$TQ";
     $resultat=$this->initR($keyQ,$keyM,$TableR,$SelectionR);
     foreach ($resultat as $row){
          $keyMinit=$row['keymembre'];

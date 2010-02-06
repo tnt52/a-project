@@ -1,21 +1,4 @@
 <?
-define ('col_plus',70);
-define ('col_nom',150);
-define ('col_titre',"");
-define ('col_pseudo',100);
-define ('col_sexe',10);
-define ('col_libelle',"");
-define ('col_avis',30);
-define ('col_arts',150);
-define ('col_count',30);
-
-//define ('hl_lm',12);
-define ('col_lm_plus',20);
-define ('col_lm_pseudo',80);
-define ('col_lm_sexe',10);
-define ('col_lm_liens',40);
-define ('col_lm_aff',40);
-
 define ('wScroll',20);
 
 define ('hLmini',10);
@@ -41,14 +24,15 @@ $w=wCpit-2*wID;
 define ('wPanel',$w);
 $h=hHaut+hNav+hID;
 define ('hCpit',$h);
-define ('wVQ',414);
+define ('wVQ',415);
 define ('hVQ',400);
 define ('wVA',400);
 define ('hVA',400);
 define ('wVM',400);
 define ('hVM',400);
 define ('hVhead',30);
-define ('hVfoot',55);
+define ('hVfoot',60);
+define ('hPR',88);
 define ('wPlaVDO',200);
 define ('hPlaVDO',200);
 
@@ -56,5 +40,27 @@ define ('wLogoCat',180);
 define ('wSearchQ',200);
 define ('hLimitQ',19);
 define ('wLimitQ',"");
+
+define ('col_plus',70);
+define ('col_nom',150);
+define ('col_titre',325);
+define ('col_pseudo',100);
+define ('col_sexe',10);
+define ('col_libelle',330);
+define ('col_avis',30);
+define ('col_arts',150);
+define ('col_count',30);
+
+//define ('hl_lm',12);
+define ('col_lm_plus',20);
+define ('col_lm_pseudo',80);
+define ('col_lm_sexe',10);
+define ('col_lm_liens',40);
+define ('col_lm_aff',40);
+
+define ('size_libelle',200);
+define ('size_pseudo',20);
+define ('size_nom',40);
+define ('size_titre',40);
 
 ?>

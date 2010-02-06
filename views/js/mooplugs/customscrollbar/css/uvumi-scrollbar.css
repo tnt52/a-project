@@ -14,12 +14,15 @@
 }
 
 #listeparent .scrollBar .button.topButton{
-	background-image:url('arrow-up-white.gif');
+	background-image:url('arrow-up-black.gif');
 }
 #listeparent .scrollBar .button.bottomButton{
-	background-image:url('arrow-down-white.gif');
+	background-image:url('arrow-down-black.gif');
 }
 #listeparent .scrollBar .knobVerticalFill{
+	background-image:url('vertical-knob-white.gif');
+}
+#listeparent .scrollBar .scrollable{
 	background-image:url('vertical-knob-black.gif');
 }
 /*#listeparent .scrollBar .topTip{
@@ -29,13 +32,16 @@
 	background-image:url('knob-bottom.gif');
 }*/
 
-#membresparent .scrollBar .button.topButton{
-	background-image:url('arrow-up-black.gif');
+#membresparent .scrollBar .button.topButton, #VQcadre .scrollBar .button.topButton{
+	background-image:url('arrow-up-white.gif');
 }
-#membresparent .scrollBar .button.bottomButton{
-	background-image:url('arrow-down-black.gif');
+#membresparent .scrollBar .button.bottomButton, #VQcadre .scrollBar .button.bottomButton{
+	background-image:url('arrow-down-white.gif');
 }
-#membresparent .scrollBar .knobVerticalFill{
+#membresparent .scrollBar .knobVerticalFill, #VQcadre .scrollBar .knobVerticalFill{
+	background-image:url('vertical-knob-black.gif');
+}
+#membresparent .scrollBar .scrollable, #VQcadre .scrollBar .scrollable{
 	background-image:url('vertical-knob-white.gif');
 }
 /*#membresparent .scrollBar .topTip{

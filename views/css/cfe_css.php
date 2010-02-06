@@ -60,8 +60,8 @@ label.jsTextL,label.jsPasswordL, label.jsFileL, label.jsSelectorL{
 
 /* labels */
 /*label{cursor:pointer;}*/
-label.H{color:#339999;}
-label.F{color:#cc3300;}
+label.H{color:red;}
+label.F{color:red;}
 
 /* tool tip related */
 .tip{border: 1px solid #339999;background-color: #fff;z-index:100;font-size:0.9em;color:#666;padding:2px 4px;}
@@ -200,24 +200,104 @@ label.F{color:#cc3300;}
 .nosx .jsRadiobutton.F.A.H img{background-position: 0 -<?=3*$h?>px;}
 
 <?$wR=24;$hR=24;?>
-#panelgout .jsRadiobutton img, #panelavis .jsRadiobutton img{
+#panelgout .jsRadiobutton img{
     vertical-align: text-top;
     width: <?=$wR?>px;
     height: <?=$hR?>px;
     background: no-repeat 0 0;
 }
+#panelgout .jsRadiobutton img {background-image: url(<?=$baseurl?>system/application/images/radio.png);}
+#panelgout .jsRadiobutton.A img {background-position: 0 -<?=2*$hR?>px;}
+#panelgout .jsRadiobutton.H img {background-position: 0 -<?=$hR?>px;}
+#panelgout .jsRadiobutton.H.A img {background-position: 0 -<?=2*$hR?>px;}
+#panelgout .jsRadiobutton.F img {background-position: 0 -<?=2*$hR?>px;}
+#panelgout .jsRadiobutton.F.A img {background-position: 0 -<?=3*$hR?>px;}
+#panelgout .jsRadiobutton.F.H img {background-position: 0 -<?=$hR?>px;}
+#panelgout .jsRadiobutton.F.A.H img {background-position: 0 -<?=3*$hR?>px;}
 
+<?$wKO1=$hOK1=14;$wKO2=$hOK2=20;$wKO3=$hOK3=28;$wOK1=15;$wOK2=21;$wOK3=31;$wOKKO=25;$hOKKO=17;?>
+#panelavis .jsRadiobutton img{
+    vertical-align: middle;
+}
+.BigKO .jsRadiobutton img{
+		background-image: url(<?=$baseurl?>/system/application/images/Reponses/No3.gif);
+		width: <?=$wKO3?>px;
+		height: <?=$hOK3?>px;
+}
+.LittleKO .jsRadiobutton img{
+		background-image: url(<?=$baseurl?>/system/application/images/Reponses/No2.gif);
+		width: <?=$wKO2?>px;
+		height: <?=$hOK2?>px;
+}
+.KO .jsRadiobutton img{
+		background-image: url(<?=$baseurl?>/system/application/images/Reponses/No.gif);
+		width: <?=$wKO1?>px;
+		height: <?=$hOK1?>px;
+}
+.OK .jsRadiobutton img{
+		background-image: url(<?=$baseurl?>/system/application/images/Reponses/Yes.gif);
+		width: <?=$wOK1?>px;
+		height: <?=$hOK1?>px;
+}
+.LittleOK .jsRadiobutton img{
+		background-image: url(<?=$baseurl?>/system/application/images/Reponses/Yes2.gif);
+		width: <?=$wOK2?>px;
+		height: <?=$hOK2?>px;
+}
+.BigOK .jsRadiobutton img{
+		background-image: url(<?=$baseurl?>/system/application/images/Reponses/Yes3.gif);
+		width: <?=$wOK3?>px;
+		height: <?=$hOK3?>px;
+}
+.OKOK .jsRadiobutton img{
+		background-image: url(<?=$baseurl?>/system/application/images/Reponses/AT.gif);
+		width: <?=$wOKKO?>px;
+		height: <?=$hOKKO?>px;
+}
+.BigKO .jsRadiobutton.A img, .BigOK .jsRadiobutton.A img{background-position: 0 -<?=$hOK3?>px;}
+.BigKO .jsRadiobutton.H img, .BigOK .jsRadiobutton.H img{background-position: 0 -<?=$hOK3?>px;}
+.BigKO .jsRadiobutton.H.A img, .BigOK .jsRadiobutton.H.A img{background-position: 0 -<?=$hOK3?>px;}
 
+.LittleKO .jsRadiobutton.A img, .LittleOK .jsRadiobutton.H img{background-position: 0 -<?=$hOK2?>px;}
+.LittleKO .jsRadiobutton.H img, .LittleOK .jsRadiobutton.H img{background-position: 0 -<?=$hOK2?>px;}
+.LittleKO .jsRadiobutton.H.A img, .LittleOK .jsRadiobutton.H img{background-position: 0 -<?=$hOK2?>px;}
 
-#panelgout .jsRadiobutton img{background-image: url(<?=$baseurl?>system/application/images/radio.png);}
-#panelavis .jsRadiobutton img{background-image: url(<?=$baseurl?>/system/application/images/checkbox2.png);}
-#panelgout .jsRadiobutton.A img, #panelavis .jsRadiobutton.A img{background-position: 0 -<?=2*$hR?>px;}
-#panelgout .jsRadiobutton.H img, #panelavis .jsRadiobutton.H img {background-position: 0 -<?=$hR?>px;}
-#panelgout .jsRadiobutton.H.A img, #panelavis .jsRadiobutton.H.A img {background-position: 0 -<?=2*$hR?>px;}
-#panelgout .jsRadiobutton.F img, #panelavis .jsRadiobutton.F img {background-position: 0 -<?=2*$hR?>px;}
-#panelgout .jsRadiobutton.F.A img, #panelavis .jsRadiobutton.F.A img {background-position: 0 -<?=3*$hR?>px;}
-#panelgout .jsRadiobutton.F.H img, #panelavis .jsRadiobutton.F.H img {background-position: 0 -<?=$hR?>px;}
-#panelgout .jsRadiobutton.F.A.H img, #panelavis .jsRadiobutton.F.A.H img {background-position: 0 -<?=3*$hR?>px;}
+.KO .jsRadiobutton.A img, .OK .jsRadiobutton.A img{background-position: 0 -<?=$hOK1?>px;}
+.KO .jsRadiobutton.H img, .OK .jsRadiobutton.H img{background-position: 0 -<?=$hOK1?>px;}
+.KO .jsRadiobutton.H.A img, .OK .jsRadiobutton.H.A img{background-position: 0 -<?=$hOK1?>px;}
+
+.OKKO .jsRadiobutton.A img{background-position: 0 -<?=$hOKO?>px;}
+.OKKO .jsRadiobutton.H img{background-position: 0 -<?=$hOKKO?>px;}
+.OKKO .jsRadiobutton.H.A img{background-position: 0 -<?=$hOKKO?>px;}
+	
+/*
+	#panelavis .ROKKO .jsRadiobutton img{
+	    width: 0px;
+	    height: 0px;
+	}
+	
+	.ROK .jsRadiobutton img{
+	    background: no-repeat 0 -<?=4*$hR?>px;
+	}
+	.ROK .jsRadiobutton.A img{background-position: 0 -<?=2*$hR?>px;}
+	.ROK .jsRadiobutton.H img {background-position: 0 -<?=3*$hR?>px;}
+	.ROK .jsRadiobutton.H.A img {background-position: 0 -<?=2*$hR?>px;}
+	.ROK .jsRadiobutton.F img {background-position: 0 -<?=3*$hR?>px;}
+	.ROK .jsRadiobutton.F.A img {background-position: 0 -<?=2*$hR?>px;}
+	.ROK .jsRadiobutton.F.H img {background-position: 0 -<?=3*$hR?>px;}
+	.ROK .jsRadiobutton.F.A.H img {background-position: 0 -<?=2*$hR?>px;}
+	
+	.RKO .jsRadiobutton img{
+	    background: no-repeat 0 -<?=4*$hR?>px;
+	}
+	.RKO .jsRadiobutton.A img{background-position: 0 -<?=0?>px;}
+	.RKO .jsRadiobutton.H img {background-position: 0 -<?=$hR?>px;}
+	.RKO .jsRadiobutton.H.A img {background-position: 0 -<?=0?>px;}
+	.RKO .jsRadiobutton.F img {background-position: 0 -<?=$hR?>px;}
+	.RKO .jsRadiobutton.F.A img {background-position: 0 -<?=0?>px;}
+	.RKO .jsRadiobutton.F.H img {background-position: 0 -<?=$hR?>px;}
+	.RKO .jsRadiobutton.F.A.H img {background-position: 0 -<?=0?>px;}
+*/
 
 <?$wS=16;$hS=20;?>
 #SearchQO .jsCheckbox img{

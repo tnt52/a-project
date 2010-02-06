@@ -94,7 +94,6 @@
          <COL WIDTH=300>
          <TR><TD align="left"></TD>
         <TD align="center"><DIV id="panel">
-          <?=$panelrep?>
         </DIV></TD>
         <TD align="right">
         <DIV id="miniNP" STYLE="DISPLAY:NONE"><P><?echo anchor(base_url().'index.php/navigation/affiche/'.TM, 'Mes affinites', array('title' => 'Mes affinites','target'=>'_self'));?>
@@ -114,16 +113,23 @@
   <DIV id="status">STATUS</DIV>
   <DIV id="visuaff" class="derriere"></DIV>
   <DIV id="visus">
-       <DIV id="VQcontainer" class="derriere">
-            <DIV STYLE="height:<?=hVhead?>px;position:absolute;top:0px;z-index:100" id="VQhandle">
+       <DIV id="VQcontainer" >
+            <DIV id="VQhandle">
 		<img id="VQprv" class="prev" onclick="prev(MainSel)" onmouseover="this.addClass('H')" onmouseout="this.removeClass('H')"src="<?=base_url()?>/system/application/images/spacer.gif" />
 		<img style="margin-top:1px"class="close" onclick="showMore(MainSel)" onmouseover="$(this).addClass('H')" onmouseout="$(this).removeClass('H')" src="<?=base_url()?>/system/application/images/spacer.gif" />
 		<img id="VQnxt" class="next" onclick="next(MainSel)" onmouseover="this.addClass('H')" onmouseout="this.removeClass('H')" src="<?=base_url()?>/system/application/images/spacer.gif" />
             </DIV>
-            <DIV id="VQcadre" STYLE="position:absolute;top:<?=hVhead?>px;height:<?=hVQ-hVhead-hVfoot?>px;width:100%;overflow-x:hidden;overflow-y:auto;">
-                <DIV ></DIV>
+            <DIV id="VQcadre">
             </DIV>
-            <DIV STYLE="height:<?=hVfoot?>px;position:absolute;bottom:0px;right:0px;" id="VQsizehand" ></DIV>
+            <DIV id="VQ_PR">
+	    	<?=$panelrep?>
+	    </DIV>
+       </DIV>
+       <DIV id="VQsplash">
+		    <DIV id="VQFdlefttop"></DIV>
+		    <DIV id="VQFdrighttop"></DIV>
+		    <DIV id="VQFdleftbott"></DIV>
+		    <DIV id="VQFdrightbott"></DIV>
        </DIV>
        <DIV id="VAcontainer" class="derriere">
             <DIV STYLE="height:<?=hVhead?>px;position:absolute;left:0px;top:0px;z-index:100" id="VAhandle">

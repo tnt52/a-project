@@ -47,7 +47,7 @@ var libdefO='<?=$libdefO?>';
      </TR>
      <TR >
      <? foreach($champs as $key=>$value):?>
-     <TD >
+     <TD <? if ($value!="sexe"):?>STYLE="padding:0px 5px 0px 0px;"<?endif;?>>
          <DIV id="head_<?=$value?>" champ="<?=$value?>"  style="cursor:pointer;width:<?=$cols[$key]?>px;overflow: hidden" onclick="triCat(this)" onmouseover="hoverTri(this)" onmouseout="unhoverTri(this)">
          <?=lang("lib_$value")?> <img class="tri asc" src="<?=base_url()?>system/application/images/spacer.gif" />
          </DIV>

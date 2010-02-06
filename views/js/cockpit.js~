@@ -7,7 +7,7 @@ function getIdMA(){
          }).send();
 }
 function switchCat(cat){
-         this.cat=cat;
+	 this.cat=cat;
          this.pageQO=1;
          this.champtriCAT="";
          this.sensQO="";
@@ -18,35 +18,20 @@ function switchCat(cat){
          GetPlayer(cat);
 }
 function clickNav(el){
-         $(el).setStyles(
-         {
-         "color":"#FF0000",
-         "font-weight":"normal"
-         });
+	$$('.navlink').removeClass('clicked');
+	//for (link in links) document.write(link);//links[link].removeClass('clicked');
+         $(el).addClass('clicked');
 }
 function pressNav(el){
-         $(el).setStyles(
-         {
-         "color":"#FF0000",
-         "font-weight":"bold"
-         });
+
 }
 function hoverNav(el){
-         $(el).setStyle("color","#FF0000");
+         $(el).addClass('H');
 }
 function outNav(el){
-         if (this.cat==el.cat) c="#FF0000";
-         else c="#FFFFFF";
-         $(el).setStyles(
-         {
-         "color":c,
-         "font-weight":"normal"
-         });
+         $(el).removeClass('H')
 }
-/*function liste_page(page){
-         /*GetCatPages(page);
-         GetListe(cat);
-}*/
+
 function GetListe(){
 	closeVisuMS();
 	pageQO=1;
@@ -59,11 +44,13 @@ function GetListe(){
 	
 	}
 	GetAllListe();
-         /*new Request.HTML({
-                url: urlbase+'index.php/navigation/search/'+cat+'/'+limitQO+'/'+pageQO+'/'+champtriCAT+'/'+sensQO,
-                update: $('liste'),
-                onComplete: function () {majfromM(Msel);}
-         }).post($('LookCat'));*/
+}
+function updatescroll(scr){
+	if (scr) {
+		scr.update();
+		scr.verticalScrollable.addEvent('mouseover',function (){this.addClass('H');});
+		scr.verticalScrollable.addEvent('mouseout',function (){$(this).removeClass('H');});
+	}
 }
 function GetAllListe(){
 	if ($('liste'+pageQO)==null) new Element('div',{id:'liste'+pageQO}).inject($('liste'+(pageQO-1)),"after");
@@ -86,9 +73,10 @@ function GetAllListe(){
 				     $('liste'+i).set('html',"");
 				     i++;
 			     }
-			     $('liste').scrollUpdate();
+			     updatescroll(scroll_liste);
 			     return;
 		     }
+		     updatescroll(scroll_liste);
 		     pageQO++;
 		     GetAllListe();
 	     },
@@ -104,20 +92,13 @@ function GetHeader(cat){
              evalScripts: true
          }).send();
 }
-/*function GetCatPages(page){
-         pageQO=page;
-         new Request.HTML({
-              url: urlbase+'index.php/navigation/pages/'+cat+'/'+limitQO+'/'+pageQO+'/',
-              update: $('PagesCat'),
-              onComplete: function () {}
-         }).post($('LookCat'));
-     //    new Request.HTML({url: urlbase+'index.php/navigation/pages/'+cat+'/'+limitQO+'/'+pageQO,update: $('PagesCat'),method: 'get', evalScripts: true}).send();
-}*/
+
 function GetPlayer(cat){
-         new Request.HTML({
+        new Request.HTML({
              url: urlbase+'index.php/navigation/player/'+cat,
              update: $('VQcadre'),
              method: 'get',
+	     onComplete: function () {},
              evalScripts: true
          }).send();
 }
@@ -185,9 +166,10 @@ function GetAllMembres(){
 				     $('membres'+i).set('html',"");
 				     i++;
 			     }
-			     $('Imembres').scrollUpdate();
+			     updatescroll(scroll_lm);
 			     return;
 		     }
+		     updatescroll(scroll_lm);
 		     pageM++;
 		     GetAllMembres();
 	     },
@@ -233,21 +215,15 @@ function triM(el){
 	//else {
 		if (lastTriM!=null && lastTriM.hasClass('A')) {
 		 lastTriM.removeClass('A');
-	//}
+	}
 	img.addClass('A');
 	lastTriM=img;
-	}
+	//}
 	champtriM=el.getProperty('champ');
 	if (img.hasClass('asc')) sensM='ASC'; else sensM='DESC';
 	//if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
 	GetMembres();
-	/*new Request.HTML({
-		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens+'/'+keyMsel,
-		update: divupdate,
-		method: 'get',
-		evalScripts: true
-	}).send();
-	/*tri(el,$('membres'),TM,limitM,pageM,this.lastTriM);*/
+
 }
 function triCat(el){
 	//tri(el,$('liste'),cat,limitQO,pageQO,lastTriCat);
@@ -271,44 +247,12 @@ function triCat(el){
               img.addClass('A');
               lastTriCat=img;
          }
-         champtriCat=el.getProperty('champ');
+         champtriCAT=el.getProperty('champ');
          if (img.hasClass('asc')) sensQO='ASC'; else sensQO='DESC';
 	 GetListe();
 
 }
-/*function tri(el,divupdate,categ,limit,page,lastTri){
-	el=$(el);
-	img=el.getChildren()[0];
-	img.addClass('C');
-	if (img.hasClass('A')) {
-		if (img.hasClass('asc')){
-			img.removeClass('asc');
-			img.addClass('desc');
-		}
-		else if (img.hasClass('desc')){
-			img.removeClass('desc');
-			img.addClass('asc');
-		}
-	}
-	else {
-		if (lastTri!=null && lastTri.hasClass('A')) {
-		 lastTri.removeClass('A');
-	}
-	img.addClass('A');
-	lastTri=img;
-	}
-	champtri=el.getProperty('champ');
-	if (img.hasClass('asc')) sens='ASC'; else sens='DESC';
-	if (Msel==null) keyMsel=-1; else keyMsel=Msel.getProperty('cle');
-	$('varscat').value=keyMsel;
-	GetListe();
-	/*new Request.HTML({
-		url: urlbase+'index.php/navigation/search/'+categ+'/'+limit+'/'+page+'/'+champtri+'/'+sens,
-		update: divupdate,
-		method: 'get',
-		evalScripts: true
-	}).send();
-}*/
+
 function showAffinites(){
          new Request.HTML({
              url: urlbase+'index.php/navigation/affinites',
@@ -320,15 +264,16 @@ function showAffinites(){
 	 DIVdevant($('visuaff'));
 }
 /* MAJ PR */
-function majPR(Qsel){
+function majPR(Sel){
+	return;
          var NewQ=$('NewQ');
          var spanR;
          var PR=$('PanelRep');
          var cle="";
-         if (Qsel!=null){
-            var cle=$('keyQpoR').value=Qsel.getProperty('cle');
-            $('keyMQpoR').value=Qsel.getProperty('keyM');
-            var cat=$('typeQpoR').value=Qsel.getProperty('cat');
+         if (Sel!=null){
+            var cle=$('keyQpoR').value=Sel.getProperty('cle');
+            $('keyMQpoR').value=Sel.getProperty('keyM');
+            var cat=$('typeQpoR').value=Sel.getProperty('cat');
             var LibNQ="";
             if (cle=="" || cle==null) LibNQ=$('LibNewQ').value;
             libelleQ=$('LibelleQ');
@@ -336,22 +281,22 @@ function majPR(Qsel){
             libQgout=$('LibQgout');
             PRgout=$('panelgout');
             PRavis=$('panelavis');
-            switchDiv(PR,NewQ);
+            DIVdevant(PR);//switchDiv(PR,NewQ);
             switch(parseInt(cat)){
                 case TQavis:
-                     libelleQ.set('html',LibNQ==""? $(cle+"libelle"+Qsel.getProperty('liste')).innerHTML : LibNQ);
+                     libelleQ.set('html',LibNQ==""? $(cle+"libelle"+Sel.getProperty('liste')).innerHTML : LibNQ);
                      libQavis.setStyle('display','block');
                      libQgout.setStyle('display','none');
                      PRavis.setStyle('display','block');
                      PRgout.setStyle('display','none');
                      break;
                 default:
-                     libelleQ.set('html',LibNQ==""? $(cle+"titre"+Qsel.getProperty('liste')).innerHTML + "?": LibNQ + "?");
+                     libelleQ.set('html',LibNQ==""? $(cle+"titre"+Sel.getProperty('liste')).innerHTML + "?": LibNQ + "?");
                      libQavis.setStyle('display','none');
                      libQgout.setStyle('display','block');
                      PRavis.setStyle('display','none');
                      PRgout.setStyle('display','block');
-                     switch (Qsel.getProperty('repM')){
+                     switch (Sel.getProperty('repM')){
                             case $('BigS').value:$('BigS').retrieve('cfe').clicked();spanR=$('BigS').getParent();break;
                             case $('LittleS').value:$('LittleS').retrieve('cfe').clicked();spanR=$('LittleS').getParent();break;
                             case $('NoF').value:$('NoF').retrieve('cfe').clicked();spanR=$('NoF').getParent();break;
@@ -365,7 +310,7 @@ function majPR(Qsel){
             DIVdevant($('retourPR'));
          }
          else {
-            switchDiv(NewQ,PR);
+            DIVderriere(PR);//switchDiv(NewQ,PR);
             $('typeQpoR').value=$('keyMQpoR').value=$('keyQpoR').value="";
          }
 }
@@ -395,20 +340,26 @@ function closeVisuS(){
          if (SubSel!=null && SubSel.getProperty("sel")=="true") showMore(SubSel);
          SubSel=null;
 }
+function getNextItem(m){
+	return $(m.getProperty('liste')+(parseInt(m.getProperty('ligne'))+1));	
+}
+function getPrevItem(m){
+	return $(m.getProperty('liste')+(parseInt(m.getProperty('ligne'))-1));
+}
 function next(Sel){
-         var nxt=Sel.getNext('.listitem');
+         var nxt=getNextItem(Sel);
          nxt==null? showMore(Sel):More(nxt);
 }
 function prev(Sel){
-         var prv=Sel.getPrevious('.listitem');
+         var prv=getPrevItem(Sel);
          prv==null? showMore(Sel):More(prv);
 }
 function nextM(Sel){
-         var nxt=Sel.getNext('.listitem');
+         var nxt=getNextItem(Sel);
          nxt==null? showID(Sel):showID(nxt);
 }
 function prevM(Sel){
-         var prv=Sel.getPrevious('.listitem');
+         var prv=getPrevItem(Sel);
          prv==null? showID(Sel):showID(prv);
 }
 
@@ -436,18 +387,29 @@ function centrer(el,w,h){
          el.setStyle('top',el.getStyle('top')-h/2);
          el.setStyle('left',el.getStyle('left')-w/2);
 }
+function addEventsScrollbars(){
+	$$('.scrollBar .button').addEvent('mouseover',function (){this.addClass('H');});
+	$$('.scrollBar .button').addEvent('mouseout',function (){this.removeClass('H');});	
+}
+var scroll_liste=new UvumiScrollbar("liste");
+var scroll_lm=new UvumiScrollbar("Imembres");
+var scroll_vq;//=new UvumiScrollbar("VQcontainer");
 /* INITIALISATION */
 window.addEvent('domready', function() {
                             /*$('Artistes').addEvent('click',function() {GetListe($('Artistes').getProperty('cat'))});
                             $('Sons').addEvent('click',function() {void(window.location.reload()); GetListe($('Sons').getProperty('cat'))});*/
                             /*$('compte').makeDraggable();*/
                             //centrer($('VisuQ'),400,400);
-                            majPR(null);
-                            majNewQ();
-                            GetListe();;                            
+                            //scroll_liste = new UvumiScrollbar("liste");
+			    //scroll_lm = new UvumiScrollbar("Imembres");
+			    addEventsScrollbars();
+			    majPR(null);
+                            //majNewQ();
+                            switchCat(cat);//GetListe();;                            
 			    GetHeadM();
 			    GetMembres();
                             getIdMA();
+			    addEventsScrollbars();
                           //  GetMembres();
-                            MM_preloadImages(urlbase+'system/application/images/boutons/OKrol.gif');
+			  //MM_preloadImages(urlbase+'system/application/images/boutons/OKrol.gif');
 });

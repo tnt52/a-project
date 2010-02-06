@@ -1,7 +1,10 @@
   .devant {
-   z-index:10;
+   z-index:50;
   }
   .derriere {
-   z-index:0;
-   display:none;
+   z-index:-50;
+   /*display:none;*/
+  }
+  .horschamps{
+	margin-left:-10000px;	  
   }

@@ -54,7 +54,7 @@ input{
   }
 
   #idMA {
-    color:white;
+    color:black;
     background-color:<?=Rec7_coul?>;
   }
 
@@ -66,7 +66,7 @@ input{
    background-color:<?=Rec8_coul?>;
   }
   #idMS {
-   color:white;
+   color:black;
    background-color:<?=Rec9_coul?>;
   }
   
@@ -129,19 +129,47 @@ input{
   }
     #VQhandle
     {     
-	  background: url(<?=baseurl?>system/application/images/Fonds/FondVQHaut.gif) no-repeat left top;
+	 /* background: transparent /*url(<?=baseurl?>system/application/images/Fonds/FondVQHaut.gif) no-repeat left top;*/*/
 	  /*background-color:black;*/
           color:white;
+	  
     }
     #VQcadre
     {     /*border: #FFCCFF simple 5px;*/
-          background: url(<?=baseurl?>system/application/images/Fonds/FondVQ.gif) repeat-y left top;
+        /*  background: url(<?=baseurl?>system/application/images/Fonds/FondVQ.gif) no-repeat left top;*/
           color:white;
+	  
     }
-    #VQsizehand
-    {     background: url(<?=baseurl?>system/application/images/Fonds/FondVQBas.gif) no-repeat left bottom;
-	   /* background-color:black;*/
-          color:red;
+    #PanelRep{
+	    background: url(<?=baseurl?>system/application/images/Fonds/FondPR.gif) no-repeat left bottom;
+    }
+    #VQ_PR
+    {     
+	   /* background-color:black;
+          color:red;*/
+    }
+    #VQFdleftbott{
+	  background: url(<?=baseurl?>system/application/images/Fonds/FondVQ.gif) no-repeat left bottom;
+    }
+    
+    #VQFdlefttop{
+	  background: url(<?=baseurl?>system/application/images/Fonds/FondVQ.gif) no-repeat left top;
+    }
+    #VQFdrighttop{
+	   background: url(<?=baseurl?>system/application/images/Fonds/FondVQ.gif) no-repeat right top;
+    }
+    #VQFdrightbott{
+	   background: url(<?=baseurl?>system/application/images/Fonds/FondVQ.gif) no-repeat right bottom;
+    }
+    #VQFdsudest{
+	    background: url(<?=baseurl?>system/application/images/Fonds/FondVQFdsudest.gif) no-repeat right bottom;
+    }
+    
+    #VQRightHaut{
+	    background: url(<?=baseurl?>system/application/images/Fonds/FondVQRightHaut.gif) no-repeat right bottom;
+    }
+    #VQRightBas{
+	    background: url(<?=baseurl?>system/application/images/Fonds/FondVQRightBas.gif) no-repeat right bottom;
     }
   #VAcontainer{
         border: 2px solid red;

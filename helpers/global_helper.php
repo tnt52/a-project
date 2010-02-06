@@ -32,11 +32,13 @@ define ("ValNoF",0);
 define ("ValLittleS",1);
 define ("ValBigS",3);
 
-define ("Val_BigOK",-3);
-define ("Val_LittleOK",-1);
+define ("ValBigKO",-3);
+define ("ValLittleKO",-1);
 define ("ValOKKO",0);
 define ("ValLittleOK",1);
 define ("ValBigOK",3);
+define ("ValOK",2);
+define ("ValKO",-2);
 
 //CHOIX//
 define ("ALL",0);
@@ -46,4 +48,11 @@ define ("AVavis",2);
 //LIMITES//
 define("limitQO",20);
 define("limitM",20);
+
+function DatefromDB($ts){
+	 if ($ts=="") return "date inconnue";
+         $date=explode(" ",(string)$ts);
+         $d=explode("-",$date[0]);
+         return $d[2]."/".$d[1]."/".$d[0];
+}
 ?>

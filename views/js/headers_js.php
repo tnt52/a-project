@@ -28,7 +28,7 @@ var s1 = new CustomSelect($('selavis'), {
       }
     });
     initHeadCat();
-    cfeHead.init({scope:$('header') ,spacer: "http://127.0.0.1/system/application/images/spacer.gif", toolTips: true, toolTipsStyle: "normal"});
+    cfeHead.init({scope:$('SearchCat') ,spacer: "http://127.0.0.1/system/application/images/spacer.gif", toolTips: true, toolTipsStyle: "normal"});
     
     /*s1=$('limitQO').getPrevious(".jsSelectorCWrapper");
     s2=s1.getElement(".jsSelectorC");

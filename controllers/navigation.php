@@ -49,7 +49,7 @@ class Navigation extends Controller {
 	     //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
 	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/flexcroll/flexcrollstyles.css">';
 	     $data['panelrep']=$this->load->view('PR',array('keyQ'=>null,'keyM'=>null,'keyMq'=>null,'rep'=>null),true);	     
-             $this->load->view('testflexcroll',$data);
+             $this->load->view('affican-test',$data);
     }
     function addflexcroll(){
 	$this->load->view('addflexcroll',null);    
@@ -81,7 +81,7 @@ class Navigation extends Controller {
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/cfe/cfe.module.textarea.js"></script>';
              $data['Header'].='<!--[if IE]> <link rel="stylesheet" type="text/css" href="'.base_url().'system/application/views/js/mooplugs/cfe/fixPrematureIE.css" /> <![endif]-->';
              $data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/mooplugs/customscrollbar/sources/UvumiScrollbar.js"></script>';//UvumiScrollbar-compressed.js
-	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/mooplugs/customscrollbar/css/uvumi-scrollbar.css">';
+	     $data['Header'].='<link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/mooplugs/customscrollbar/css/uvumi-scrollbar_css.php">';
 	     $data['Header'].='<!--[if lt IE 7]> <link rel="stylesheet" type="text/css" media="screen" href="'.base_url().'system/application/views/js/mooplugs/customscrollbar/css/uvumi-scrollbar-ie6.css"> <![endif]-->';
 	     //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/global_js.php"></script>';
 	     //$data['Header'].='<script type="text/javascript" src="'.base_url().'system/application/views/js/flexcroll/flexcroll.js"></script>';
@@ -218,7 +218,7 @@ class Navigation extends Controller {
                      $data['cols']=array(col_titre,col_nom);
                      break;
                 case TQ:
-                     $data=$this->Getlistes->getquestions($cat,$page,$limit,$v['tri'],$v['sens'],$addvars,$search,$fields);$vue="oeuvres_v";
+                     $data=$this->Getlistes->getquestions($cat,$page,$limit,$v['tri'],$v['sens'],$addvars,$search,$fields);$vue="questions_v";
                      $data['champs']=array('libelle','pseudo','sexe');
                      $data['cols']=array(col_libelle,col_pseudo,col_sexe);
                      break;
@@ -285,7 +285,7 @@ class Navigation extends Controller {
 
     function more($cat,$cle,$visu=0,$type=null){//$type=>artiste ou membre
               $data=$this->Getlistes->getmore($cat,$cle,$type);
-              if ($visu==1) $data['vmore']=0;
+              if ($visu==1) $data['vmore']=0; // 0 MainSel, 1 SubSel, 2 Mvisu
               else $data['vmore']=1;
               switch ($cat){
                      case TOson:$vue="oeuvre_v";break;

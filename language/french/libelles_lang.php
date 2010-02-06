@@ -12,14 +12,21 @@ $lang['lib_marep'] = "moi";
 $lang['lib_sarep'] = "lui";
 $lang['lib_Membres'] = "Tribuns";
 
-$lang['lib_reponse'] = "réponse";
-$lang['lib_reponses'] = "réponses";
+$lang['lib_reponse'] = "avis";
+$lang['lib_reponses'] = "avis";
 $lang['lib_liens'] = "liens";
 $lang['lib_lien'] = "lien";
 $lang['lib_membres'] = "tribuns";
 $lang['lib_membre'] = "tribun";
 
+$lang['lib_Oui'] = "Oui";
+$lang['lib_Non'] = "Non";
+$lang['lib_reponseimpossible'] = "réponse<br>impossible";
+
+$lang['lib_Etesvousdaccord'] = "Etes-vous d'accord ?";
+
 $lang['lib_de'] = "de";
+$lang['lib_le'] = "le";
 $lang['lib_dateIns'] = "inscrit le";
 $lang['lib_dateVDO'] = "réalisé le";
 $lang['lib_dateSON'] = "enregistré le";
@@ -36,6 +43,7 @@ $lang['lib_moncompte'] = "mon compte";
 
 $lang['lib_un']="un";
 $lang['lib_une']="une";
+$lang['lib_Votre']="Votre";
 
 $lang['lib_tribune']="tribune";
 
